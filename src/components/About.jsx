@@ -76,7 +76,7 @@ function About() {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <a 
-              href="https://drive.google.com/uc?export=download&id=15sbrPROqs-GL7z6vpYn94WlsbZtC0wuz" 
+              href="https://drive.google.com/uc?export=download&id=1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs" 
               download
               className="cv-button"
             >
