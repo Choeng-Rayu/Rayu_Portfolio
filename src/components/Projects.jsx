@@ -13,37 +13,48 @@ const Projects = () => {
   }, [isInView, controls]);
 
   const projects = [
-    // { 
-    //   title: 'Banking Management System (Back end only)', 
-    //   description: 'A secure digital banking platform with transaction tracking, user accounts, and admin dashboard.',
-    //   tags: ['React', 'Node.js', 'MongoDB', 'JWT Auth'],
-    //   accentColor: '#00ff88'
-    // },
     { 
       title: 'Portfolio Site', 
       description: 'Interactive portfolio with 3D elements and smooth animations showcasing my work.',
-      tags: ['Next.js', 'Framer Motion'],
-      accentColor: '#0095ff'
+      tags: ['React.js', 'Framer Motion'],
+      accentColor: '#0095ff',
+      demoLink: 'https://rayuchoeng-profolio-website.netlify.app/',
+      codeLink: 'https://github.com/Choeng-Rayu/Rayu_Portfolio.git'
     },
     { 
-      title: 'E-Commerce Platform (Full Stack But not Public)', 
-      description: 'Full-featured with cart, payments, and inventory management.',
+      title: 'E-Commerce Platform (Full Stack But Offline Application)', 
+      description: 'Full-featured with cart, buy and sell products, payments, and inventory management.',
       tags: ['Java Programming', 'Swing', 'MySQL'],
-      accentColor: '#ff00aa'
+      accentColor: '#ff00aa',
+      demoLink: '',
+      codeLink: 'https://github.com/Choeng-Rayu/E-Commerce-java-new.git'
     },
     { 
-      title: 'Students Management System (Back end only)', 
+      title: 'Students Management System (Running on Terminal)', 
       description: 'As the first project for foundation year, this system manages student records, grades, and academic records including payments.',
       tags: ['Language: C'],
-      accentColor: '#ff9500'
+      accentColor: '#ff9500',
+      demoLink: '',
+      codeLink: 'https://github.com/Choeng-Rayu'
     },
     { 
-      title: 'E-Commerce Platform (back end only', 
+      title: 'E-Commerce Platform (Running on Terminal)', 
       description: 'As the Second project, this platform manages product listings, user accounts, order process, history, and payment management.',
       tags: ['Solidity', 'Web3.js', 'Ethereum'],
-      accentColor: '#7700ff'
+      accentColor: '#7700ff',
+      demoLink: 'https://github.com/Choeng-Rayu/E-commerce-store-c-project.git',
+      codeLink: 'https://github.com/Choeng-Rayu/E-Commerce-java-new.git'
+    },
+    { 
+      title: 'Building a Telegram Bot', 
+      description: 'Building a Telegram Bot as an AI assistant powered by DeepSeek API.',
+      tags: ['DeepSeek API', 'Telegram API', 'Node.js', 'Webhook'],
+      accentColor: '#7700ff',
+      demoLink: 'https://t.me/RayuChatBot',
+      codeLink: 'https://github.com/Choeng-Rayu/DeepSeekAPITelegramBot.git'
     },
   ];
+  
 
   const container = {
     hidden: { opacity: 0 },
@@ -117,9 +128,27 @@ const Projects = () => {
                     <span key={i} className="tag">{tag}</span>
                   ))}
                 </div>
-                <div className="card-footer">
+                {/* <div className="card-footer">
                   <button className="demo-button">Live Demo</button>
                   <button className="code-button">View Code</button>
+                </div> */}
+                <div className="card-footer">
+                  {project.demoLink && (
+                    <button 
+                      className="demo-button"
+                      onClick={() => window.open(project.demoLink, "_blank")}
+                    >
+                      Live Demo
+                    </button>
+                  )}
+                  {project.codeLink && (
+                    <button 
+                      className="code-button"
+                      onClick={() => window.open(project.codeLink, "_blank")}
+                    >
+                      View Code
+                    </button>
+                  )}
                 </div>
               </div>
             </motion.div>

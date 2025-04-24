@@ -9,6 +9,7 @@ function About() {
     { name: "HTML & CSS", icon: <FaCode /> },
     { name: "JavaScript", icon: <FaCode /> },
     { name: "Java Programming", icon: <FaCode /> },
+    { name: "Building Chat Bot in Telegram", icon: <FaCode /> },
     { name: "C++", icon: <FaCode /> },
     { name: "C", icon: <FaCode /> }
        
