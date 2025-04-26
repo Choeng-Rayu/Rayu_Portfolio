@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../assets/nang2.jpg';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
+import { BsJustify } from 'react-icons/bs';
 
 function About() {
   const expertiseItems = [
@@ -116,122 +117,164 @@ function About() {
       </motion.div>
 
       {/* Experience and Education Sections */}
-      <div className="timeline-container">
-        <motion.div
-          className="experience-section"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
-        >
-          <h3><FaBriefcase /> WORK & VOLUNTEER EXPERIENCE</h3>
-          
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Teaching</h4>
-                <p className="role">Tutor Mathematics</p>
-                <p className="date">2024 – February 2025</p>
-                <div className="description">
-                  <p>Part-Time Math Tutor for Grade 4 and Grade 8 Students</p>
-                  <ul>
-                    <li>Conducted one-on-one tutoring sessions at students' homes</li>
-                    <li>Focused on improving mathematical concepts and problem-solving skills</li>
-                    <li>Provided homework assistance and test/exam preparation</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Volunteer</h4>
-                <p className="role">Khoding-Hero Volunteer Program</p>
-                <p className="date">04/8/2024 – 4/9/2024</p>
-                <div className="description">
-                  <p>Led a three-member team teaching 700 students at Samky High School in Siem Reap Province</p>
-                  <ul>
-                    <li>Taught ICT and coding with Scratch</li>
-                    <li>Managed digital registration, testing, and attendance tracking</li>
-                    <li>Inspired students to explore Digital Technology careers</li>
-                    <li>Taught English for Extra classes in the Evening </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+<div className="timeline-container">
+  {/* Education Section - moved to the top */}
+  <motion.div
+    className="education-section"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
+  >
+    <h3><FaGraduationCap /> EDUCATION</h3>
 
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Volunteer</h4>
-                <p className="role">Digital Government Forum</p>
-                <p className="date">11/3/2024 – 13/3/2024</p>
-                <div className="description">
-                  <p>Role: Crowd team</p>
-                  <ul>
-                    <li>Directed participants to various areas of the venue and answered their questions.</li>
-                    <li>Facilitated interactions between attendees and exhibitors, promoting showcased technologies to enhance engagement and overall experience</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
+    <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Hun Sen Borey 100 Knong High School</h4>
+          <p className="degree">Baccalauréat (Bac II), Grade B</p>
+          <p className="date">24 November 2023</p>
+          <div className="description">
+            <p>Graduated with solid academic foundation that sparked my interest in technology and led me to pursue Computer Science.</p>
           </div>
-
-        </motion.div>
-
-        <motion.div
-          className="education-section"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: 'easeOut', delay: 0.6 }}
-        >
-          <h3><FaGraduationCap /> EDUCATION</h3>
-
-
-          
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Cambodia Academy of Digital Technology</h4>
-                <p className="degree">Bachelor's in Computer Science (currently year 2)</p>
-                <p className="date">January 2024 – Present</p>
-                <div className="description">
-                  <p>Specializing in Software Engineering with focus on:</p>
-                  <ul>
-                    <li>Programming languages: Java, C++, C</li>
-                    <li>Web development: React.js, HTML, CSS</li>
-                    <li>Applying theory to practical projects</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            {/* ALCPP */}
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Joint ALCPP Program In The Capacity Specialists </h4>
-                <p className="degree">This is program aim to develop soft skill and becoming a professional work space </p>
-                <p className="date">1 November 2024 - (waiting internship to graduate)</p>
-                <div className="description">
-                <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="timeline-item">
-              <div className="timeline-content">
-                <h4>Hun Sen Borey 100 Knong High School</h4>
-                <p className="degree">Baccalauréat (Bac II), Grade B</p>
-                <p className="date">24 November 2023</p>
-                <div className="description">
-                  <p>Graduated with solid academic foundation that sparked my interest in technology and led me to pursue Computer Science.</p>
-                </div>
-              </div>
-            </div>
-
+          <button className='cv-button' onClick={() => window.open('https://verify.gov.kh/verify/ba1d31fd9f3c2853edd973e955cc7845e484a182774a5d12568f7caeea471ac3?key=0037327bb0844bf7691ae5c882a2bc1e4933739b4dfc16d53c89558900a590fc', '_blank')}>
+            Reference
+            </button>
+        </div>
+    </div>
+    
+    <div className="timeline">
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Cambodia Academy of Digital Technology</h4>
+          <p className="degree">Bachelor's in Computer Science (currently year 2)</p>
+          <p className="date">January 2024 – Present</p>
+          <div className="description">
+            <p>Specializing in Software Engineering with focus on:</p>
+            <ul>
+              <li>Programming languages: Java, C++, C</li>
+              <li>Web development: React.js, HTML, CSS</li>
+              <li>Applying theory to practical projects</li>
+            </ul>
           </div>
-        </motion.div>
+          <button className='cv-button' onClick={() => window.open('https://verify.gov.kh/verify/3b35764c208b34af1c95ab3a09f5b2aefa7332b65e98b1c8e184eb635e9508f2?key=2c43a7002735a6333689d5088412f4f870c205535bdc92913e892b21bf5bd44a', '_blank')}>
+            Reference
+            </button>
+        </div>
       </div>
+      {/* ALCPP */}
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Joint ALCPP Program In The Capacity Specialists </h4>
+          <p className="degree">This is program aim to develop soft skill and becoming a professional work space </p>
+          <p className="date">1 November 2024 - (waiting internship to graduate)</p>
+          <div className="description">
+          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          </div>
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+        </div>
+      </div>
+    </div>
+  </motion.div>
+
+  {/* Work and Volunteer Experience - moved below Education */}
+  <motion.div
+    className="experience-section"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+  >
+    <h3><FaBriefcase /> WORK & VOLUNTEER EXPERIENCE</h3>
+    
+    <div className="timeline">
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Teaching</h4>
+          <p className="role">Tutor Mathematics</p>
+          <p className="date">2024 – February 2025</p>
+          <div className="description">
+            <p>Part-Time Math Tutor for Grade 4 and Grade 8 Students</p>
+            <ul>
+              <li>Conducted one-on-one tutoring sessions at students' homes</li>
+              <li>Focused on improving mathematical concepts and problem-solving skills</li>
+              <li>Provided homework assistance and test/exam preparation</li>
+            </ul>
+          </div>
+        
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+        </div>
+      </div>
+      
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role">Khoding-Hero Volunteer Program</p>
+          <p className="date">04/8/2024 – 4/9/2024</p>
+          <div className="description">
+            <p>Led a three-member team teaching 700 students at Samky High School in Siem Reap Province</p>
+            <ul>
+              <li>Taught ICT and coding with Scratch</li>
+              <li>Managed digital registration, testing, and attendance tracking</li>
+              <li>Inspired students to explore Digital Technology careers</li>
+              <li>Taught English for Extra classes in the Evening </li>
+            </ul>
+          </div>
+          
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+        </div>
+      </div>
+
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role">Digital Government Forum</p>
+          <p className="date">11/3/2024 – 13/3/2024</p>
+          <div className="description">
+            <p>Role: Crowd team</p>
+            <ul>
+              <li>Informed attendees about the forum's achievements and key highlights.</li>
+              <li>Directed participants to various areas of the venue and answered their questions.</li>
+              <li>Facilitated interactions between attendees and exhibitors, promoting showcased technologies to enhance engagement and overall experience.</li>
+            </ul>
+          </div>
+
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+
+        </div>
+      </div>
+
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role"></p>
+          <p className="date">11/3/2024 – 13/3/2024</p>
+          <div className="description">
+            <p>Role: Crowd team</p>
+            <ul>
+              <li>Informed attendees about the forum's achievements and key highlights.</li>
+              <li>Directed participants to various areas of the venue and answered their questions.</li>
+              <li>Facilitated interactions between attendees and exhibitors, promoting showcased technologies to enhance engagement and overall experience.</li>
+            </ul>
+          </div>
+
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+
+        </div>
+      </div>
+
+    </div>
+  </motion.div>
+</div>
 
       {/* Styles */}
       <style jsx>{`
@@ -430,26 +473,19 @@ function About() {
 
         /* Timeline Sections */
         .timeline-container {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+          display: flex;
+          flex-direction: column;
           gap: 40px;
           position: relative;
         }
-        
+
         .timeline-container::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 50%;
-          width: 2px;
-          background: rgba(212, 175, 55, 0.3);
-          transform: translateX(-50%);
+          display: none;
         }
         
         .experience-section, 
         .education-section {
-          position: relative;
+          width: 100%;
         }
         
         .experience-section h3,
