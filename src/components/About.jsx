@@ -7,12 +7,15 @@ import { BsJustify } from 'react-icons/bs';
 function About() {
   const expertiseItems = [
     { name: "Teaching Skills", icon: <FaCode /> },
+    { name: "Mathematic Teaching", icon: <FaCode /> },
+    { name: "English langauge", icon: <FaCode /> },
     { name: "HTML & CSS", icon: <FaCode /> },
     { name: "JavaScript", icon: <FaCode /> },
     { name: "Java Programming", icon: <FaCode /> },
     { name: "Building Chat Bot in Telegram", icon: <FaCode /> },
     { name: "C++", icon: <FaCode /> },
-    { name: "C", icon: <FaCode /> }
+    { name: "C", icon: <FaCode /> },
+    
        
   ];
 
@@ -164,18 +167,79 @@ function About() {
       {/* ALCPP */}
       <div className="timeline-item">
         <div className="timeline-content">
-          <h4>Joint ALCPP Program In The Capacity Specialists </h4>
-          <p className="degree">This is program aim to develop soft skill and becoming a professional work space </p>
+          <h4>Joint ALCPP Program In The Capacity Specialists</h4>
+          <p className="degree">This is program aim to develop soft skill and becoming a professional work space</p>
           <p className="date">1 November 2024 - (waiting internship to graduate)</p>
+          <div className="description">
+            <p>
+              This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace: It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.
+            </p>
+          </div>
+          <button
+            className="cv-button"
+            onClick={() => {
+              const targetElement = document.getElementById('contact');
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              } else {
+                console.error('Contact section not found.');
+              }
+            }}
+          >
+            Waiting Internship to graduate (Hire me?)
+          </button>
+        </div>
+        </div>
+          </div>
+
+    <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Graduated Diploma General English</h4>
+          <p className="degree">I Graduated level 12 of General English from </p>
+          <p className="date">Waiting Certificate</p>
           <div className="description">
           <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
           </div>
-          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+          <button className='cv-button' onClick={() => window.open('                                                  ', '_blank')}>
+            Reference (waiting certificate)
+            </button>
+    </div>
+
+  </div>
+    
+    {/* Complete Training Startup Camp */}
+    <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Completed A Training course</h4>
+          <p className="degree">NICC 12th Startup Camp : TechTourism Ignite</p>
+          <p className="date">14 September 2024</p>
+          <div className="description">
+          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          </div>
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1odE4Bo0jImOM72HfIUurMetj00JTy6LW/view?usp=drivesdk', '_blank')}>
             Reference
             </button>
         </div>
-      </div>
     </div>
+
+    {/* IT Essentail */}
+    <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Completed A Course With CISCO Networking Academy </h4>
+          <p className="degree">IT Essentials: PC Hardware and Software</p>
+          <p className="date">14 May 2024</p>
+          <div className="description">
+          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          </div>
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1oXMj11rTBcqAv8aSn0ER5J138DXmyAW1/view?usp=drivesdk', '_blank')}>
+            Reference
+            </button>
+        </div>
+    </div>
+    
   </motion.div>
 
   {/* Work and Volunteer Experience - moved below Education */}
@@ -224,7 +288,7 @@ function About() {
             </ul>
           </div>
           
-          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1ozrvWrgUTzZs2szScNf9SP9dnCQuLrCh/view?usp=sharing', '_blank')}>
             Reference
             </button>
         </div>
@@ -244,7 +308,7 @@ function About() {
             </ul>
           </div>
 
-          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+          <button className='cv-button' onClick={() => window.open('https://verify.gov.kh/verify/97e7ce8f61a4f43c10f3441636e517f92466e94216fb65e265a3c9f0f997a158?key=8940f9bd54c3283d3c981f01a6787ccfdfa43b90298d3fea628c26cc0b31980b', '_blank')}>
             Reference
             </button>
 
@@ -254,18 +318,80 @@ function About() {
       <div className="timeline-item">
         <div className="timeline-content">
           <h4>Volunteer</h4>
-          <p className="role"></p>
-          <p className="date">11/3/2024 – 13/3/2024</p>
+          <p className="role">Cambodia High Education Forum and Exhibition</p>
+          <p className="date">19/10/2024 – 20/10/2024</p>
           <div className="description">
-            <p>Role: Crowd team</p>
+            <p>Role: Technical team</p>
             <ul>
-              <li>Informed attendees about the forum's achievements and key highlights.</li>
-              <li>Directed participants to various areas of the venue and answered their questions.</li>
-              <li>Facilitated interactions between attendees and exhibitors, promoting showcased technologies to enhance engagement and overall experience.</li>
+              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
+              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
+              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
             </ul>
           </div>
 
-          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing', '_blank')}>
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1oh1oD2nvVWCTzBfG2KbYXQxyQ85AdhyE/view?usp=sharing', '_blank')}>
+            Reference
+            </button>
+        </div>
+      </div>
+
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role">National Career and Productivity Fair 2024</p>
+          <p className="date">26/10/2024 – 27/10/2024</p>
+          <div className="description">
+            <p>Role: Technical team</p>
+            <ul>
+              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
+              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
+              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
+            </ul>
+          </div>
+
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1ofiNpycGDZoZUm-Sgdcq-FzoqsosZ7C5/view?usp=drivesdk', '_blank')}>
+            Reference
+            </button>
+
+        </div>
+      </div>
+
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role">ពិធីបើក-បិទ ការប្រកួតកីឡាជាតិលើកទី៤ និងកីឡាជាតិជនពិការលើកទី២ ឆ្នាំ២០២៤</p>
+          <p className="date">30/10/2024 – 8/11/2024</p>
+          <div className="description">
+            <p>Role: Technical team</p>
+            <ul>
+              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
+              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
+              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
+            </ul>
+          </div>
+
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1orE867zXvRCmM2aLCI94CRA4zyRl4kOK/view?usp=drivesdk', '_blank')}>
+            Reference
+            </button>
+
+        </div>
+      </div>
+
+      <div className="timeline-item">
+        <div className="timeline-content">
+          <h4>Volunteer</h4>
+          <p className="role">My First Stock</p>
+          <p className="date">25/10/2024 – 28/10/2024</p>
+          <div className="description">
+            <p>Role: Technical team</p>
+            <ul>
+              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
+              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
+              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
+            </ul>
+          </div>
+
+          <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1orowX4bd6gmRW8Q8AZhhJvOQVPlcHFRU/view?usp=drivesdk', '_blank')}>
             Reference
             </button>
 

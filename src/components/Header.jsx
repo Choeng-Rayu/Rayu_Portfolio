@@ -89,7 +89,7 @@ function Header() {
               className="title"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.3, duration: 1.5, repeat: Infinity}}
             >
               Welcome To My Website!
             </motion.span>

@@ -71,6 +71,7 @@ const Contact = () => {
 
   return (
     <motion.div
+      id="contact"
       ref={contactRef}
       className="contact-section"
       initial={{ opacity: 0, y: 50 }}
