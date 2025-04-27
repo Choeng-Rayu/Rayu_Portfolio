@@ -53,6 +53,14 @@ const Projects = () => {
       demoLink: 'https://t.me/RayuChatBot',
       codeLink: 'https://github.com/Choeng-Rayu/DeepSeekAPITelegramBot.git'
     },
+    { 
+      title: 'Building a Telegram Bot', 
+      description: 'Building a Telegram Bot Solving Math Problems focused on Function and Graphs(In Progress).',
+      tags: ['Telegram API', 'Node.js', 'Webhook'],
+      accentColor: '#7700ff',
+      demoLink: 'https://t.me/RayuEquationBot',
+      codeLink: 'https://github.com/Choeng-Rayu/fucntion-solving-telegram-bot.git'
+    },
   ];
   
 

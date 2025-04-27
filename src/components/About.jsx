@@ -189,7 +189,7 @@ function About() {
               }
             }}
           >
-            Waiting Internship to graduate (Hire me?)
+            Waiting Internship to graduate (Hire/Help me?)
           </button>
         </div>
         </div>
@@ -198,14 +198,14 @@ function About() {
     <div className="timeline-item">
         <div className="timeline-content">
           <h4>Graduated Diploma General English</h4>
-          <p className="degree">I Graduated level 12 of General English from </p>
+          <p className="degree">Graduated level 12 of General English </p>
           <p className="date">Waiting Certificate</p>
           <div className="description">
-          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          <p>I have learned English since I was about 12  years old change many  school and now I have just finished my General Enlgish at Paññāsāstra International School-street 2004 Institute of foreign lauages</p>
           </div>
-          <button className='cv-button' onClick={() => window.open('                                                  ', '_blank')}>
+          <button className='cv-button'>
             Reference (waiting certificate)
-            </button>
+          </button>
     </div>
 
   </div>
@@ -217,7 +217,7 @@ function About() {
           <p className="degree">NICC 12th Startup Camp : TechTourism Ignite</p>
           <p className="date">14 September 2024</p>
           <div className="description">
-          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          <p>The Startup Camp SME on Tech Tourism Ignite focuses on empowering young entrepreneurs to innovate in the tourism sector through technology. It encourages startups to create digital solutions that enhance travel experiences, promote local businesses, and support sustainable tourism. The camp provides mentorship, workshops, and networking to spark creative business ideas.</p>
           </div>
           <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1odE4Bo0jImOM72HfIUurMetj00JTy6LW/view?usp=drivesdk', '_blank')}>
             Reference
@@ -232,7 +232,7 @@ function About() {
           <p className="degree">IT Essentials: PC Hardware and Software</p>
           <p className="date">14 May 2024</p>
           <div className="description">
-          <p>This program is designed to provide students with the skills and knowledge necessary to become professional in the workplace:  It is a 5-months program (3 months for Study in class and 2 for internship) that focuses on developing soft skills such as teamwork, communication, Growth mindset, critical thinking, self-discipline and problem-solving. The program also provides students with the opportunity to gain practical experience by working in a professional environment. The program is designed to be flexible.</p>
+          <p>Completing the CISCO Academy IT Essentials: PC Hardware and Software course provided me with a strong foundation in computer hardware, software installation, troubleshooting, and maintenance. I gained practical skills in assembling PCs, managing operating systems, and diagnosing technical issues, preparing me for entry-level IT support roles and further technical certifications.</p>
           </div>
           <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1oXMj11rTBcqAv8aSn0ER5J138DXmyAW1/view?usp=drivesdk', '_blank')}>
             Reference
@@ -342,11 +342,7 @@ function About() {
           <p className="date">26/10/2024 – 27/10/2024</p>
           <div className="description">
             <p>Role: Technical team</p>
-            <ul>
-              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
-              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
-              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
-            </ul>
+            <p>I volunteered at the National Career and Productivity Fair 2024, where my role was to manage visitor flow. I helped by sticking markers to count visitors and coordinating their movement as they entered and toured the exhibition. This experience strengthened my organizational skills and ability to manage large crowds effectively.</p>
           </div>
 
           <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1ofiNpycGDZoZUm-Sgdcq-FzoqsosZ7C5/view?usp=drivesdk', '_blank')}>
@@ -363,11 +359,7 @@ function About() {
           <p className="date">30/10/2024 – 8/11/2024</p>
           <div className="description">
             <p>Role: Technical team</p>
-            <ul>
-              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
-              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
-              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
-            </ul>
+            <p>ពិធីបើក-បិទ ការប្រកួតកីឡាជាតិលើកទី៤ និងកីឡាជាតិជនពិការលើកទី២ ឆ្នាំ២០២៤ ដែលបានប្រព្រឹត្តទៅចាប់ពីថ្ងៃទី២៩ ខែតុលា ដល់ថ្ងៃទី៨ ខែវិច្ឆិកា ឆ្នាំ២០២៤ ប្រកបដោយស្មារតីទទួលខុសត្រូវខ្ពស់ គឺជាការចូលរួមចំណែកអភិវឌ្ឍវិស័យកីឡាជាតិ និងកីឡាជាតិជនពិការដើម្បីត្រៀមខ្លួនធ្វើជាម្ចាស់ផ្ទះក្នុងព្រឹត្តិការណ៍កីឡាយុវជនអាសុីលើកទី៥ ឆ្នាំ២០២៩។</p>
           </div>
 
           <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1orE867zXvRCmM2aLCI94CRA4zyRl4kOK/view?usp=drivesdk', '_blank')}>
@@ -384,11 +376,7 @@ function About() {
           <p className="date">25/10/2024 – 28/10/2024</p>
           <div className="description">
             <p>Role: Technical team</p>
-            <ul>
-              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
-              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
-              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
-            </ul>
+            <p>I volunteered as a Leader to handle all volunteers memebers for three days to promote interest in the stock market. My role was to engage with people, explain the basics of investing, and encourage them to explore stock market opportunities. I developed communication skills, built confidence, and helped others understand how investing can contribute to their financial growth.</p>
           </div>
 
           <button className='cv-button' onClick={() => window.open('https://drive.google.com/file/d/1orowX4bd6gmRW8Q8AZhhJvOQVPlcHFRU/view?usp=drivesdk', '_blank')}>
