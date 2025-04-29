@@ -28,7 +28,6 @@ function Header() {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
@@ -68,7 +67,7 @@ function Header() {
           className="logo"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => scrollToSection('#home')}
+          onClick={() => scrollToSection('#about')}
         >
           <motion.div
             animate={{ rotate: 360 }}
