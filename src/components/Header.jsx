@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaReact, FaBars, FaTimes, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import TextAnimation from './TypeAnimation';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,9 +89,22 @@ function Header() {
               className="title"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 1.5, repeat: Infinity}}
+              transition={{ delay: 0.3, duration: 2, repeat: Infinity}}
             >
-              Welcome To My Website!
+              <TextAnimation
+                strings={[
+                  "Welcome To My Website!",
+                  "I'm work as freelance web developer.",
+                  "Want to create your own website?",
+                ]}
+                typeSpeed={40}
+                backSpeed={20}
+                motionProps={{
+                  initial: { opacity: 0, scale: 0.8 },
+                  animate: { opacity: 1, scale: 1 },
+                  transition: { type: "spring", stiffness: 100 }
+                }}
+              />
             </motion.span>
           </div>
         </motion.div>
