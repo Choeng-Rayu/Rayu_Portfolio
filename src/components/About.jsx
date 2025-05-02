@@ -321,11 +321,11 @@ function About() {
           <p className="role">Cambodia High Education Forum and Exhibition</p>
           <p className="date">19/10/2024 – 20/10/2024</p>
           <div className="description">
-            <p>Role: Technical team</p>
+            <p>Role: seat arrangement</p>
             <ul>
-              <li>Prepare and operate projectors, microphones, speakers, LED screens, lighting</li>
-              <li>Set up stable internet connections, manage live streaming, and stay on standby to quickly fix any technical issues like sound problems</li>
-              <li>Work closely with speakers to test presentations, adjust lighting or sound to fit the environment</li>
+              <li>Ensure Order and Flow – Organized seating helps maintain a smooth flow of participants during keynotes, discussions, and ceremonies.</li>
+              <li>Prioritize Guests and Speakers – Reserved seating ensures VIPs, speakers, and organizers are properly accommodated.</li>
+              <li>Enhance Audience Engagement – Structured seating allows attendees to clearly see and hear presentations, maximizing focus and participation.</li>
             </ul>
           </div>
 
