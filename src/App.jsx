@@ -8,11 +8,16 @@ import Footer from './components/Footer';
 import './App.css';
 import PointerEffect from './PointerEffect';
 import './PointerEffect.css';
+import Home from './components/Home';
 
 function App() {
   return (
     <div className="App">
       {/* PointerEffect added here */}
+      <div style={{ minHeight: "100vh" }}>
+        <Home />
+
+      </div>
       <PointerEffect />
       <Header />
       <About />
