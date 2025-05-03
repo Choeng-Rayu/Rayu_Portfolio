@@ -84,19 +84,20 @@ function Header() {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              CHOENG RAYU
+              CHOENG RAYU 
+              
             </motion.span>
             <motion.span
               className="title"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 2, repeat: Infinity}}
+              transition={{ delay: 0.3, duration: 2}}
             >
               <TextAnimation
                 strings={[
-                  "Welcome To My Website!",
-                  "I'm work as freelance web developer.",
-                  "Want to create your own website?",
+                  "Welcome!",
+                  'I know you are ',
+                  'Visiting my portfolio',
                 ]}
                 typeSpeed={40}
                 backSpeed={20}
