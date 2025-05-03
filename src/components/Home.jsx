@@ -193,6 +193,8 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import TextAnimation from "./TypeAnimation"; // Import your TextAnimation component
+import { motion } from 'framer-motion';
+import { SiZenn } from "react-icons/si";
 
 const STAR_COUNT = 60;
 const BASE_RADIUS = 360;
@@ -459,22 +461,30 @@ export default function UnderstandTheUniverse() {
               "0 0 16px #79defc99, 0 0 8px #5cbdf90a, 0 0 3px #fff1, 0 1px 0 #3337",
           }}
         >
-          <div style={{ marginTop: "-150px", left: "0", position: "absolute" }}>
-              <TextAnimation
-                strings={[
-                  "Welcome To My Website!",
-                  "I'm work as freelance web developer.",
-                  "Want to create your own website?",
-                ]}
-                typeSpeed={40}
-                backSpeed={20}
-                motionProps={{
-                  initial: { opacity: 0, scale: 0.8 },
-                  animate: { opacity: 1, scale: 1 },
-                  transition: { type: "spring", stiffness: 100 }
-                }}
-              />
-          </div>
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+              {/* ABOUT <span>ME</span> */}
+              <div style={{ marginTop: "-150px", left: "0",fontStyle: "bold", position: "absolute" }}>
+                <TextAnimation
+                  strings={[
+                    "Welcome To My Website!",
+                    "I'm a freelance web developer.",
+                    "Want to create your own website?",
+                  ]}
+                  typeSpeed={40}
+                  backSpeed={20}
+                  motionProps={{
+                    initial: { opacity: 0, scale: 0.8 },
+                    animate: { opacity: 1, scale: 1 },
+                    transition: { type: "spring", stiffness: 100 }
+                  }}
+                />
+               </div>
+          </motion.h2>
 
         </span>
         <span
@@ -486,9 +496,19 @@ export default function UnderstandTheUniverse() {
               "0 0 16px #79defc99, 0 0 8px #5cbdf90a, 0 0 3px #fff1, 0 1px 0 #3337",
           }}
         >
-          <div style={{ top: "0px", marginLeft: "-350px", position: "absolute" }}>
-          Universe
-          </div>
+          <motion.h2 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            //fontSize={{SiZenn: 1}}
+          >
+            {/* ABOUT <span>ME</span> */}
+            <div style={{ top: "0px", marginLeft: "-350px", position: "absolute" }}>
+              Universe
+            </div>
+          </motion.h2>
+
         </span>
       </div>
     </section>
