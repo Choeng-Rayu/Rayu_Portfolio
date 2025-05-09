@@ -58,7 +58,8 @@ function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            I'm <span>Choeng Rayu</span> I was born in Kampong Speu province in poor family, but I have never regretted it. To avoid that I motivated myself to study hard and support my family back because I believe only study can change my life. I’m educated at a public school for my general education. I graduated from high school in 2023 with overall grade B. Additionally, I am a curious personal who really love science so much since I was young and I have talent which related to digital technology field. I always research about science including mechanic of car, technology, robotic, healthy, watches, history of famous people or rich people and general knowledge but mostly technology. Moreover, after I have applied in many scholarships, I have been awarded the Techo Digital Talent scholarship for a bachelor's degree at the Cambodia Academy of Digital Technology.
+            I'm <span>Choeng Rayu.</span> I am a curious personal and fast learner who really love science so much since I was young and I have talent which related to digital technology field. I always research about science including mechanic of car, technology, robotic, healthy, history of famous people  and general knowledge but mostly technology. Moreover I have been awarded the Techo Digital Talent scholarship for a bachelor's degree at the Cambodia Academy of Digital Technology.
+
 
           </motion.p>
           
@@ -81,7 +82,7 @@ function About() {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <a 
-              href="https://drive.google.com/uc?export=download&id=1OMPpxq4KtLMBqRY9sbYQ5qd0Pxnazpgg" 
+              href="https://drive.google.com/uc?export=download&id=1npSpL2nVrTm4XVaETqed_IJ63jrcV9lP" 
               download
               className="cv-button"
             >
