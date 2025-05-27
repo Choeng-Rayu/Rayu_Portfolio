@@ -55,11 +55,11 @@ const Projects = () => {
     },
     { 
       title: 'Building a Telegram Bot', 
-      description: 'Building a Telegram Bot Solving Math Problems focused on Function and Graphs(In Progress not yet work).',
-      tags: ['Telegram API', 'Node.js', 'Webhook'],
+      description: 'Building a Telegram Alarm bot that can set alarm and notify you at the time you set.',
+      tags: ['Telegram API', 'Node.js', 'Webhook', 'MongoDB', 'render.com'],
       accentColor: '#7700ff',
-      demoLink: 'https://t.me/RayuEquationBot',
-      codeLink: 'https://github.com/Choeng-Rayu/fucntion-solving-telegram-bot.git'
+      demoLink: 'https://t.me/rayualarmbot',
+      codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
     },
   ];
   

@@ -468,6 +468,7 @@ export default function UnderstandTheUniverse() {
 
   return (
     <section
+      id="home"
       style={{
         position: "relative",
         width: "100%",
