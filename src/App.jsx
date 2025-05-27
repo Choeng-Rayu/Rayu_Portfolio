@@ -9,7 +9,7 @@ import './App.css';
 import PointerEffect from './PointerEffect';
 import './PointerEffect.css';
 import Home from './components/Home';
-import ChatBot from './components/chatBot.jsx';
+// import ChatBot from './components/chatBot.jsx';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
 
       </div>
       <PointerEffect />
-      <ChatBot />
+      {/* <ChatBot /> */}
       <Header />
       <About />
       <Skills />
