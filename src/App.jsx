@@ -10,6 +10,7 @@ import PointerEffect from './PointerEffect';
 import './PointerEffect.css';
 import Home from './components/Home';
 // import ChatBot from './components/chatBot.jsx';
+import ChatBot from './ChatBot';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       </div>
       <PointerEffect />
       {/* <ChatBot /> */}
+      <ChatBot />
       <Header />
       <About />
       <Skills />
