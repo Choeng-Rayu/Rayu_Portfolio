@@ -1,14 +1,17 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import TextAnimation from "./TypeAnimation"; // Import your TextAnimation component
-import { motion } from 'framer-motion';
-import { SiZenn } from "react-icons/si";
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaCode, FaRocket, FaLaptopCode, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi";
 
-const STAR_COUNT = 100;
+const STAR_COUNT = 150;
 const BASE_RADIUS = 360;
 const STAR_COLOR = "#e7eaff";
 const LINE_COLOR = "rgba(120,160,255,0.13)";
 const GLOW_COLOR = "#7adfff";
+const PARTICLE_COUNT = 50;
+const FLOATING_SHAPES_COUNT = 8;
 
 function randomAngle() {
   return Math.random() * Math.PI * 10;
@@ -16,6 +19,42 @@ function randomAngle() {
 
 function randomRadius() {
   return BASE_RADIUS + Math.random() * 200;
+}
+
+function createFloatingParticles(count) {
+  const particles = [];
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 3 + 1,
+      opacity: Math.random() * 0.5 + 0.2,
+      color: `hsl(${Math.random() * 60 + 200}, 70%, 60%)`,
+    });
+  }
+  return particles;
+}
+
+function createFloatingShapes(count) {
+  const shapes = [];
+  const shapeTypes = ['circle', 'triangle', 'square', 'diamond'];
+  for (let i = 0; i < count; i++) {
+    shapes.push({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: (Math.random() - 0.5) * 0.3,
+      vy: (Math.random() - 0.5) * 0.3,
+      size: Math.random() * 40 + 20,
+      rotation: Math.random() * 360,
+      rotationSpeed: (Math.random() - 0.5) * 2,
+      type: shapeTypes[Math.floor(Math.random() * shapeTypes.length)],
+      color: `hsla(${Math.random() * 60 + 200}, 70%, 60%, 0.1)`,
+      borderColor: `hsla(${Math.random() * 60 + 200}, 70%, 60%, 0.3)`,
+    });
+  }
+  return shapes;
 }
 
 // function makeStars(count) {
@@ -88,11 +127,38 @@ function makeStars(count) {
 export default function UnderstandTheUniverse() {
   const canvasRef = useRef(null);
   const starsRef = useRef(makeStars(STAR_COUNT));
+  const particlesRef = useRef(createFloatingParticles(PARTICLE_COUNT));
+  const shapesRef = useRef(createFloatingShapes(FLOATING_SHAPES_COUNT));
   const [rotation, setRotation] = useState(0);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isHomeVisible, setIsHomeVisible] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
   const isDragging = useRef(false);
   const lastX = useRef(0);
   const starPositions = useRef([]);
   const [tooltip, setTooltip] = useState(null);
+
+  // Initialize loading effect
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Scroll detection to hide home content when scrolling to other sections
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+
+      // Hide home content when scrolled past 50% of viewport height
+      const threshold = window.innerHeight * 0.5;
+      setIsHomeVisible(currentScrollY < threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -112,20 +178,97 @@ export default function UnderstandTheUniverse() {
       ctx.clearRect(0, 0, ww, wh);
       const cx = ww / 2, cy = wh / 2;
 
-      // Glow effect core
-      // let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * 2.4);
-      // grad.addColorStop(0, "rgba(75,110,255,0.24)");
-      // grad.addColorStop(1, "rgba(10,12,18,0.0)");
-      // ctx.beginPath();
-      // ctx.arc(cx, cy, BASE_RADIUS * 2.45, 0, Math.PI * 2);
-      // ctx.fillStyle = grad;
-      // ctx.fill();
+      // Enhanced background with multiple gradients
+      const time = Date.now() * 0.001;
 
-      // add color
+      // Dynamic background gradient
+      let bgGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(ww, wh));
+      bgGrad.addColorStop(0, `hsla(${240 + Math.sin(time * 0.5) * 20}, 70%, 5%, 1)`);
+      bgGrad.addColorStop(0.5, `hsla(${260 + Math.cos(time * 0.3) * 15}, 60%, 3%, 1)`);
+      bgGrad.addColorStop(1, "rgba(0, 0, 0, 1)");
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, ww, wh);
+
+      // Draw floating particles (reduce when not on home)
+      if (isHomeVisible) {
+        particlesRef.current.forEach((particle, i) => {
+          particle.x += particle.vx;
+          particle.y += particle.vy;
+
+          // Wrap around screen
+          if (particle.x < 0) particle.x = ww;
+          if (particle.x > ww) particle.x = 0;
+          if (particle.y < 0) particle.y = wh;
+          if (particle.y > wh) particle.y = 0;
+
+          ctx.save();
+          ctx.globalAlpha = particle.opacity * (0.5 + 0.5 * Math.sin(time + i));
+          ctx.fillStyle = particle.color;
+          ctx.shadowColor = particle.color;
+          ctx.shadowBlur = 10;
+          ctx.beginPath();
+          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      // Draw floating shapes (reduce when not on home)
+      if (isHomeVisible) {
+        shapesRef.current.forEach((shape) => {
+          shape.x += shape.vx;
+          shape.y += shape.vy;
+          shape.rotation += shape.rotationSpeed;
+
+          // Wrap around screen
+          if (shape.x < -shape.size) shape.x = ww + shape.size;
+          if (shape.x > ww + shape.size) shape.x = -shape.size;
+          if (shape.y < -shape.size) shape.y = wh + shape.size;
+          if (shape.y > wh + shape.size) shape.y = -shape.size;
+
+          ctx.save();
+          ctx.translate(shape.x, shape.y);
+          ctx.rotate((shape.rotation * Math.PI) / 180);
+          ctx.fillStyle = shape.color;
+          ctx.strokeStyle = shape.borderColor;
+          ctx.lineWidth = 2;
+
+          // Draw different shapes
+          ctx.beginPath();
+          switch (shape.type) {
+            case 'circle':
+              ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+              break;
+            case 'square':
+              ctx.rect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+              break;
+            case 'triangle':
+              ctx.moveTo(0, -shape.size / 2);
+              ctx.lineTo(-shape.size / 2, shape.size / 2);
+              ctx.lineTo(shape.size / 2, shape.size / 2);
+              ctx.closePath();
+              break;
+            case 'diamond':
+              ctx.moveTo(0, -shape.size / 2);
+              ctx.lineTo(shape.size / 2, 0);
+              ctx.lineTo(0, shape.size / 2);
+              ctx.lineTo(-shape.size / 2, 0);
+              ctx.closePath();
+              break;
+          }
+          ctx.fill();
+          ctx.stroke();
+          ctx.restore();
+        });
+      }
+
+      // Enhanced central glow with pulsing effect
       let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * 2.4);
-      grad.addColorStop(0, "rgba(100, 80, 180, 0.3)"); // Soft purple-blue glow
-      grad.addColorStop(0.5, "rgba(120, 100, 200, 0.15)"); // Mid-range purple
-      grad.addColorStop(1, "rgba(10, 12, 18, 0.0)"); // Fade to transparent
+      const pulse = 0.3 + 0.2 * Math.sin(time * 2);
+      grad.addColorStop(0, `rgba(100, 80, 180, ${pulse})`);
+      grad.addColorStop(0.3, `rgba(120, 100, 200, ${pulse * 0.7})`);
+      grad.addColorStop(0.6, `rgba(80, 120, 255, ${pulse * 0.4})`);
+      grad.addColorStop(1, "rgba(10, 12, 18, 0.0)");
       ctx.beginPath();
       ctx.arc(cx, cy, BASE_RADIUS * 2.45, 0, Math.PI * 2);
       ctx.fillStyle = grad;
@@ -218,6 +361,23 @@ export default function UnderstandTheUniverse() {
       const pointerX = (e.clientX - rect.left) * window.devicePixelRatio;
       const pointerY = (e.clientY - rect.top) * window.devicePixelRatio;
 
+      // Update mouse position for effects
+      setMousePos({ x: e.clientX, y: e.clientY });
+
+      // Mouse attraction effect on particles (only when home is visible)
+      if (isHomeVisible) {
+        particlesRef.current.forEach(particle => {
+          const dx = pointerX - particle.x;
+          const dy = pointerY - particle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 100) {
+            const force = (100 - distance) / 100;
+            particle.vx += (dx / distance) * force * 0.01;
+            particle.vy += (dy / distance) * force * 0.01;
+          }
+        });
+      }
+
       // Check for star hover
       let foundStar = null;
       for (const star of starPositions.current) {
@@ -276,7 +436,7 @@ export default function UnderstandTheUniverse() {
 
   return (
     <section
-      id="home"
+      
       style={{
         position: "fixed",
         top: 0,
@@ -292,7 +452,8 @@ export default function UnderstandTheUniverse() {
       }}
       aria-label="Understand the Universe Animation Section"
     >
-      <canvas
+      
+      <motion.canvas
         ref={canvasRef}
         style={{
           position: "absolute",
@@ -305,6 +466,10 @@ export default function UnderstandTheUniverse() {
           cursor: "pointer",
           pointerEvents: "auto",
         }}
+        animate={{
+          opacity: isHomeVisible ? 1 : 0.3,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       />
       {tooltip && (
         <div
@@ -324,87 +489,303 @@ export default function UnderstandTheUniverse() {
           {tooltip.title}
         </div>
       )}
-      <div
+      {/* Main Content Overlay */}
+      <motion.div
         style={{
           position: "relative",
           width: "100%",
-          color: "#fff",
+          height: "100%",
           zIndex: 2,
-          fontFamily: "Inter, Arial, sans-serif",
           display: "flex",
-          justifyContent: "space-between",
+          flexDirection: "column",
+          justifyContent: "center",
           alignItems: "center",
-          fontWeight: 400,
-          padding: "0 5vw",
           pointerEvents: "none",
+          padding: "0 2rem",
         }}
+        animate={{
+          opacity: isHomeVisible ? 1 : 0,
+          y: isHomeVisible ? 0 : -50,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
-        <span
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 50 }}
+          transition={{ duration: 1, delay: 0.5 }}
           style={{
-            fontSize: "clamp(1.8rem, 5vw, 3rem)",
-            letterSpacing: "-0.04em",
-            opacity: 0.95,
-            textShadow:
-              "0 0 16px #79defc99, 0 0 8px #5cbdf90a, 0 0 3px #fff1, 0 1px 0 #3337",
+            textAlign: "center",
+            maxWidth: "800px",
+            position: "relative",
           }}
         >
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+          {/* Glitch Effect Title */}
+          <motion.h1
+            style={{
+              fontSize: "clamp(3rem, 8vw, 6rem)",
+              fontWeight: 900,
+              background: "linear-gradient(45deg, #00f5ff, #ff00ff, #00ff00, #ffff00)",
+              backgroundSize: "400% 400%",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              animation: "gradientShift 3s ease-in-out infinite",
+              textShadow: "0 0 30px rgba(0, 245, 255, 0.5)",
+              marginBottom: "1rem",
+              letterSpacing: "-0.02em",
+            }}
+            animate={{
+              textShadow: [
+                "0 0 30px rgba(0, 245, 255, 0.5)",
+                "0 0 50px rgba(255, 0, 255, 0.7)",
+                "0 0 30px rgba(0, 255, 0, 0.5)",
+                "0 0 30px rgba(0, 245, 255, 0.5)",
+              ],
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
+            CHOENG RAYU
+          </motion.h1>
 
+          {/* Animated Subtitle */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+            style={{
+              fontSize: "clamp(1.2rem, 3vw, 2rem)",
+              color: "#ffffff",
+              marginBottom: "2rem",
+              textShadow: "0 0 20px rgba(255, 255, 255, 0.3)",
+            }}
+          >
+            <TextAnimation
+              strings={[
+                "🚀 Full-Stack Developer",
+                "💻 Problem Solver",
+              ]}
+              typeSpeed={50}
+              backSpeed={30}
+              loop={true}
+              motionProps={{
+                initial: { opacity: 0, scale: 0.8 },
+                animate: { opacity: 1, scale: 1 },
+                transition: { type: "spring", stiffness: 100 }
+              }}
+            />
+          </motion.div>
 
-            {/* this for text typing  for homepage*/}
-              {/* ABOUT <span>ME</span>  */}
-              {/* <div style={{ marginTop: "-150px", left: "0",fontStyle: "bold", position: "absolute" }}>
-                <TextAnimation
-                  strings={[
-                    "Welcome To My Website!",
-                    "I'm a freelance web developer.",
-                    "Want to create your own website?",
-                  ]}
-                  typeSpeed={40}
-                  backSpeed={20}
-                  motionProps={{
-                    initial: { opacity: 0, scale: 0.8 },
-                    animate: { opacity: 1, scale: 1 },
-                    transition: { type: "spring", stiffness: 100 }
+          {/* Floating Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.5 }}
+            style={{
+              display: "flex",
+              gap: "1.5rem",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginBottom: "3rem",
+            }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: "linear-gradient(45deg, #667eea, #764ba2)",
+                border: "none",
+                padding: "1rem 2rem",
+                borderRadius: "50px",
+                color: "white",
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                pointerEvents: "auto",
+                boxShadow: "0 10px 30px rgba(102, 126, 234, 0.4)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+              onClick={() => {
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  aboutSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              <FaRocket /> Explore My Work
+            </motion.button>
+
+            <motion.button
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: "linear-gradient(45deg, #f093fb, #f5576c)",
+                border: "none",
+                padding: "1rem 2rem",
+                borderRadius: "50px",
+                color: "white",
+                fontSize: "1.1rem",
+                fontWeight: 600,
+                cursor: "pointer",
+                pointerEvents: "auto",
+                boxShadow: "0 10px 30px rgba(245, 87, 108, 0.4)",
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+              }}
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
+              <FaCode /> Let's Connect
+            </motion.button>
+          </motion.div>
+
+          {/* Floating Social Icons */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2 }}
+            style={{
+              display: "flex",
+              gap: "2rem",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {[
+              { icon: FaGithub, url: "https://github.com/Choeng-Rayu", color: "#333" },
+              { icon: FaLinkedin, url: "https://www.linkedin.com/in/rayu-choeng-351243335/", color: "#0077b5" },
+              { icon: FaDownload, url: "https://drive.google.com/uc?export=download&id=1OMPpxq4KtLMBqRY9sbYQ5qd0Pxnazpgg", color: "#ff6b6b" },
+            ].map((social, index) => (
+              <motion.a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.2, y: -10 }}
+                whileTap={{ scale: 0.9 }}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "60px",
+                  height: "60px",
+                  borderRadius: "50%",
+                  background: `linear-gradient(45deg, ${social.color}, ${social.color}aa)`,
+                  color: "white",
+                  fontSize: "1.5rem",
+                  textDecoration: "none",
+                  pointerEvents: "auto",
+                  boxShadow: `0 10px 30px ${social.color}40`,
+                }}
+                animate={{
+                  boxShadow: [
+                    `0 10px 30px ${social.color}40`,
+                    `0 15px 40px ${social.color}60`,
+                    `0 10px 30px ${social.color}40`,
+                  ],
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
+              >
+                <social.icon />
+              </motion.a>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Floating Tech Icons */}
+        <AnimatePresence>
+          {isLoaded && (
+            <>
+              {[FaCode, FaLaptopCode, HiSparkles].map((Icon, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{
+                    opacity: [0.3, 0.7, 0.3],
+                    scale: [1, 1.2, 1],
+                    x: Math.sin(Date.now() * 0.001 + index) * 20,
+                    y: Math.cos(Date.now() * 0.001 + index) * 20,
                   }}
-                />
-               </div> */}
-          </motion.h2>
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: index * 0.5,
+                    ease: "easeInOut"
+                  }}
+                  style={{
+                    position: "absolute",
+                    top: `${20 + index * 25}%`,
+                    left: `${10 + index * 30}%`,
+                    fontSize: "2rem",
+                    color: `hsl(${200 + index * 60}, 70%, 60%)`,
+                    pointerEvents: "none",
+                    filter: "drop-shadow(0 0 10px currentColor)",
+                  }}
+                >
+                  <Icon />
+                </motion.div>
+              ))}
+            </>
+          )}
+        </AnimatePresence>
 
-        </span>
-        <span
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 3 }}
           style={{
-            fontSize: "clamp(1.8rem, 5vw, 3rem)",
-            letterSpacing: "-0.04em",
-            opacity: 0.95,
-            textShadow:
-              "0 0 16px #79defc99, 0 0 8px #5cbdf90a, 0 0 3px #fff1, 0 1px 0 #3337",
+            position: "absolute",
+            bottom: "2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.5rem",
+            color: "rgba(255, 255, 255, 0.7)",
+            fontSize: "0.9rem",
           }}
         >
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            //fontSize={{SiZenn: 1}}
-          >
-            {/* ABOUT <span>ME</span> */}
+          <span>Scroll to explore</span>
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            style={{
+              width: "2px",
+              height: "30px",
+              background: "linear-gradient(to bottom, transparent, #fff, transparent)",
+              borderRadius: "1px",
+            }}
+          />
+        </motion.div>
+      </motion.div>
 
+      {/* CSS Animations */}
+      <style jsx>{`
+        @keyframes gradientShift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
 
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
+        }
 
-            {/* This is for home page     */}
-            {/* <div style={{ top: "0px", marginLeft: "-350px", position: "absolute" }}>
-              Universe
-            </div> */}
-          </motion.h2>
-
-        </span>
-      </div>
+        @keyframes pulse {
+          0%, 100% { opacity: 0.7; }
+          50% { opacity: 1; }
+        }
+      `}</style>
     </section>
   );
 }
