@@ -1,8 +1,184 @@
-/**
- * Enhanced Chatbot Component for Rayu's Portfolio
- * Features: Modern design, smooth animations, typing indicators, friendly responses
- * Position: Left side of the screen with glassmorphism design
- */
+// return (
+//   <>
+//     <div className="chatbot">
+//       {/* Chatbot Icon */}
+//       <div className="bot-icon" onClick={toggleChat}>
+//         <div className="icon-inner">
+//           <i className="fa fa-commenting" aria-hidden="true"></i>
+//         </div>
+//       </div>
+
+//       {/* Chatbot Window */}
+//       {isChatOpen && (
+//         <div className="chat-window">
+//           <div className="chat-header">
+//             <span className="close-icon" onClick={toggleChat}>
+//               <i className="fa fa-window-close" aria-hidden="true"></i>
+//             </span>
+//             <h4>How can we help you?</h4>
+//           </div>
+//           <div className="chat-content">
+//             <div className="messages" ref={messagesRef}>
+//               {messages.map((msg, index) => (
+//                 <div key={index} className={`message ${msg.type}`}>
+//                   {msg.type === "bot" && (
+//                     <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
+//                   )}
+//                   <div className="message-text">
+//                     {msg.qrCode ? (
+//                       <img src={msg.qrCode} alt="QR Code" />
+//                     ) : (
+//                       <div style={{ color: "black" }}>{msg.text}</div>
+//                     )}
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//             <form onSubmit={sendMessage} className="chat-input">
+//               <input
+//                 value={message}
+//                 onChange={(e) => setMessage(e.target.value)}
+//                 type="text"
+//                 placeholder="Send a message..."
+//                 className="input-field"
+//               />
+//               <button type="submit" className="send-button">
+//                 <i className="fa fa-paper-plane" aria-hidden="true"></i>
+//               </button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//     <style jsx>{`
+//       /* ...your styles here... */
+//       /* Chatbot Icon */
+//         .bot-icon {
+//         position: fixed;
+//         bottom: 15px;
+//         left: 15px;
+//         background: #3b4f69;
+//         border-radius: 50%;
+//         width: 60px;
+//         height: 60px;
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         cursor: pointer;
+//         z-index: 1000;
+//         }
+
+//         .icon-inner {
+//         color: white;
+//         font-size: 1.5rem;
+//         margin: 17px;
+//         }
+
+//         /* Chat Window */
+//         .chat-window {
+//         position: fixed;
+//         bottom: 80px;
+//         left: 15px;
+//         width: 320px;
+//         background: white;
+//         border-radius: 10px;
+//         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+//         display: flex;
+//         flex-direction: column;
+//         z-index: 1000;
+//         }
+
+//         .chat-header {
+//         background: gray;
+//         color: white;
+//         padding: 10px;
+//         justify-content: space-between;
+//         align-items: center;
+//         border-radius: 10px 10px 0 0;
+//         }
+
+//         .close-icon {
+//         cursor: pointer;
+//         }
+
+//         .chat-content {
+//         display: flex;
+//         flex-direction: column;
+//         padding: 10px;
+//         overflow-y: auto;
+//         }
+
+//         .messages {
+//         overflow-y: auto;
+//         margin-bottom: 10px;
+//         }
+
+//         .message {
+//         display: flex;
+//         align-items: center;
+//         margin-bottom: 10px;
+//         }
+
+//         .message.user {
+//         justify-content: flex-end;
+//         }
+
+//         .message.bot {
+//         justify-content: flex-start;
+//         }
+
+//         .message .avatar {
+//         width: 30px;
+//         height: 30px;
+//         border-radius: 50%;
+//         margin-right: 10px;
+//         }
+
+//         .message-text {
+//         background: #f1f1f1;
+//         border-radius: 15px;
+//         padding: 10px;
+//         max-width: 70%;
+//         color: black !important;
+//         }
+
+//         .message.user .message-text {
+//         background: #4caf50;
+//         color: white;
+//         }
+
+//         /* Input Field */
+//         .chat-input {
+//         display: flex;
+//         align-items: center;
+//         padding: 10px;
+//         border-top: 1px solid #ddd;
+//         }
+
+//         .input-field {
+//         border: none;
+//         padding: 10px;
+//         border-radius: 20px;
+//         margin-right: 10px;
+//         background: #f1f1f1;
+//         color: black;
+//         }
+
+//         .send-button {
+//         background: #4caf50;
+//         border-radius: 10px;
+//         width: 50px;
+//         color: white;
+//         border: none;
+//         cursor: pointer;
+//         }
+
+//         .send-button:hover {
+//         background: #45a049;
+//         }
+//     `}</style>
+//   </>
+// );
 
 
 
@@ -24,8 +200,9 @@
 
 
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import QRCode from "qrcode";
+// import "./Chatbot.css"; // Assuming the CSS is in a separate file
 import "font-awesome/css/font-awesome.min.css";
 
 const Chatbot = () => {
@@ -34,18 +211,11 @@ const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     {
-      text: "🌟 **Welcome to Rayu's Digital Universe!** 🌟\n\nI'm **ARIA** (Advanced Responsive Interactive Assistant), your AI-powered guide! ✨\n\n🚀 **I can help you with:**\n\n🌐 **Web Development Services**\n💰 **Pricing & Custom Quotes**\n⚛️ **React.js & Modern Tech**\n📞 **Contact & Communication**\n🎨 **Portfolio & Projects**\n⏰ **Timelines & Process**\n🎓 **Learning & Tutorials**\n🔧 **Technical Support**\n💼 **Business Solutions**\n🌍 **Global Services**\n\n💡 **Smart Suggestions:**\n• \"Show me pricing for e-commerce\"\n• \"What's your React experience?\"\n• \"I need a website urgently\"\n• \"Teach me web development\"\n• \"Compare your services\"\n\n🎯 **Pro Tip:** I understand context and can have natural conversations!\n\nWhat amazing project can I help you with today? 🚀✨",
+      text: "👋 **Welcome to Rayu's Portfolio!**\n\nI'm your friendly assistant, ready to help with any questions about:\n\n🌐 **Web Development Services**\n💰 **Pricing & Quotes**\n⚛️ **React.js Expertise**\n📞 **Contact Information**\n🚀 **Project Examples**\n⏰ **Timelines & Process**\n\n💡 **Try asking:**\n• \"What services do you offer?\"\n• \"How much does a website cost?\"\n• \"Contact information\"\n• \"Tell me about your experience\"\n\nHow can I help you today? 😊",
       type: "bot"
     }
   ]);
   const [isTyping, setIsTyping] = useState(false);
-  const [userPreferences, setUserPreferences] = useState({
-    name: null,
-    projectType: null,
-    budget: null,
-    timeline: null
-  });
-  const [conversationContext, setConversationContext] = useState([]);
   const avatarUrl = "https://cdn-icons-png.flaticon.com/512/4712/4712027.png";
 
   // Ref for scrolling to the bottom of the messages
@@ -63,25 +233,18 @@ const Chatbot = () => {
     if (!userMessage) return;
 
     addMessage(userMessage, "user");
-    setMessage("");
 
-    // Show typing indicator
-    setIsTyping(true);
-
-    // Simulate typing delay for more natural feel
-    const typingDelay = Math.random() * 1000 + 800; // 800-1800ms
-
-    setTimeout(async () => {
-      setIsTyping(false);
-
-      if (userMessage.toLowerCase().includes("qr")) {
-        const qrCode = await generateQRCode(userMessage);
-        addMessage(qrCode, "bot", true);
-      } else {
-        const botReply = getBotReply(userMessage);
+    if (userMessage.toLowerCase().includes("qr")) {
+      const qrCode = await generateQRCode(userMessage);
+      addMessage(qrCode, "bot", true);
+    } else {
+      const botReply = getBotReply(userMessage);
+      setTimeout(() => {
         addMessage(botReply, "bot");
-      }
-    }, typingDelay);
+      }, 500);
+    }
+
+    setMessage("");
   };
 
   // Add a message to the messages array and scroll to bottom
@@ -103,64 +266,19 @@ const Chatbot = () => {
     }
   };
 
-  // Enhanced bot reply with context awareness and personalization
+  // Determine bot reply based on user message with comprehensive responses
   const getBotReply = (userMessage) => {
     const lowerMessage = userMessage.toLowerCase();
 
-    // Add to conversation context
-    setConversationContext(prev => [...prev.slice(-10), lowerMessage]); // Keep last 10 messages for context
-
-    // Extract user name if mentioned
-    const nameMatch = userMessage.match(/(?:i'm|i am|my name is|call me)\s+([a-zA-Z]+)/i);
-    if (nameMatch && !userPreferences.name) {
-      setUserPreferences(prev => ({ ...prev, name: nameMatch[1] }));
-    }
-
-    // Extract project type preferences
-    if (lowerMessage.includes("e-commerce") || lowerMessage.includes("online store") || lowerMessage.includes("shop")) {
-      setUserPreferences(prev => ({ ...prev, projectType: "e-commerce" }));
-    } else if (lowerMessage.includes("portfolio") || lowerMessage.includes("personal website")) {
-      setUserPreferences(prev => ({ ...prev, projectType: "portfolio" }));
-    } else if (lowerMessage.includes("business") || lowerMessage.includes("company")) {
-      setUserPreferences(prev => ({ ...prev, projectType: "business" }));
-    }
-
-    // Personalized greetings
+    // Greetings
     if (lowerMessage.includes("hello") || lowerMessage.includes("hi") || lowerMessage.includes("hey") || lowerMessage.includes("good morning") || lowerMessage.includes("good afternoon") || lowerMessage.includes("good evening")) {
-      const personalizedGreetings = userPreferences.name
-        ? [
-            `Hello ${userPreferences.name}! 🌟 Great to see you again! How can ARIA assist you today?`,
-            `Hi ${userPreferences.name}! 👋 Welcome back! Ready to continue our conversation?`,
-            `Hey ${userPreferences.name}! 🚀 I'm excited to help you with your next project!`
-          ]
-        : [
-            "Hello there! 🌟 I'm ARIA, your AI assistant! Welcome to Rayu's digital universe! ✨",
-            "Hi! 👋 I'm ARIA, and I'm thrilled to meet you! What amazing project brings you here today?",
-            "Hey! 🚀 ARIA here, ready to help you discover the perfect web solution!",
-            "Greetings! 🌈 I'm ARIA, your intelligent guide to Rayu's services. Let's create something amazing!"
-          ];
-      return personalizedGreetings[Math.floor(Math.random() * personalizedGreetings.length)];
-    }
-
-    // AI and chatbot related questions
-    if (lowerMessage.includes("ai") || lowerMessage.includes("artificial intelligence") || lowerMessage.includes("chatbot") || lowerMessage.includes("aria") || lowerMessage.includes("who are you")) {
-      return "🤖 **About ARIA (That's me!):**\n\n✨ **I'm an Advanced AI Assistant** designed specifically for Rayu's portfolio!\n\n🧠 **My Capabilities:**\n• Natural language understanding\n• Context-aware conversations\n• Personalized recommendations\n• Smart project matching\n• Real-time assistance\n• Multi-language support (coming soon!)\n\n🎯 **What makes me special:**\n• I learn from our conversation\n• I remember your preferences\n• I provide tailored solutions\n• I'm available 24/7\n• I never get tired of helping!\n\n💡 **Fun Fact:** I'm powered by advanced algorithms and a passion for helping people achieve their digital dreams!\n\nWhat would you like to explore together? 🚀";
-    }
-
-    // Weather and casual conversation
-    if (lowerMessage.includes("weather") || lowerMessage.includes("how are you") || lowerMessage.includes("what's up")) {
-      const casualResponses = [
-        "I'm doing fantastic! 🌟 The digital weather is perfect for building amazing websites! How are you doing?",
-        "I'm great, thanks for asking! 😊 Ready to help you create something incredible! What's on your mind?",
-        "Wonderful! 🚀 I'm energized and ready to tackle any web development challenge with you!",
-        "I'm having an amazing day helping people like you! ✨ What brings you to Rayu's portfolio today?"
+      const greetings = [
+        "Hello there! 😊 Welcome to Rayu's portfolio! How can I help you today?",
+        "Hi! 👋 Great to see you here! What would you like to know about Rayu?",
+        "Hey! 🌟 I'm excited to help you learn more about Rayu's work!",
+        "Good to see you! 🎉 I'm here to answer any questions about Rayu's services and projects!"
       ];
-      return casualResponses[Math.floor(Math.random() * casualResponses.length)];
-    }
-
-    // Time and availability
-    if (lowerMessage.includes("time") || lowerMessage.includes("available") || lowerMessage.includes("when") || lowerMessage.includes("schedule")) {
-      return "⏰ **Availability & Time Zones:**\n\n🌍 **Global Service:**\n• Available 24/7 for initial consultations\n• Primary timezone: GMT+7 (Cambodia)\n• Flexible working hours for international clients\n\n📅 **Best Response Times:**\n• Telegram: Within 1 hour (fastest)\n• Email: Within 24 hours\n• WhatsApp: Within 2 hours\n• Emergency support: Within 30 minutes\n\n🕐 **Preferred Working Hours:**\n• Monday-Friday: 8 AM - 8 PM (GMT+7)\n• Saturday: 9 AM - 6 PM\n• Sunday: Emergency projects only\n\n🌐 **International Clients:**\n• Flexible scheduling for different time zones\n• Weekend work available (with notice)\n• Urgent projects accommodated\n\nWhat timezone are you in? Let's find the perfect time to connect! 🌟";
+      return greetings[Math.floor(Math.random() * greetings.length)];
     }
 
     // Web Development Services
@@ -286,40 +404,9 @@ const Chatbot = () => {
       return "👋 **Goodbye & Thank You!**\n\n🌟 Thanks for visiting Rayu's portfolio!\n\n📞 **Before You Go:**\n• Save contact information\n• Follow on social media\n• Bookmark this website\n• Share with friends who need web development\n\n💬 **Remember:**\nI'm always here to help with your web development needs!\n\nHave a wonderful day! 🌈";
     }
 
-    // Technology trends and modern development
-    else if (lowerMessage.includes("trend") || lowerMessage.includes("modern") || lowerMessage.includes("latest") || lowerMessage.includes("new technology") || lowerMessage.includes("2024") || lowerMessage.includes("future")) {
-      return "🚀 **Latest Web Development Trends 2024:**\n\n⚡ **Hot Technologies:**\n• Next.js 14 with App Router\n• TypeScript everywhere\n• Tailwind CSS & Headless UI\n• Serverless functions\n• Edge computing\n• AI integration\n\n🎯 **What Rayu Offers:**\n• Modern React with Hooks\n• Progressive Web Apps (PWA)\n• JAMstack architecture\n• API-first development\n• Mobile-first responsive design\n• Performance optimization\n\n🌟 **Future-Ready Solutions:**\n• Scalable architecture\n• SEO optimization\n• Accessibility compliance\n• Security best practices\n\nStay ahead with cutting-edge technology! 🌈";
-    }
-
-    // Comparison with competitors
-    else if (lowerMessage.includes("compare") || lowerMessage.includes("vs") || lowerMessage.includes("better") || lowerMessage.includes("difference") || lowerMessage.includes("why choose")) {
-      return "🏆 **Why Choose Rayu Over Others:**\n\n💎 **Unique Advantages:**\n• Direct communication (no agencies)\n• Personalized service & attention\n• Competitive pricing without compromise\n• Fast turnaround times\n• 24/7 availability via multiple channels\n• Post-launch support included\n\n🎯 **Quality Guarantees:**\n• 100% satisfaction guarantee\n• Unlimited revisions during development\n• Clean, maintainable code\n• Performance optimization\n• SEO-ready websites\n• Mobile-first approach\n\n💰 **Value Proposition:**\n• No hidden fees\n• Transparent pricing\n• Free consultations\n• Source code ownership\n• Documentation included\n\n🤝 **Personal Touch:**\n• One-on-one relationship\n• Understanding your vision\n• Flexible working style\n• Long-term partnership\n\nExperience the difference! ✨";
-    }
-
-    // Security and privacy
-    else if (lowerMessage.includes("security") || lowerMessage.includes("privacy") || lowerMessage.includes("safe") || lowerMessage.includes("protection") || lowerMessage.includes("ssl")) {
-      return "🔒 **Security & Privacy First:**\n\n🛡️ **Security Measures:**\n• SSL certificates included\n• Secure coding practices\n• Data encryption\n• Regular security updates\n• Vulnerability assessments\n• HTTPS enforcement\n\n🔐 **Privacy Protection:**\n• GDPR compliance\n• Data minimization\n• Secure data storage\n• Privacy policy implementation\n• Cookie consent management\n• User data protection\n\n⚡ **Performance Security:**\n• DDoS protection\n• Firewall configuration\n• Regular backups\n• Malware scanning\n• Security monitoring\n\n📋 **Compliance:**\n• Industry standards\n• Best practices\n• Regular audits\n• Documentation\n\nYour security is my priority! 🛡️";
-    }
-
-    // SEO and marketing
-    else if (lowerMessage.includes("seo") || lowerMessage.includes("marketing") || lowerMessage.includes("google") || lowerMessage.includes("ranking") || lowerMessage.includes("traffic")) {
-      return "📈 **SEO & Digital Marketing:**\n\n🎯 **SEO Services Included:**\n• On-page optimization\n• Meta tags & descriptions\n• Structured data markup\n• Site speed optimization\n• Mobile-friendly design\n• XML sitemaps\n\n🚀 **Performance Optimization:**\n• Core Web Vitals optimization\n• Image compression\n• Code minification\n• Caching strategies\n• CDN integration\n• Lazy loading\n\n📊 **Analytics & Tracking:**\n• Google Analytics setup\n• Search Console integration\n• Conversion tracking\n• Performance monitoring\n• User behavior analysis\n\n💡 **Marketing Ready:**\n• Social media integration\n• Email marketing setup\n• Lead generation forms\n• Call-to-action optimization\n\nBoost your online presence! 🌟";
-    }
-
-    // Maintenance and updates
-    else if (lowerMessage.includes("update") || lowerMessage.includes("maintain") || lowerMessage.includes("fix") || lowerMessage.includes("bug") || lowerMessage.includes("issue")) {
-      return "🔧 **Maintenance & Updates:**\n\n✅ **Included Support (30 days):**\n• Bug fixes & troubleshooting\n• Minor content updates\n• Performance optimization\n• Security patches\n• Technical assistance\n• Browser compatibility fixes\n\n🔄 **Extended Maintenance:**\n• Monthly maintenance plans: $50-200\n• Content management\n• Feature additions\n• Security monitoring\n• Performance reports\n• Backup management\n\n⚡ **Emergency Support:**\n• 24/7 critical issue response\n• Same-day fixes\n• Server problem resolution\n• Security breach response\n• Data recovery assistance\n\n📞 **How to Get Help:**\n• Telegram: @President_Alein (fastest)\n• Email: choengrayu307@gmail.com\n• Phone: +855 96 998 3479\n\nYour website's health is guaranteed! 💪";
-    }
-
-    // Default enhanced response with smart suggestions
+    // Default response with helpful suggestions
     else {
-      const contextualSuggestions = userPreferences.projectType
-        ? `\n🎯 **Based on your interest in ${userPreferences.projectType} projects:**\n• \"Show me ${userPreferences.projectType} examples\"\n• \"What's the cost for ${userPreferences.projectType}?\"\n• \"Timeline for ${userPreferences.projectType} development\"`
-        : "";
-
-      const personalizedGreeting = userPreferences.name ? `${userPreferences.name}, ` : "";
-
-      return `🤔 **${personalizedGreeting}I'd love to help you with that!**\n\n💡 **Popular Questions:**\n• \"What services do you offer?\"\n• \"How much does a website cost?\"\n• \"What's your React experience?\"\n• \"Show me your portfolio\"\n• \"I need urgent help\"\n• \"Compare your services\"\n• \"SEO and marketing included?\"\n• \"What about security?\"\n\n🚀 **Smart Commands:**\n• Type \"contact\" for all contact info\n• Type \"pricing\" for detailed costs\n• Type \"skills\" for technical abilities\n• Type \"trends\" for latest technologies\n• Type \"compare\" to see advantages\n• Type \"security\" for safety info${contextualSuggestions}\n\n💬 **Pro Tip:** I understand natural language! Just ask me anything about web development, and I'll provide detailed, helpful answers!\n\n✨ Ready to create something amazing together? 🚀`;
+      return "🤔 **I'd love to help you with that!**\n\n💡 **Popular Questions:**\n• \"What services do you offer?\"\n• \"How much does a website cost?\"\n• \"What's your experience with React?\"\n• \"How long does a project take?\"\n• \"Can you help with urgent projects?\"\n• \"What's included in your support?\"\n\n📞 **Quick Actions:**\n• Type \"contact\" for all contact info\n• Type \"pricing\" for service costs\n• Type \"skills\" for technical abilities\n• Type \"process\" for how I work\n\n💬 **Or ask me anything specific about web development!**\n\nI'm here to help! 🚀";
     }
   };
 
@@ -330,94 +417,63 @@ const Chatbot = () => {
     }
   };
 
-  // Auto-scroll when messages change
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages, isTyping]);
-
   // JSX structure
-  return (
+    return (
     <>
-      <div className="chatbot">
+        <div className="chatbot">
         {/* Chatbot Icon */}
         <div className="bot-icon" onClick={toggleChat}>
-          <div className="icon-inner">
-            <i className="fa fa-robot" aria-hidden="true"></i>
-            {!isChatOpen && <div className="pulse-ring"></div>}
-          </div>
-          {!isChatOpen && <div className="notification-badge">💬</div>}
+            <div className="icon-inner">
+            <i className="fa fa-commenting" aria-hidden="true"></i>
+            </div>
         </div>
 
         {/* Enhanced Chatbot Window */}
         {isChatOpen && (
-          <div className="chat-window">
+            <div className="chat-window">
             <div className="chat-header">
               <div className="header-content">
-                <div className="avatar-container">
-                  <img className="header-avatar" src={avatarUrl} alt="ARIA Assistant Avatar" />
-                  <div className="online-indicator"></div>
-                </div>
+                <img className="header-avatar" src={avatarUrl} alt="Assistant Avatar" />
                 <div className="header-text">
-                  <h4>ARIA - AI Assistant</h4>
-                  <span className="status">
-                    <span className="status-dot"></span>
-                    Online • Ready to help! ✨
-                  </span>
+                  <h4>Rayu's Assistant</h4>
+                  <span className="status">Online • Ready to help! 🌟</span>
                 </div>
               </div>
-              <div className="header-actions">
-                <span className="minimize-icon" onClick={toggleChat} title="Minimize">
-                  <i className="fa fa-minus" aria-hidden="true"></i>
-                </span>
-                <span className="close-icon" onClick={toggleChat} title="Close">
-                  <i className="fa fa-times" aria-hidden="true"></i>
-                </span>
-              </div>
+              <span className="close-icon" onClick={toggleChat}>
+                <i className="fa fa-times" aria-hidden="true"></i>
+              </span>
             </div>
             <div className="chat-content">
-              <div className="messages" ref={messagesRef}>
+                <div className="messages" ref={messagesRef}>
                 {messages.map((msg, index) => (
-                  <div key={index} className={`message ${msg.type}`}>
+                    <div key={index} className={`message ${msg.type}`}>
                     {msg.type === "bot" && (
-                      <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
+                        <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
                     )}
                     <div className="message-text">
-                      {msg.qrCode ? (
-                        <img src={msg.qrCode} alt="QR Code" className="qr-code" />
-                      ) : (
-                        <div className="text-content">{msg.text}</div>
-                      )}
+                        {msg.qrCode ? (
+                        <img src={msg.qrCode} alt="QR Code" />
+                        ) : (
+                        <div style={{ color: "black" }}>{msg.text}</div>
+                        )}
                     </div>
-                  </div>
+                    </div>
                 ))}
-                {isTyping && (
-                  <div className="message bot typing-message">
-                    <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
-                    <div className="message-text typing">
-                      <div className="typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-              <form onSubmit={sendMessage} className="chat-input">
+                </div>
+                <form onSubmit={sendMessage} className="chat-input">
                 <input
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  type="text"
-                  placeholder="Type your message... 💭"
-                  className="input-field"
-                  disabled={isTyping}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    type="text"
+                    placeholder="Send a message..."
+                    className="input-field"
                 />
-                <button type="submit" className="send-button" disabled={isTyping}>
-                  <i className="fa fa-paper-plane" aria-hidden="true"></i>
+                <button type="submit" className="send-button">
+                    <i className="fa fa-paper-plane" aria-hidden="true"></i>
                 </button>
-              </form>
+                </form>
             </div>
-          </div>
+            </div>
         )}
       </div>
       <style jsx>{`
@@ -430,117 +486,52 @@ const Chatbot = () => {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
-        /* Enhanced Chatbot Icon */
+        /* Chatbot Icon */
         .bot-icon {
           position: fixed;
           bottom: 20px;
           left: 20px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 200%);
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           border-radius: 50%;
-          width: 75px;
-          height: 75px;
+          width: 70px;
+          height: 70px;
           display: flex;
           justify-content: center;
           align-items: center;
           cursor: pointer;
           z-index: 1001;
-          box-shadow:
-            0 8px 32px rgba(102, 126, 234, 0.4),
-            0 0 0 0 rgba(102, 126, 234, 0.7);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          border: 3px solid rgba(255, 255, 255, 0.3);
-          animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-5px); }
+          box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 3px solid rgba(255, 255, 255, 0.2);
         }
 
         .bot-icon:hover {
-          transform: translateY(-5px) scale(1.1);
-          box-shadow:
-            0 15px 50px rgba(102, 126, 234, 0.6),
-            0 0 0 10px rgba(102, 126, 234, 0.1),
-            0 0 0 20px rgba(102, 126, 234, 0.05);
-          animation: none;
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
         }
 
-        .icon-inner {
-          color: white;
-          font-size: 1.8rem;
-          position: relative;
-          z-index: 2;
-        }
+            .icon-inner {
+            color: white;
+            font-size: 1.5rem;
+            margin: 17px;
+            }
 
-        .pulse-ring {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          border: 3px solid rgba(102, 126, 234, 0.6);
-          border-radius: 50%;
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-            opacity: 1;
-          }
-          100% {
-            transform: scale(1.4);
-            opacity: 0;
-          }
-        }
-
-        .notification-badge {
-          position: absolute;
-          top: -5px;
-          right: -5px;
-          background: #ff4757;
-          color: white;
-          border-radius: 50%;
-          width: 24px;
-          height: 24px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-          0%, 20%, 50%, 80%, 100% {
-            transform: translateY(0);
-          }
-          40% {
-            transform: translateY(-10px);
-          }
-          60% {
-            transform: translateY(-5px);
-          }
-        }
-
-        /* Enhanced Chat Window */
+        /* Chat Window */
         .chat-window {
           position: fixed;
-          bottom: 110px;
+          bottom: 100px;
           left: 20px;
-          width: 420px;
-          max-height: 600px;
-          background: rgba(255, 255, 255, 0.98);
-          backdrop-filter: blur(25px) saturate(180%);
-          border-radius: 24px;
-          box-shadow:
-            0 25px 80px rgba(0, 0, 0, 0.15),
-            0 0 0 1px rgba(255, 255, 255, 0.5),
-            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+          width: 380px;
+          max-height: 500px;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(20px);
+          border-radius: 20px;
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
           display: flex;
           flex-direction: column;
           z-index: 1000;
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          overflow: hidden;
+          border: 1px solid rgba(255, 255, 255, 0.3);
+          animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         @keyframes slideUp {
@@ -555,175 +546,88 @@ const Chatbot = () => {
         }
 
         .chat-header {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 200%);
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
-          padding: 18px 24px;
+          padding: 16px 20px;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          border-radius: 24px 24px 0 0;
+          border-radius: 20px 20px 0 0;
           position: relative;
-          box-shadow: 0 2px 20px rgba(102, 126, 234, 0.3);
         }
 
         .header-content {
           display: flex;
           align-items: center;
-          gap: 14px;
-        }
-
-        .avatar-container {
-          position: relative;
+          gap: 12px;
         }
 
         .header-avatar {
-          width: 45px;
-          height: 45px;
+          width: 40px;
+          height: 40px;
           border-radius: 50%;
-          border: 3px solid rgba(255, 255, 255, 0.4);
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .online-indicator {
-          position: absolute;
-          bottom: 2px;
-          right: 2px;
-          width: 12px;
-          height: 12px;
-          background: #00ff88;
-          border-radius: 50%;
-          border: 2px solid white;
-          animation: pulse-green 2s infinite;
-        }
-
-        @keyframes pulse-green {
-          0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-          70% { box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+          border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .header-text h4 {
           margin: 0;
-          font-size: 17px;
-          font-weight: 700;
-          text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+          font-size: 16px;
+          font-weight: 600;
         }
 
         .status {
-          font-size: 13px;
-          opacity: 0.95;
+          font-size: 12px;
+          opacity: 0.9;
           margin: 0;
-          display: flex;
-          align-items: center;
-          gap: 6px;
         }
 
-        .status-dot {
-          width: 8px;
-          height: 8px;
-          background: #00ff88;
-          border-radius: 50%;
-          animation: pulse-dot 2s infinite;
-        }
-
-        @keyframes pulse-dot {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-
-        .header-actions {
-          display: flex;
-          gap: 8px;
-        }
-
-        .minimize-icon,
         .close-icon {
           cursor: pointer;
-          padding: 10px;
+          padding: 8px;
           border-radius: 50%;
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 36px;
-          height: 36px;
-        }
-
-        .minimize-icon:hover {
-          background: rgba(255, 255, 255, 0.15);
-          transform: scale(1.1);
         }
 
         .close-icon:hover {
-          background: rgba(255, 100, 100, 0.3);
+          background: rgba(255, 255, 255, 0.2);
           transform: scale(1.1);
         }
 
-        .chat-content {
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          max-height: 400px;
-        }
+            .chat-content {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            overflow-y: auto;
+            }
 
-        .messages {
-          flex: 1;
-          overflow-y: auto;
-          padding: 20px;
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          scroll-behavior: smooth;
-        }
+            .messages {
+            overflow-y: auto;
+            margin-bottom: 10px;
+            }
 
-        .messages::-webkit-scrollbar {
-          width: 6px;
-        }
+            .message {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            }
 
-        .messages::-webkit-scrollbar-track {
-          background: rgba(0, 0, 0, 0.05);
-          border-radius: 3px;
-        }
+            .message.user {
+            justify-content: flex-end;
+            }
 
-        .messages::-webkit-scrollbar-thumb {
-          background: rgba(102, 126, 234, 0.3);
-          border-radius: 3px;
-        }
+            .message.bot {
+            justify-content: flex-start;
+            }
 
-        .message {
-          display: flex;
-          align-items: flex-end;
-          gap: 10px;
-          animation: messageSlide 0.3s ease-out;
-        }
-
-        @keyframes messageSlide {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .message.user {
-          flex-direction: row-reverse;
-          justify-content: flex-start;
-        }
-
-        .message.bot {
-          flex-direction: row;
-        }
-
-        .message .avatar {
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          border: 2px solid rgba(102, 126, 234, 0.2);
-          flex-shrink: 0;
-        }
+            .message .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            }
 
         .message-text {
           max-width: 75%;
@@ -737,28 +641,15 @@ const Chatbot = () => {
         .message.bot .message-text {
           background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
           color: #2d3748;
-          border-bottom-left-radius: 8px;
-          border: 1px solid rgba(102, 126, 234, 0.15);
-          box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-          position: relative;
-        }
-
-        .message.bot .message-text::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, #667eea, #764ba2);
-          border-radius: 18px 18px 0 0;
+          border-bottom-left-radius: 6px;
+          border: 1px solid rgba(102, 126, 234, 0.1);
         }
 
         .message.user .message-text {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #f093fb 200%);
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: white;
-          border-bottom-right-radius: 8px;
-          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+          border-bottom-right-radius: 6px;
+          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
 
         .text-content {
@@ -825,95 +716,208 @@ const Chatbot = () => {
           }
         }
 
-        /* Input Field */
-        .chat-input {
-          display: flex;
-          align-items: center;
-          padding: 16px 20px;
-          border-top: 1px solid rgba(0, 0, 0, 0.1);
-          background: rgba(255, 255, 255, 0.8);
-          border-radius: 0 0 20px 20px;
-          gap: 12px;
-        }
+            /* Input Field */
+            .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            }
 
-        .input-field {
-          flex: 1;
-          border: none;
-          padding: 12px 16px;
-          border-radius: 25px;
-          background: rgba(248, 249, 255, 0.8);
-          color: #2d3748;
-          font-size: 14px;
-          outline: none;
-          transition: all 0.2s ease;
-          border: 2px solid transparent;
-        }
+            .input-field {
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            margin-right: 10px;
+            background: #f1f1f1;
+            color: black;
+            }
 
-        .input-field:focus {
-          background: white;
-          border-color: rgba(102, 126, 234, 0.3);
-          box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
+            .send-button {
+            background: #4caf50;
+            border-radius: 10px;
+            width: 50px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            }
 
-        .input-field:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-        }
-
-        .send-button {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          border: none;
-          border-radius: 50%;
-          width: 44px;
-          height: 44px;
-          color: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
-          box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-        }
-
-        .send-button:hover:not(:disabled) {
-          transform: translateY(-2px) scale(1.05);
-          box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
-        }
-
-        .send-button:active {
-          transform: translateY(0) scale(1);
-        }
-
-        .send-button:disabled {
-          opacity: 0.6;
-          cursor: not-allowed;
-          transform: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
-          .chat-window {
-            left: 10px;
-            right: 10px;
-            width: auto;
-            bottom: 90px;
-          }
-
-          .bot-icon {
-            left: 15px;
-            bottom: 15px;
-            width: 60px;
-            height: 60px;
-          }
-
-          .icon-inner {
-            font-size: 1.5rem;
-          }
-        }
-      `}</style>
+            .send-button:hover {
+            background: #45a049;
+            }
+        `}</style>
     </>
     );
 
 };
 
 export default Chatbot;
+
+
+
+
+
+
+
+
+
+
+
+
+// import "font-awesome/css/font-awesome.min.css";
+// import React, { useState, useRef } from "react";
+// import QRCode from "qrcode";
+// import "./Chatbot.css"; // Assuming the CSS is in a separate file
+
+// const Chatbot = () => {
+//   // State management using useState
+//   const [isChatOpen, setIsChatOpen] = useState(false);
+//   const [message, setMessage] = useState("");
+//   const [messages, setMessages] = useState([]);
+//   const avatarUrl =
+//     "https://w7.pngwing.com/pngs/408/238/png-transparent-pink-and-blue-illustration-discord-computer-icons-logo-user-internet-bot-discord-icon-purple-angle-violet-thumbnail.png";
+  
+//   // Ref for scrolling to the bottom of the messages
+//   const messagesRef = useRef(null);
+
+//   // Toggle chat window visibility
+//   const toggleChat = () => {
+//     setIsChatOpen(!isChatOpen);
+//   };
+
+//   // Handle sending a message
+//   const sendMessage = async (e) => {
+//     e.preventDefault();
+//     const userMessage = message.trim();
+//     if (!userMessage) return;
+
+//     addMessage(userMessage, "user");
+
+//     if (userMessage.toLowerCase().includes("qr")) {
+//       const qrCode = await generateQRCode(userMessage);
+//       addMessage(qrCode, "bot", true);
+//     } else {
+//       const botReply = getBotReply(userMessage);
+//       setTimeout(() => {
+//         addMessage(botReply, "bot");
+//       }, 500);
+//     }
+
+//     setMessage("");
+//   };
+
+//   // Add a message to the messages array and scroll to bottom
+//   const addMessage = (textOrQrCode, type, isQrCode = false) => {
+//     const message = isQrCode
+//       ? { qrCode: textOrQrCode, type }
+//       : { text: textOrQrCode, type };
+//     setMessages((prevMessages) => [...prevMessages, message]);
+//     scrollToBottom();
+//   };
+
+//   // Generate QR code using the qrcode library
+//   const generateQRCode = async (text) => {
+//     try {
+//       return await QRCode.toDataURL(text);
+//     } catch (err) {
+//       console.error("QR Code generation failed:", err);
+//       return null;
+//     }
+//   };
+
+//   // Determine bot reply based on user message
+//   const getBotReply = (userMessage) => {
+//     const lowerMessage = userMessage.toLowerCase();
+
+//     if (lowerMessage.includes("hello") || lowerMessage.includes("hi")) {
+//       return "Hello! Welcome to my bot service. How can I assist you today?";
+//     } else if (lowerMessage.includes("price") || lowerMessage.includes("cost")) {
+//       return "Our services vary in price depending on your requirements. Can you specify the service you're interested in?";
+//     } else if (lowerMessage.includes("support") || lowerMessage.includes("help")) {
+//       return "Our support team is available 24/7 to assist you. Please let us know the issue you're facing.";
+//     } else if (lowerMessage.includes("email")) {
+//       return "Here is our email: houtkysopanha69@gmail.com.";
+//     } else if (lowerMessage.includes("phone") || lowerMessage.includes("លេខទូរស័ព្ទ")) {
+//       return "Here is our phone number: 099 654 752.";
+//     } else if (lowerMessage.includes("telegram")) {
+//       return "Here is Telegram, you can use either: 099 654 752/@houtkysopanha";
+//     } else if (lowerMessage.includes("contact")) {
+//       return "You can contact us via email, Telegram, phone, LinkedIn, or WhatsApp.";
+//     } else if (lowerMessage.includes("linkedin")) {
+//       return "Here is our LinkedIn profile: https://www.linkedin.com/in/hout-ky-sopanha-8597852ba/ ";
+//     } else if (lowerMessage.includes("whatsapp")) {
+//       return "Here is our WhatsApp number: +855 99 654 752.";
+//     } else if (lowerMessage.includes("facebook")) {
+//       return "Here myname facebookL: Hout Ky Sopanha";
+//     } else if (lowerMessage.includes("instagram")) {
+//       return "Here is my Instagram: houtkysopanha";
+//     } else if (lowerMessage.includes("bye")) {
+//       return "Goodbye! Feel free to chat with me again anytime.";
+//     } else {
+//       return "I'm here to help with your queries. Can you provide more details about what you're looking for?";
+//     }
+//   };
+
+//   // Scroll to the bottom of the messages div
+//   const scrollToBottom = () => {
+//     if (messagesRef.current) {
+//       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+//     }
+//   };
+
+//   // JSX structure
+//   return (
+//     <div className="chatbot">
+//       {/* Chatbot Icon */}
+//       <div className="bot-icon" onClick={toggleChat}>
+//         <div className="icon-inner">
+//           <i className="fa fa-commenting" aria-hidden="true"></i>
+//         </div>
+//       </div>
+
+//       {/* Chatbot Window */}
+//       {isChatOpen && (
+//         <div className="chat-window">
+//           <div className="chat-header">
+//             <span className="close-icon" onClick={toggleChat}>
+//               <i className="fa fa-window-close" aria-hidden="true"></i>
+//             </span>
+//             <h4>How can we help you?</h4>
+//           </div>
+//           <div className="chat-content">
+//             <div className="messages" ref={messagesRef}>
+//               {messages.map((msg, index) => (
+//                 <div key={index} className={`message ${msg.type}`}>
+//                   {msg.type === "bot" && (
+//                     <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
+//                   )}
+//                   <div className="message-text">
+//                     {msg.qrCode ? (
+//                       <img src={msg.qrCode} alt="QR Code" />
+//                     ) : (
+//                       <div style={{ color: "black" }}>{msg.text}</div>
+//                     )}
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//             <form onSubmit={sendMessage} className="chat-input">
+//               <input
+//                 value={message}
+//                 onChange={(e) => setMessage(e.target.value)}
+//                 type="text"
+//                 placeholder="Send a message..."
+//                 className="input-field"
+//               />
+//               <button type="submit" className="send-button">
+//                 <i className="fa fa-paper-plane" aria-hidden="true"></i>
+//               </button>
+//             </form>
+//           </div>
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Chatbot;
