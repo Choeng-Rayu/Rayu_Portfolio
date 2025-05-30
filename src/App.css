@@ -1,11 +1,25 @@
 body {
   margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   background-color: black; /* Default background color */
   transition: background-color 0.5s ease; /* Smooth transition for background color */
+  overflow-x: hidden;
 }
 
 .App {
+  width: 100%;
+}
+
+/* Home section takes full viewport */
+.App > div:first-child {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+/* Other content sections */
+.App > *:not(:first-child):not(.pointer-effect):not(.chatbot):not(header) {
   max-width: 1200px;
   margin: 0 auto;
 }

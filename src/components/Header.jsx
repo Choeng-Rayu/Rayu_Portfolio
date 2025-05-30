@@ -13,7 +13,7 @@ function Header() {
       setIsMobile(window.innerWidth <= 768);
       if (window.innerWidth > 768) setIsMenuOpen(false);
     };
-    
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -21,7 +21,7 @@ function Header() {
     handleResize();
     window.addEventListener('resize', handleResize);
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
@@ -58,14 +58,14 @@ function Header() {
     <motion.header
       className={`header ${isScrolled ? 'scrolled' : ''}`}
       initial={{ y: -100, opacity: 0 }}
-      animate={{ 
-        y: 0, 
+      animate={{
+        y: 0,
         opacity: 1,
       }}
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="container">
-        <motion.div 
+        <motion.div
           className="logo"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -78,14 +78,14 @@ function Header() {
             <FaReact className="react-icon" />
           </motion.div>
           <div className="logo-text">
-            <motion.span 
+            <motion.span
               className="name"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              CHOENG RAYU 
-              
+              CHOENG RAYU
+
             </motion.span>
             <motion.span
               className="title"
@@ -139,11 +139,11 @@ function Header() {
                 >
                   <ul>
                     {navItems.map((item, index) => (
-                      <motion.li 
+                      <motion.li
                         key={index}
                         initial={{ x: 20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        transition={{ 
+                        transition={{
                           delay: 0.1 * index,
                           type: 'spring',
                           stiffness: 300
@@ -151,8 +151,8 @@ function Header() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <a 
-                          href={item.href} 
+                        <a
+                          href={item.href}
                           onClick={(e) => {
                             e.preventDefault();
                             scrollToSection(item.href);
@@ -165,7 +165,7 @@ function Header() {
                       </motion.li>
                     ))}
                   </ul>
-                  
+
                   <div className="mobile-socials">
                     {socialLinks.map((link, index) => (
                       <motion.a
@@ -190,13 +190,13 @@ function Header() {
             <nav className="desktop-nav">
               <ul>
                 {navItems.map((item, index) => (
-                  <motion.li 
+                  <motion.li
                     key={index}
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a 
-                      href={item.href} 
+                    <a
+                      href={item.href}
                       onClick={(e) => {
                         e.preventDefault();
                         scrollToSection(item.href);
@@ -210,7 +210,7 @@ function Header() {
                 ))}
               </ul>
             </nav>
-            
+
             <div className="social-links">
               {socialLinks.map((link, index) => (
                 <motion.a
@@ -235,7 +235,7 @@ function Header() {
           position: fixed;
           top: 0;
           left: 0;
-          width: 100%;
+          width: 100vw;
           padding: 1.5rem 2rem;
           z-index: 1000;
           background: rgba(10, 10, 15, 0.9);
@@ -243,38 +243,39 @@ function Header() {
           -webkit-backdrop-filter: blur(12px);
           border-bottom: 1px solid rgba(212, 175, 55, 0.1);
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          box-sizing: border-box;
         }
-        
+
         .header.scrolled {
           padding: 1rem 2rem;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
-        
+
         .container {
-          max-width: 1200px;
-          margin: 0 auto;
+          width: 100%;
+          margin: 0;
           display: flex;
           justify-content: space-between;
           align-items: center;
         }
-        
+
         .logo {
           display: flex;
           align-items: center;
           gap: 1rem;
           cursor: pointer;
         }
-        
+
         .react-icon {
           font-size: 2.2rem;
           color: #61dafb;
         }
-        
+
         .logo-text {
           display: flex;
           flex-direction: column;
         }
-        
+
         .name {
           font-size: 1.4rem;
           font-weight: 700;
@@ -285,7 +286,7 @@ function Header() {
           line-height: 1;
           letter-spacing: -0.5px;
         }
-        
+
         .title {
           font-size: 0.9rem;
           color: rgba(212, 175, 55, 0.8);
@@ -293,13 +294,13 @@ function Header() {
           margin-top: 0.2rem;
           letter-spacing: 0.5px;
         }
-        
+
         /* Desktop Navigation */
         .desktop-nav {
           margin-left: auto;
           margin-right: 2rem;
         }
-        
+
         .desktop-nav ul {
           display: flex;
           list-style: none;
@@ -307,7 +308,7 @@ function Header() {
           margin: 0;
           padding: 0;
         }
-        
+
         .desktop-nav .nav-link {
           color: #e2e8f0;
           text-decoration: none;
@@ -320,22 +321,22 @@ function Header() {
           gap: 0.3rem;
           transition: all 0.3s ease;
         }
-        
+
         .nav-number {
           color: #d4af37;
           font-size: 0.8rem;
           transition: all 0.3s ease;
           font-weight: 600;
         }
-        
+
         .desktop-nav .nav-link:hover {
           color: #d4af37;
         }
-        
+
         .desktop-nav .nav-link:hover .nav-number {
           transform: translateY(-3px);
         }
-        
+
         .desktop-nav .nav-link::after {
           content: '';
           position: absolute;
@@ -346,34 +347,34 @@ function Header() {
           background: #d4af37;
           transition: width 0.3s ease;
         }
-        
+
         .desktop-nav .nav-link:hover::after {
           width: 100%;
         }
-        
+
         /* Social Links */
         .social-links {
           display: flex;
           gap: 1.5rem;
         }
-        
+
         .social-icon {
           color: #94a3b8;
           font-size: 1.2rem;
           transition: all 0.3s ease;
         }
-        
+
         .social-icon:hover {
           color: #d4af37;
         }
-        
+
         /* Mobile Navigation */
         .mobile-controls {
           display: flex;
           align-items: center;
           gap: 1rem;
         }
-        
+
         .menu-toggle {
           background: none;
           border: none;
@@ -385,13 +386,13 @@ function Header() {
           justify-content: center;
           margin-right: 2rem;
         }
-        
+
         .menu-toggle .icon {
           font-size: 1.5rem;
           color: #d4af37;
           transition: all 0.3s ease;
         }
-        
+
         .mobile-nav {
           position: fixed;
           top: 0;
@@ -408,7 +409,7 @@ function Header() {
           flex-direction: column;
           justify-content: space-between;
         }
-        
+
         .mobile-nav ul {
           list-style: none;
           margin: 0;
@@ -417,7 +418,7 @@ function Header() {
           flex-direction: column;
           gap: 2rem;
         }
-        
+
         .mobile-nav .nav-link {
           color: #e2e8f0;
           text-decoration: none;
@@ -430,52 +431,52 @@ function Header() {
           border-radius: 6px;
           transition: all 0.3s ease;
         }
-        
+
         .mobile-nav .nav-link:hover {
           background: rgba(212, 175, 55, 0.1);
           color: #d4af37;
           transform: translateX(5px);
         }
-        
+
         .mobile-socials {
           display: flex;
           justify-content: center;
           gap: 1.5rem;
           padding: 2rem 0;
         }
-        
+
         .mobile-socials .social-icon {
           font-size: 1.5rem;
         }
-        
+
         /* Responsive styles */
         @media (max-width: 768px) {
           .header {
             padding: 1rem 1.5rem;
           }
-          
+
           .header.scrolled {
             padding: 0.8rem 1.5rem;
           }
-          
+
           .name {
             font-size: 1.2rem;
           }
-          
+
           .title {
             font-size: 0.8rem;
           }
         }
-        
+
         @media (max-width: 480px) {
           .header {
             padding: 0.8rem 1rem;
           }
-          
+
           .react-icon {
             font-size: 1.8rem;
           }
-          
+
           .mobile-nav {
             width: 85%;
           }
