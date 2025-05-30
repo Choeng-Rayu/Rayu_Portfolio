@@ -9,3 +9,8 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* Ensure other content appears below the full-screen home */
+header, .header {
+  margin-top: 100vh;
+}
