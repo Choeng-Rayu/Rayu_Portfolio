@@ -354,8 +354,11 @@ export default function UnderstandTheUniverse() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-              {/* ABOUT <span>ME</span> */}
-              <div style={{ marginTop: "-150px", left: "0",fontStyle: "bold", position: "absolute" }}>
+
+
+            {/* this for text typing  for homepage*/}            
+              {/* ABOUT <span>ME</span>  */}
+              {/* <div style={{ marginTop: "-150px", left: "0",fontStyle: "bold", position: "absolute" }}>
                 <TextAnimation
                   strings={[
                     "Welcome To My Website!",
@@ -370,7 +373,7 @@ export default function UnderstandTheUniverse() {
                     transition: { type: "spring", stiffness: 100 }
                   }}
                 />
-               </div>
+               </div> */}
           </motion.h2>
 
         </span>
@@ -391,9 +394,13 @@ export default function UnderstandTheUniverse() {
             //fontSize={{SiZenn: 1}}
           >
             {/* ABOUT <span>ME</span> */}
-            <div style={{ top: "0px", marginLeft: "-350px", position: "absolute" }}>
+
+
+
+            {/* This is for home page     */}
+            {/* <div style={{ top: "0px", marginLeft: "-350px", position: "absolute" }}>
               Universe
-            </div>
+            </div> */}
           </motion.h2>
 
         </span>
