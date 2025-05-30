@@ -7,43 +7,20 @@ import TextAnimation from "./TypeAnimation"; // Import your TextAnimation compon
 import { motion } from 'framer-motion';
 import { SiZenn } from "react-icons/si";
 
-const STAR_COUNT = 100;
+const STAR_COUNT = 60;
 const BASE_RADIUS = 360;
 const STAR_COLOR = "#e7eaff";
 const LINE_COLOR = "rgba(120,160,255,0.13)";
 const GLOW_COLOR = "#7adfff";
 
 function randomAngle() {
-  return Math.random() * Math.PI * 10;
+  return Math.random() * Math.PI * 2;
 }
 
 function randomRadius() {
-  return BASE_RADIUS + Math.random() * 200;
+  return BASE_RADIUS + Math.random() * 85;
 }
 
-// function makeStars(count) {
-//   let stars = [];
-//   const sampleUrls = [
-//     { url: "https://en.wikipedia.org/wiki/Star", title: "Wikipedia: Star" },
-//     { url: "https://www.nasa.gov", title: "NASA" },
-//     { url: "https://hubblesite.org", title: "Hubble Site" },
-//     { url: "https://www.space.com", title: "Space.com" },
-//     { url: "https://exoplanets.nasa.gov", title: "NASA Exoplanets" },
-//   ];
-//   for (let i = 0; i < count; i++) {
-//     stars.push({
-//       baseAngle: randomAngle(),
-//       angle: randomAngle(),
-//       radius: randomRadius(),
-//       speed: (Math.random() - 0.5) * 0.0012 + 0.001,
-//       twinkle: Math.random() * Math.PI * 2,
-//       url: sampleUrls[i % sampleUrls.length].url,
-//       title: sampleUrls[i % sampleUrls.length].title,
-//     });
-//   }
-//   return stars;
-// }
-//all colors are rendom
 function makeStars(count) {
   let stars = [];
   const sampleUrls = [
@@ -54,25 +31,6 @@ function makeStars(count) {
     { url: "https://exoplanets.nasa.gov", title: "NASA Exoplanets" },
   ];
   for (let i = 0; i < count; i++) {
-    let color, glowColor;
-    // 90% chance for nebula colors (blues, purples, pinks), 10% chance for bright white
-    if (Math.random() < 0.9) {
-      // Nebula colors: hues between 200 (blue) and 320 (pink)
-      const hue = 200 + Math.random() * 120; // 200-320
-      const saturation = 60 + Math.random() * 40; // 60-100%
-      const lightness = 40 + Math.random() * 30; // 40-70%
-      color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-      // Glow is brighter and more saturated
-      glowColor = `hsl(${hue}, ${Math.min(saturation + 20, 100)}%, ${Math.min(lightness + 20, 80)}%)`;
-    } else {
-      // Bright white star (low saturation, high lightness)
-      const hue = Math.random() * 360; // Any hue, since saturation is low
-      const saturation = 10 + Math.random() * 20; // 10-30%
-      const lightness = 85 + Math.random() * 15; // 85-100%
-      color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-      glowColor = `hsl(${hue}, ${saturation + 10}%, ${lightness - 10}%)`;
-    }
-
     stars.push({
       baseAngle: randomAngle(),
       angle: randomAngle(),
@@ -81,8 +39,6 @@ function makeStars(count) {
       twinkle: Math.random() * Math.PI * 2,
       url: sampleUrls[i % sampleUrls.length].url,
       title: sampleUrls[i % sampleUrls.length].title,
-      color: color,
-      glowColor: glowColor, // Store glow color
     });
   }
   return stars;
@@ -116,19 +72,9 @@ export default function UnderstandTheUniverse() {
       const cx = ww / 2, cy = wh / 2;
 
       // Glow effect core
-      // let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * 2.4);
-      // grad.addColorStop(0, "rgba(75,110,255,0.24)");
-      // grad.addColorStop(1, "rgba(10,12,18,0.0)");
-      // ctx.beginPath();
-      // ctx.arc(cx, cy, BASE_RADIUS * 2.45, 0, Math.PI * 2);
-      // ctx.fillStyle = grad;
-      // ctx.fill();
-
-      // add color
       let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * 2.4);
-      grad.addColorStop(0, "rgba(100, 80, 180, 0.3)"); // Soft purple-blue glow
-      grad.addColorStop(0.5, "rgba(120, 100, 200, 0.15)"); // Mid-range purple
-      grad.addColorStop(1, "rgba(10, 12, 18, 0.0)"); // Fade to transparent
+      grad.addColorStop(0, "rgba(75,110,255,0.24)");
+      grad.addColorStop(1, "rgba(10,12,18,0.0)");
       ctx.beginPath();
       ctx.arc(cx, cy, BASE_RADIUS * 2.45, 0, Math.PI * 2);
       ctx.fillStyle = grad;
@@ -173,24 +119,24 @@ export default function UnderstandTheUniverse() {
       //   starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
       // }
 
-      //add color
+      //add color 
       // Draw stars and store positions
-    for (let i = 0; i < STAR_COUNT; i++) {
-      const star = starsRef.current[i];
-      const tx = cx + Math.cos(star.angle + rotation) * star.radius;
-      const ty = cy + Math.sin(star.angle + rotation) * star.radius;
-      ctx.save();
-      const tw = 1.1 + Math.sin(Date.now() / 800 + star.twinkle + i) * 0.37;
-      ctx.globalAlpha = 0.85 + 0.12 * Math.cos(Date.now() / 550 + star.twinkle + i * 1.2);
-      ctx.beginPath();
-      ctx.arc(tx, ty, 3.5 * tw, 0, Math.PI * 2); // Keeping 5.0 from your previous request
-      ctx.fillStyle = star.color; // Use star-specific color
-      ctx.shadowColor = star.glowColor; // Use star-specific glow color
-      ctx.shadowBlur = 35 * tw; // Increased to 35 for stronger nebula glow
-      ctx.fill();
-      ctx.restore();
-      starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
-    }
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = starsRef.current[i];
+        const tx = cx + Math.cos(star.angle + rotation) * star.radius;
+        const ty = cy + Math.sin(star.angle + rotation) * star.radius;
+        ctx.save();
+        const tw = 1.1 + Math.sin(Date.now() / 800 + star.twinkle + i) * 0.37;
+        ctx.globalAlpha = 0.85 + 0.12 * Math.cos(Date.now()/550 + star.twinkle + i*1.2);
+        ctx.beginPath();
+        ctx.arc(tx, ty, 3.2 * tw, 0, Math.PI * 2);
+        ctx.fillStyle = STAR_COLOR;
+        ctx.shadowColor = GLOW_COLOR;
+        ctx.shadowBlur = 24 * tw;
+        ctx.fill();
+        ctx.restore();
+        starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
+      }
     }
 
     // Click handler for stars
