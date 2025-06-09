@@ -48,10 +48,10 @@ const Projects = () => {
     { 
       title: 'Building a Telegram Bot', 
       description: 'Building a Telegram Bot as an AI assistant for free and powered by DeepSeek API.',
-      tags: ['DeepSeek API', 'Telegram API', 'Node.js', 'Webhook'],
+      tags: ['DeepSeek API', 'Telegram API', 'Python', 'Webhook'],
       accentColor: '#7700ff',
-      demoLink: 'https://t.me/RayuChatBot',
-      codeLink: 'https://github.com/Choeng-Rayu/DeepSeekAPITelegramBot.git'
+      demoLink: 'https://t.me/rayumathbot',
+      codeLink: 'https://github.com/Choeng-Rayu/MathBot_Python.git'
     },
     { 
       title: 'Building a Telegram Bot', 
