@@ -5,13 +5,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FaCode, FaRocket, FaLaptopCode, FaGithub, FaLinkedin, FaDownload } from "react-icons/fa";
 import { HiSparkles } from "react-icons/hi";
 
-const STAR_COUNT = 150;
-const BASE_RADIUS = 360;
+// Performance optimized counts based on device capability
+const isMobile = () => window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const isLowEnd = () => navigator.hardwareConcurrency <= 4 || window.innerWidth <= 480;
+
+const STAR_COUNT = isMobile() ? (isLowEnd() ? 30 : 50) : 80;
+const BASE_RADIUS = isMobile() ? 250 : 360;
 const STAR_COLOR = "#e7eaff";
 const LINE_COLOR = "rgba(120,160,255,0.13)";
 const GLOW_COLOR = "#7adfff";
-const PARTICLE_COUNT = 50;
-const FLOATING_SHAPES_COUNT = 8;
+const PARTICLE_COUNT = isMobile() ? (isLowEnd() ? 8 : 15) : 25;
+const FLOATING_SHAPES_COUNT = isMobile() ? 2 : 4;
 
 function randomAngle() {
   return Math.random() * Math.PI * 10;
@@ -130,14 +134,14 @@ export default function UnderstandTheUniverse() {
   const particlesRef = useRef(createFloatingParticles(PARTICLE_COUNT));
   const shapesRef = useRef(createFloatingShapes(FLOATING_SHAPES_COUNT));
   const [rotation, setRotation] = useState(0);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
   const [isHomeVisible, setIsHomeVisible] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
   const isDragging = useRef(false);
   const lastX = useRef(0);
   const starPositions = useRef([]);
   const [tooltip, setTooltip] = useState(null);
+  const animationFrameRef = useRef();
+  const lastFrameTime = useRef(0);
 
   // Initialize loading effect
   useEffect(() => {
@@ -145,15 +149,20 @@ export default function UnderstandTheUniverse() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Scroll detection to hide home content when scrolling to other sections
+  // Optimized scroll detection with throttling
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
+    let ticking = false;
 
-      // Hide home content when scrolled past 50% of viewport height
-      const threshold = window.innerHeight * 0.5;
-      setIsHomeVisible(currentScrollY < threshold);
+    const handleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          const threshold = window.innerHeight * 0.3; // Reduced threshold for better mobile experience
+          setIsHomeVisible(currentScrollY < threshold);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -166,31 +175,45 @@ export default function UnderstandTheUniverse() {
     let ww, wh;
 
     function resize() {
-      ww = canvas.width = window.innerWidth * window.devicePixelRatio;
-      wh = canvas.height = window.innerHeight * window.devicePixelRatio;
+      // Optimize pixel ratio for performance on mobile
+      const pixelRatio = isMobile() ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+      ww = canvas.width = window.innerWidth * pixelRatio;
+      wh = canvas.height = window.innerHeight * pixelRatio;
       canvas.style.width = `${window.innerWidth}px`;
       canvas.style.height = `${window.innerHeight}px`;
+      ctx.scale(pixelRatio, pixelRatio);
     }
     resize();
     window.addEventListener("resize", resize);
 
-    function drawFrame() {
+    function drawFrame(currentTime) {
+      // Frame rate limiting for mobile performance
+      if (currentTime - lastFrameTime.current < (isMobile() ? 33 : 16)) return; // 30fps mobile, 60fps desktop
+      lastFrameTime.current = currentTime;
+
       ctx.clearRect(0, 0, ww, wh);
       const cx = ww / 2, cy = wh / 2;
 
-      // Enhanced background with multiple gradients
-      const time = Date.now() * 0.001;
+      // Simplified background for better performance
+      const time = currentTime * 0.001;
 
-      // Dynamic background gradient
-      let bgGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(ww, wh));
-      bgGrad.addColorStop(0, `hsla(${240 + Math.sin(time * 0.5) * 20}, 70%, 5%, 1)`);
-      bgGrad.addColorStop(0.5, `hsla(${260 + Math.cos(time * 0.3) * 15}, 60%, 3%, 1)`);
-      bgGrad.addColorStop(1, "rgba(0, 0, 0, 1)");
-      ctx.fillStyle = bgGrad;
-      ctx.fillRect(0, 0, ww, wh);
-
-      // Draw floating particles (reduce when not on home)
       if (isHomeVisible) {
+        // Dynamic background gradient (only when home is visible)
+        let bgGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.max(ww, wh) * 0.8);
+        bgGrad.addColorStop(0, `hsla(${240 + Math.sin(time * 0.3) * 10}, 60%, 4%, 1)`);
+        bgGrad.addColorStop(0.7, `hsla(${260 + Math.cos(time * 0.2) * 8}, 50%, 2%, 1)`);
+        bgGrad.addColorStop(1, "rgba(0, 0, 0, 1)");
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, ww, wh);
+      } else {
+        // Static dark background when not on home
+        ctx.fillStyle = "rgba(0, 0, 0, 1)";
+        ctx.fillRect(0, 0, ww, wh);
+      }
+
+      // Optimized floating particles (only when home is visible)
+      if (isHomeVisible) {
+        ctx.save();
         particlesRef.current.forEach((particle, i) => {
           particle.x += particle.vx;
           particle.y += particle.vy;
@@ -201,24 +224,32 @@ export default function UnderstandTheUniverse() {
           if (particle.y < 0) particle.y = wh;
           if (particle.y > wh) particle.y = 0;
 
-          ctx.save();
-          ctx.globalAlpha = particle.opacity * (0.5 + 0.5 * Math.sin(time + i));
+          // Simplified rendering without shadows on mobile
+          ctx.globalAlpha = particle.opacity * (0.6 + 0.4 * Math.sin(time * 0.5 + i));
           ctx.fillStyle = particle.color;
-          ctx.shadowColor = particle.color;
-          ctx.shadowBlur = 10;
+
+          if (!isMobile()) {
+            ctx.shadowColor = particle.color;
+            ctx.shadowBlur = 8;
+          }
+
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
           ctx.fill();
-          ctx.restore();
+
+          if (!isMobile()) {
+            ctx.shadowBlur = 0;
+          }
         });
+        ctx.restore();
       }
 
-      // Draw floating shapes (reduce when not on home)
-      if (isHomeVisible) {
+      // Optimized floating shapes (only when home is visible and reduced complexity)
+      if (isHomeVisible && !isMobile()) {
         shapesRef.current.forEach((shape) => {
           shape.x += shape.vx;
           shape.y += shape.vy;
-          shape.rotation += shape.rotationSpeed;
+          shape.rotation += shape.rotationSpeed * 0.5; // Slower rotation for performance
 
           // Wrap around screen
           if (shape.x < -shape.size) shape.x = ww + shape.size;
@@ -231,30 +262,15 @@ export default function UnderstandTheUniverse() {
           ctx.rotate((shape.rotation * Math.PI) / 180);
           ctx.fillStyle = shape.color;
           ctx.strokeStyle = shape.borderColor;
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 1;
 
-          // Draw different shapes
+          // Simplified shapes for better performance
           ctx.beginPath();
-          switch (shape.type) {
-            case 'circle':
-              ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
-              break;
-            case 'square':
-              ctx.rect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
-              break;
-            case 'triangle':
-              ctx.moveTo(0, -shape.size / 2);
-              ctx.lineTo(-shape.size / 2, shape.size / 2);
-              ctx.lineTo(shape.size / 2, shape.size / 2);
-              ctx.closePath();
-              break;
-            case 'diamond':
-              ctx.moveTo(0, -shape.size / 2);
-              ctx.lineTo(shape.size / 2, 0);
-              ctx.lineTo(0, shape.size / 2);
-              ctx.lineTo(-shape.size / 2, 0);
-              ctx.closePath();
-              break;
+          if (shape.type === 'circle') {
+            ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+          } else {
+            // All other shapes become squares for performance
+            ctx.rect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
           }
           ctx.fill();
           ctx.stroke();
@@ -262,38 +278,42 @@ export default function UnderstandTheUniverse() {
         });
       }
 
-      // Enhanced central glow with pulsing effect
-      let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * 2.4);
-      const pulse = 0.3 + 0.2 * Math.sin(time * 2);
-      grad.addColorStop(0, `rgba(100, 80, 180, ${pulse})`);
-      grad.addColorStop(0.3, `rgba(120, 100, 200, ${pulse * 0.7})`);
-      grad.addColorStop(0.6, `rgba(80, 120, 255, ${pulse * 0.4})`);
-      grad.addColorStop(1, "rgba(10, 12, 18, 0.0)");
-      ctx.beginPath();
-      ctx.arc(cx, cy, BASE_RADIUS * 2.45, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
-      ctx.fill();
+      // Optimized central glow (reduced complexity on mobile)
+      if (isHomeVisible) {
+        let grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, BASE_RADIUS * (isMobile() ? 1.8 : 2.4));
+        const pulse = isMobile() ? 0.25 : 0.3 + 0.15 * Math.sin(time * 1.5);
+        grad.addColorStop(0, `rgba(100, 80, 180, ${pulse})`);
+        grad.addColorStop(0.5, `rgba(120, 100, 200, ${pulse * 0.6})`);
+        grad.addColorStop(1, "rgba(10, 12, 18, 0.0)");
+        ctx.beginPath();
+        ctx.arc(cx, cy, BASE_RADIUS * (isMobile() ? 1.8 : 2.45), 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
 
       starPositions.current = [];
 
-      // Draw lines
+      // Optimized star lines
+      ctx.save();
+      ctx.strokeStyle = LINE_COLOR;
+      if (!isMobile()) {
+        ctx.shadowColor = GLOW_COLOR;
+        ctx.shadowBlur = 12;
+      }
+
       for (let i = 0; i < STAR_COUNT; i++) {
         const star = starsRef.current[i];
         star.angle += star.speed;
-        ctx.save();
-        ctx.strokeStyle = LINE_COLOR;
-        ctx.globalAlpha = 0.18 + 0.09 * Math.sin(Date.now() / 1600 + i);
-        ctx.shadowColor = GLOW_COLOR;
-        ctx.shadowBlur = 16;
+        ctx.globalAlpha = 0.15 + (isMobile() ? 0.05 : 0.08) * Math.sin(time * 0.8 + i);
         ctx.beginPath();
         ctx.moveTo(cx, cy);
         const tx = cx + Math.cos(star.angle + rotation) * star.radius;
         const ty = cy + Math.sin(star.angle + rotation) * star.radius;
         ctx.lineTo(tx, ty);
-        ctx.lineWidth = 1.3 + 0.25 * Math.sin(i + Date.now() / 1200);
+        ctx.lineWidth = isMobile() ? 1 : 1.2 + 0.2 * Math.sin(i + time * 0.6);
         ctx.stroke();
-        ctx.restore();
       }
+      ctx.restore();
 
       // Draw stars and store positions
       // for (let i = 0; i < STAR_COUNT; i++) {
@@ -313,24 +333,32 @@ export default function UnderstandTheUniverse() {
       //   starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
       // }
 
-      //add color
-      // Draw stars and store positions
-    for (let i = 0; i < STAR_COUNT; i++) {
-      const star = starsRef.current[i];
-      const tx = cx + Math.cos(star.angle + rotation) * star.radius;
-      const ty = cy + Math.sin(star.angle + rotation) * star.radius;
+      // Optimized star rendering
       ctx.save();
-      const tw = 1.1 + Math.sin(Date.now() / 800 + star.twinkle + i) * 0.37;
-      ctx.globalAlpha = 0.85 + 0.12 * Math.cos(Date.now() / 550 + star.twinkle + i * 1.2);
-      ctx.beginPath();
-      ctx.arc(tx, ty, 3.5 * tw, 0, Math.PI * 2); // Keeping 5.0 from your previous request
-      ctx.fillStyle = star.color; // Use star-specific color
-      ctx.shadowColor = star.glowColor; // Use star-specific glow color
-      ctx.shadowBlur = 35 * tw; // Increased to 35 for stronger nebula glow
-      ctx.fill();
+      for (let i = 0; i < STAR_COUNT; i++) {
+        const star = starsRef.current[i];
+        const tx = cx + Math.cos(star.angle + rotation) * star.radius;
+        const ty = cy + Math.sin(star.angle + rotation) * star.radius;
+
+        const tw = 1.0 + Math.sin(time * 0.8 + star.twinkle + i) * (isMobile() ? 0.2 : 0.3);
+        ctx.globalAlpha = 0.8 + 0.1 * Math.cos(time * 0.7 + star.twinkle + i * 1.2);
+
+        // Reduced star size and glow for mobile performance
+        const starSize = isMobile() ? 2.5 * tw : 3.2 * tw;
+
+        if (!isMobile()) {
+          ctx.shadowColor = star.glowColor;
+          ctx.shadowBlur = 20 * tw;
+        }
+
+        ctx.fillStyle = star.color;
+        ctx.beginPath();
+        ctx.arc(tx, ty, starSize, 0, Math.PI * 2);
+        ctx.fill();
+
+        starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
+      }
       ctx.restore();
-      starPositions.current.push({ x: tx, y: ty, url: star.url, title: star.title });
-    }
     }
 
     // Click handler for stars
@@ -358,22 +386,20 @@ export default function UnderstandTheUniverse() {
 
     function handlePointerMove(e) {
       const rect = canvas.getBoundingClientRect();
-      const pointerX = (e.clientX - rect.left) * window.devicePixelRatio;
-      const pointerY = (e.clientY - rect.top) * window.devicePixelRatio;
+      const pixelRatio = isMobile() ? Math.min(window.devicePixelRatio, 2) : window.devicePixelRatio;
+      const pointerX = (e.clientX - rect.left) * pixelRatio;
+      const pointerY = (e.clientY - rect.top) * pixelRatio;
 
-      // Update mouse position for effects
-      setMousePos({ x: e.clientX, y: e.clientY });
-
-      // Mouse attraction effect on particles (only when home is visible)
-      if (isHomeVisible) {
+      // Mouse attraction effect on particles (only on desktop when home is visible)
+      if (isHomeVisible && !isMobile()) {
         particlesRef.current.forEach(particle => {
           const dx = pointerX - particle.x;
           const dy = pointerY - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < 100) {
-            const force = (100 - distance) / 100;
-            particle.vx += (dx / distance) * force * 0.01;
-            particle.vy += (dy / distance) * force * 0.01;
+          if (distance < 80) {
+            const force = (80 - distance) / 80;
+            particle.vx += (dx / distance) * force * 0.005;
+            particle.vy += (dy / distance) * force * 0.005;
           }
         });
       }
@@ -417,14 +443,19 @@ export default function UnderstandTheUniverse() {
     });
 
     let stop = false;
-    function loop() {
-      drawFrame();
-      if (!stop) requestAnimationFrame(loop);
+    function loop(currentTime) {
+      if (!stop) {
+        drawFrame(currentTime);
+        animationFrameRef.current = requestAnimationFrame(loop);
+      }
     }
-    loop();
+    animationFrameRef.current = requestAnimationFrame(loop);
 
     return () => {
       stop = true;
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
       window.removeEventListener("resize", resize);
       canvas.removeEventListener("click", handleClick);
       canvas.removeEventListener("pointerdown", handlePointerDown);
@@ -432,7 +463,7 @@ export default function UnderstandTheUniverse() {
       canvas.removeEventListener("pointerup", handlePointerUp);
       canvas.removeEventListener("pointerleave", handlePointerUp);
     };
-  }, [rotation]);
+  }, [rotation, isHomeVisible]);
 
   return (
     <section
@@ -520,29 +551,31 @@ export default function UnderstandTheUniverse() {
             position: "relative",
           }}
         >
-          {/* Glitch Effect Title */}
+          {/* Optimized Title */}
           <motion.h1
             style={{
-              fontSize: "clamp(3rem, 8vw, 6rem)",
+              fontSize: "clamp(2.5rem, 7vw, 5rem)",
               fontWeight: 900,
-              background: "linear-gradient(45deg, #00f5ff, #ff00ff, #00ff00, #ffff00)",
-              backgroundSize: "400% 400%",
+              background: isMobile()
+                ? "linear-gradient(45deg, #00f5ff, #ff00ff)"
+                : "linear-gradient(45deg, #00f5ff, #ff00ff, #00ff00, #ffff00)",
+              backgroundSize: isMobile() ? "200% 200%" : "400% 400%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
-              animation: "gradientShift 3s ease-in-out infinite",
-              textShadow: "0 0 30px rgba(0, 245, 255, 0.5)",
+              animation: isMobile() ? "none" : "gradientShift 3s ease-in-out infinite",
+              textShadow: isMobile() ? "0 0 15px rgba(0, 245, 255, 0.3)" : "0 0 30px rgba(0, 245, 255, 0.5)",
               marginBottom: "1rem",
               letterSpacing: "-0.02em",
             }}
-            animate={{
+            animate={!isMobile() ? {
               textShadow: [
                 "0 0 30px rgba(0, 245, 255, 0.5)",
                 "0 0 50px rgba(255, 0, 255, 0.7)",
                 "0 0 30px rgba(0, 255, 0, 0.5)",
                 "0 0 30px rgba(0, 245, 255, 0.5)",
               ],
-            }}
+            } : {}}
             transition={{ duration: 2, repeat: Infinity }}
           >
             CHOENG RAYU
@@ -576,36 +609,40 @@ export default function UnderstandTheUniverse() {
             />
           </motion.div>
 
-          {/* Floating Action Buttons */}
+          {/* Optimized Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.5 }}
             style={{
               display: "flex",
-              gap: "1.5rem",
+              gap: isMobile() ? "1rem" : "1.5rem",
               justifyContent: "center",
               flexWrap: "wrap",
-              marginBottom: "3rem",
+              marginBottom: isMobile() ? "2rem" : "3rem",
+              flexDirection: isMobile() ? "column" : "row",
+              alignItems: "center",
             }}
           >
             <motion.button
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={!isMobile() ? { scale: 1.05, y: -5 } : { scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               style={{
                 background: "linear-gradient(45deg, #667eea, #764ba2)",
                 border: "none",
-                padding: "1rem 2rem",
+                padding: isMobile() ? "0.8rem 1.5rem" : "1rem 2rem",
                 borderRadius: "50px",
                 color: "white",
-                fontSize: "1.1rem",
+                fontSize: isMobile() ? "1rem" : "1.1rem",
                 fontWeight: 600,
                 cursor: "pointer",
                 pointerEvents: "auto",
-                boxShadow: "0 10px 30px rgba(102, 126, 234, 0.4)",
+                boxShadow: isMobile() ? "0 5px 15px rgba(102, 126, 234, 0.3)" : "0 10px 30px rgba(102, 126, 234, 0.4)",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
+                width: isMobile() ? "200px" : "auto",
+                justifyContent: "center",
               }}
               onClick={() => {
                 const aboutSection = document.getElementById('about');
@@ -618,22 +655,24 @@ export default function UnderstandTheUniverse() {
             </motion.button>
 
             <motion.button
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={!isMobile() ? { scale: 1.05, y: -5 } : { scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
               style={{
                 background: "linear-gradient(45deg, #f093fb, #f5576c)",
                 border: "none",
-                padding: "1rem 2rem",
+                padding: isMobile() ? "0.8rem 1.5rem" : "1rem 2rem",
                 borderRadius: "50px",
                 color: "white",
-                fontSize: "1.1rem",
+                fontSize: isMobile() ? "1rem" : "1.1rem",
                 fontWeight: 600,
                 cursor: "pointer",
                 pointerEvents: "auto",
-                boxShadow: "0 10px 30px rgba(245, 87, 108, 0.4)",
+                boxShadow: isMobile() ? "0 5px 15px rgba(245, 87, 108, 0.3)" : "0 10px 30px rgba(245, 87, 108, 0.4)",
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
+                width: isMobile() ? "200px" : "auto",
+                justifyContent: "center",
               }}
               onClick={() => {
                 const contactSection = document.getElementById('contact');
@@ -699,34 +738,34 @@ export default function UnderstandTheUniverse() {
           </motion.div>
         </motion.div>
 
-        {/* Floating Tech Icons */}
+        {/* Floating Tech Icons (Desktop Only) */}
         <AnimatePresence>
-          {isLoaded && (
+          {isLoaded && !isMobile() && (
             <>
               {[FaCode, FaLaptopCode, HiSparkles].map((Icon, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{
-                    opacity: [0.3, 0.7, 0.3],
-                    scale: [1, 1.2, 1],
-                    x: Math.sin(Date.now() * 0.001 + index) * 20,
-                    y: Math.cos(Date.now() * 0.001 + index) * 20,
+                    opacity: [0.2, 0.5, 0.2],
+                    scale: [1, 1.1, 1],
+                    x: Math.sin(Date.now() * 0.0005 + index) * 15,
+                    y: Math.cos(Date.now() * 0.0005 + index) * 15,
                   }}
                   transition={{
-                    duration: 3,
+                    duration: 4,
                     repeat: Infinity,
-                    delay: index * 0.5,
+                    delay: index * 0.7,
                     ease: "easeInOut"
                   }}
                   style={{
                     position: "absolute",
                     top: `${20 + index * 25}%`,
                     left: `${10 + index * 30}%`,
-                    fontSize: "2rem",
+                    fontSize: "1.8rem",
                     color: `hsl(${200 + index * 60}, 70%, 60%)`,
                     pointerEvents: "none",
-                    filter: "drop-shadow(0 0 10px currentColor)",
+                    filter: "drop-shadow(0 0 8px currentColor)",
                   }}
                 >
                   <Icon />
