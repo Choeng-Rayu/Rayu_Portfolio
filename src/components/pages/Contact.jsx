@@ -192,7 +192,7 @@ const Contact = () => {
         </motion.form>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .contact-section {
           width: 100%;
           padding: 80px 20px;

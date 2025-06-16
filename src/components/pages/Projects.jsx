@@ -175,7 +175,7 @@ const Projects = () => {
         </motion.div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .projects-section {
           padding: 100px 20px;
           position: relative;

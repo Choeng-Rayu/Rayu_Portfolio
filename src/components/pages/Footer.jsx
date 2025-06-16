@@ -134,7 +134,7 @@ function Footer() {
       </div>
 
       {/* Styles */}
-      <style jsx>{`
+      <style>{`
         .footer-container {
           background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
           color: #fff;

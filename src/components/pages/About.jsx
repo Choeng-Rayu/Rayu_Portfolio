@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import profileImage from '../assets/nang2.jpg';
+import profileImage from '../../assets/nang2.jpg';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
 import { BsJustify } from 'react-icons/bs';
 
@@ -391,14 +391,15 @@ function About() {
 </div>
 
       {/* Styles */}
-      <style jsx>{`
+      <style>{`
         .about-section {
           color: #fff;
           padding: 80px 20px;
           max-width: 1200px;
           margin: 0 auto;
           position: relative;
-          overflow: hidden;
+          overflow: visible;
+          margin-top: 100px; /* Add space for fixed header */
         }
         
         .about-section::before {

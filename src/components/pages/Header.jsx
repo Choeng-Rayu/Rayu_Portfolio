@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaReact, FaBars, FaTimes, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import TextAnimation from './TypeAnimation';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,11 +30,11 @@ function Header() {
   }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Skills', to: '/skills' },
+    { name: 'Projects', to: '/projects' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   const socialLinks = [
@@ -41,18 +42,6 @@ function Header() {
     { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/rayu-choeng-351243335/' },
     { icon: <FaEnvelope />, url: 'mailto:choengrayu307@gmail.com' }
   ];
-
-  const scrollToSection = (href) => {
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
-    setIsMenuOpen(false);
-  };
 
   return (
     <motion.header
@@ -69,7 +58,6 @@ function Header() {
           className="logo"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => scrollToSection('#about')}
         >
           <motion.div
             animate={{ rotate: 360 }}
@@ -85,7 +73,6 @@ function Header() {
               transition={{ delay: 0.2 }}
             >
               CHOENG RAYU
-
             </motion.span>
             <motion.span
               className="title"
@@ -151,17 +138,15 @@ function Header() {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        <a
-                          href={item.href}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(item.href);
-                          }}
-                          className="nav-link"
+                        <NavLink
+                          to={item.to}
+                          className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                          onClick={() => setIsMenuOpen(false)}
+                          end={item.to === '/'}
                         >
                           <span className="nav-number">0{index + 1}.</span>
                           {item.name}
-                        </a>
+                        </NavLink>
                       </motion.li>
                     ))}
                   </ul>
@@ -195,17 +180,14 @@ function Header() {
                     whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection(item.href);
-                      }}
-                      className="nav-link"
+                    <NavLink
+                      to={item.to}
+                      className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
+                      end={item.to === '/'}
                     >
                       <span className="nav-number">0{index + 1}.</span>
                       {item.name}
-                    </a>
+                    </NavLink>
                   </motion.li>
                 ))}
               </ul>
@@ -230,7 +212,7 @@ function Header() {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .header {
           position: fixed;
           top: 0;

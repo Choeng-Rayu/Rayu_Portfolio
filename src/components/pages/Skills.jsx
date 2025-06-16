@@ -73,7 +73,7 @@ function Skills() {
         ))}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .skills-section {
           background-color: #000;
           color: #fff;
