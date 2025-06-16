@@ -12,13 +12,14 @@ import Contact from '../src/components/pages/Contact.jsx'
 import './App.css'
 import PointerEffect from './PointerEffect.jsx'
 import Footer from '../src/components/pages/Footer.jsx'
+import SplashCursorPointer from './SplashCursorPointer.jsx'
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Navigation /> */}
       <Header />
-      
+      <SplashCursorPointer />
       <PointerEffect/>
 
       <Routes>
