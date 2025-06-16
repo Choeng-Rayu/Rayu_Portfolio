@@ -35,6 +35,7 @@ function Header() {
     { name: 'Skills', to: '/skills' },
     { name: 'Projects', to: '/projects' },
     { name: 'Contact', to: '/contact' },
+    { name: 'Universe', to: 'https://universe-rayu.netlify.app/'}
   ];
 
   const socialLinks = [
