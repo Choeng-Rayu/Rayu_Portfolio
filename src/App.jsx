@@ -11,12 +11,14 @@ import Projects from '../src/components/pages/Projects.jsx'
 import Contact from '../src/components/pages/Contact.jsx'
 import './App.css'
 import PointerEffect from './PointerEffect.jsx'
+import Footer from '../src/components/pages/Footer.jsx'
 
 function App() {
   return (
     <BrowserRouter>
       {/* <Navigation /> */}
       <Header />
+      
       <PointerEffect/>
 
       <Routes>
@@ -39,8 +41,11 @@ function App() {
         <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        
       </Routes>
+      <Footer />
     </BrowserRouter>
+    
   )
 }
 
