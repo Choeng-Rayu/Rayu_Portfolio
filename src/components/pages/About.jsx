@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import profileImage from '../../assets/nang2.jpg';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
 import { BsJustify } from 'react-icons/bs';
+import ProfileCard from './ProfileCard.jsx';
 
 function About() {
   const expertiseItems = [
@@ -23,7 +24,7 @@ function About() {
     <section className="about-section" id="about">
       {/* Main About Section */}
       <div className="about-container">
-        <motion.div
+        {/* <motion.div
           className="about-image"
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
@@ -34,7 +35,19 @@ function About() {
             <img src={profileImage} alt="Profile" />
             <div className="image-border"></div>
           </div>
-        </motion.div>
+        </motion.div> */}
+        <ProfileCard
+          name="Choeng Rayu"
+          title="Software Engineer"
+          handle="President_Alein"
+          status="Online"
+          contactText="Contact Me"
+          // avatarUrl="https://github.com/Choeng-Rayu/Rayu_Portfolio/blob/1b0b9efa473a5aa21ae333b88b08665445d341b2/src/assets/nang2.jpg"
+          avatarUrl="src\assets\RayuProfile-removebg-preview.png"
+          showUserInfo={true}
+          enableTilt={true}
+          onContactClick={() => console.log('Contact clicked')}
+        />
         
         <motion.div
           className="about-content"
