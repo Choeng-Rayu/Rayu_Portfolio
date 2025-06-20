@@ -47,7 +47,7 @@ const Projects = () => {
     },
     { 
       title: 'Building a Telegram Bot', 
-      description: 'Building a Telegram Bot as an AI assistant for free and powered by DeepSeek API.',
+      description: 'I created a free AI assistant on Telegram to help high school students learn math, especially function solving, in a simple and accessible way. This bot is designed to support students with topics like algebra, calculus, and graphing, offering clear solutions and explanations. Built using Python and the Telegram API, it includes useful features such as generating PDF reports and setting study reminders. The goal is to make learning math fun, stress-free, and available to everyone, anytime and anywhere.',
       tags: ['DeepSeek API', 'Telegram API', 'Python', 'Webhook'],
       accentColor: '#7700ff',
       demoLink: 'https://t.me/rayumathbot',
