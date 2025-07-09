@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import profileImage from '../../assets/nang2.jpg';
+import rayuProfileNoBg from '../../assets/RayuProfile-removebg-preview.png';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
 import { BsJustify } from 'react-icons/bs';
 import ProfileCard from './ProfileCard.jsx';
@@ -43,7 +44,7 @@ function About() {
           status="Online"
           contactText="Contact Me"
           // avatarUrl="https://github.com/Choeng-Rayu/Rayu_Portfolio/blob/1b0b9efa473a5aa21ae333b88b08665445d341b2/src/assets/nang2.jpg"
-          avatarUrl="src\assets\RayuProfile-removebg-preview.png"
+          avatarUrl={rayuProfileNoBg}
           showUserInfo={true}
           enableTilt={true}
           onContactClick={() => console.log('Contact clicked')}
@@ -422,7 +423,9 @@ function About() {
           left: 0;
           width: 100%;
           height: 100%;
-          background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+          background: 
+            radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.12) 0%, transparent 50%),
+            radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
           z-index: -1;
         }
 
@@ -463,10 +466,11 @@ function About() {
           left: -10px;
           right: -10px;
           bottom: -10px;
-          border: 2px solid #d4af37;
+          border: 2px solid #3b82f6;
           border-radius: 25px;
           z-index: 0;
           animation: pulse 6s infinite;
+          box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
         }
         
         @keyframes pulse {
@@ -488,7 +492,10 @@ function About() {
         }
         
         .about-content h2 span {
-          color: #d4af37;
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
         }
         
         .about-content h2::after {
@@ -498,8 +505,9 @@ function About() {
           left: 0;
           width: 70px;
           height: 4px;
-          background: linear-gradient(90deg, #d4af37, transparent);
+          background: linear-gradient(90deg, #3b82f6, #06b6d4, transparent);
           border-radius: 2px;
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
         
         .about-content p {
@@ -510,32 +518,38 @@ function About() {
         }
         
         .about-content p span {
-          color: #d4af37;
-          font-weight: 500;
+          background: linear-gradient(135deg, #3b82f6, #10b981);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          font-weight: 600;
         }
 
         .cv-button {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          background: transparent;
-          color: #d4af37;
-          border: 2px solid #d4af37;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+          color: #3b82f6;
+          border: 2px solid #3b82f6;
           padding: 12px 25px;
           font-size: 1rem;
-          font-weight: 500;
+          font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
           border-radius: 30px;
           margin-top: 20px;
           text-decoration: none;
+          backdrop-filter: blur(10px);
+          box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
         }
         
         .cv-button:hover {
-          background: #d4af37;
-          color: #1a1a1a;
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          color: white;
+          border-color: #06b6d4;
           transform: translateY(-3px);
-          box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+          box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
         }
 
         /* Expertise Section */
@@ -561,7 +575,7 @@ function About() {
           transform: translateX(-50%);
           width: 100px;
           height: 3px;
-          background: linear-gradient(90deg, transparent, #d4af37, transparent);
+          background: linear-gradient(90deg, transparent, #3b82f6, #06b6d4, transparent);
         }
         
         .expertise-grid {
@@ -572,25 +586,47 @@ function About() {
         }
         
         .expertise-item {
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 15px;
-          padding: 25px 20px;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.05));
+          border-radius: 20px;
+          padding: 30px 20px;
           text-align: center;
-          transition: all 0.3s ease;
-          border: 1px solid rgba(212, 175, 55, 0.2);
-          backdrop-filter: blur(5px);
+          transition: all 0.4s ease;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          backdrop-filter: blur(15px);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .expertise-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+          transition: left 0.6s ease;
+        }
+        
+        .expertise-item:hover::before {
+          left: 100%;
         }
         
         .expertise-item:hover {
-          background: rgba(212, 175, 55, 0.1);
-          border-color: #d4af37;
-          transform: translateY(-5px);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.1));
+          border-color: #3b82f6;
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 15px 30px rgba(59, 130, 246, 0.3);
         }
         
         .expertise-icon {
-          font-size: 2rem;
-          color: #d4af37;
+          font-size: 2.5rem;
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 15px;
+          filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
         }
         
         .expertise-item p {
@@ -636,8 +672,10 @@ function About() {
           top: 0;
           bottom: 0;
           left: 0;
-          width: 2px;
-          background: linear-gradient(to bottom, #d4af37, transparent);
+          width: 3px;
+          background: linear-gradient(to bottom, #3b82f6, #06b6d4, #10b981);
+          border-radius: 2px;
+          box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
         }
         
         .timeline-item {
@@ -648,27 +686,55 @@ function About() {
         .timeline-item::before {
           content: '';
           position: absolute;
-          left: -38px;
+          left: -39px;
           top: 5px;
-          width: 15px;
-          height: 15px;
+          width: 18px;
+          height: 18px;
           border-radius: 50%;
-          background: #d4af37;
-          box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+          background: linear-gradient(135deg, #3b82f6, #06b6d4);
+          box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2), 0 0 15px rgba(59, 130, 246, 0.4);
           z-index: 1;
+          animation: pulse-dot 3s infinite;
+        }
+        
+        @keyframes pulse-dot {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
         }
         
         .timeline-content {
-          background: rgba(255, 255, 255, 0.03);
-          border-radius: 10px;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(16, 185, 129, 0.05));
+          border-radius: 15px;
           padding: 25px;
-          border-left: 3px solid #d4af37;
-          transition: all 0.3s ease;
+          border-left: 4px solid;
+          border-image: linear-gradient(135deg, #3b82f6, #10b981) 1;
+          transition: all 0.4s ease;
+          backdrop-filter: blur(15px);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+          position: relative;
+          overflow: hidden;
+        }
+        
+        .timeline-content::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+          transition: width 0.4s ease;
+          z-index: -1;
+        }
+        
+        .timeline-item:hover .timeline-content::before {
+          width: 100%;
         }
         
         .timeline-item:hover .timeline-content {
-          background: rgba(255, 255, 255, 0.07);
-          transform: translateX(5px);
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(16, 185, 129, 0.08));
+          transform: translateX(8px);
+          box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
         }
         
         .timeline-content h4 {
@@ -680,19 +746,24 @@ function About() {
         .timeline-content .role,
         .timeline-content .degree {
           font-size: 1rem;
-          color: #d4af37;
+          background: linear-gradient(135deg, #3b82f6, #10b981);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           margin-bottom: 5px;
-          font-weight: 500;
+          font-weight: 600;
         }
         
         .timeline-content .date {
           font-size: 0.9rem;
-          color: #aaa;
+          color: #94a3b8;
           margin-bottom: 15px;
           display: inline-block;
-          background: rgba(212, 175, 55, 0.1);
-          padding: 3px 10px;
-          border-radius: 20px;
+          background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(16, 185, 129, 0.1));
+          padding: 5px 15px;
+          border-radius: 25px;
+          border: 1px solid rgba(59, 130, 246, 0.2);
+          backdrop-filter: blur(10px);
         }
         
         .timeline-content .description {

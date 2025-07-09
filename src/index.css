@@ -10,10 +10,10 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Color scheme optimized for 3D experience */
+  /* Professional color scheme */
   color-scheme: dark;
-  color: rgba(255, 255, 255, 0.9);
-  background-color: #0a0a0a;
+  color: rgba(248, 250, 252, 0.95);
+  background-color: #0f172a;
 
   /* Performance optimizations */
   font-synthesis: none;
@@ -21,13 +21,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Custom properties for consistent theming */
-  --primary-color: #61dafb;
-  --secondary-color: #4ecdc4;
-  --accent-color: #ff6b6b;
-  --background-dark: #0a0a0a;
-  --text-light: rgba(255, 255, 255, 0.9);
-  --text-muted: rgba(255, 255, 255, 0.6);
+  /* Professional color palette */
+  --primary-color: #3b82f6;        /* Professional blue */
+  --secondary-color: #6366f1;      /* Indigo accent */
+  --accent-color: #10b981;         /* Success green */
+  --background-dark: #0f172a;      /* Slate 900 */
+  --background-medium: #1e293b;    /* Slate 800 */
+  --background-light: #334155;     /* Slate 700 */
+  --text-light: rgba(248, 250, 252, 0.95);  /* Slate 50 */
+  --text-muted: rgba(148, 163, 184, 0.9);   /* Slate 400 */
+  --border-color: rgba(71, 85, 105, 0.3);   /* Slate 600 with opacity */
 }
 
 html, body {

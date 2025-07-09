@@ -75,8 +75,8 @@ function Skills() {
 
       <style>{`
         .skills-section {
-          background-color: #000;
-          color: #fff;
+          background-color: #0f172a;
+          color: #f8fafc;
           padding: 100px 20px;
           min-height: 100vh;
           display: flex;
@@ -95,8 +95,8 @@ function Skills() {
           width: 100%;
           height: 100%;
           background: 
-            radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.15) 0%, transparent 30%),
-            radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.15) 0%, transparent 30%);
+            radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08) 0%, transparent 30%);
           z-index: 0;
           animation: float 12s ease-in-out infinite alternate;
         }
@@ -208,8 +208,8 @@ function Skills() {
 
         .skill-item:hover {
           transform: translateY(-10px) scale(1.02) !important;
-          box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
-          border-color: rgba(212, 175, 55, 0.3);
+          box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+          border-color: rgba(59, 130, 246, 0.3);
         }
 
         .skill-item:hover::before {
@@ -225,12 +225,12 @@ function Skills() {
           font-size: 3.5rem;
           margin-bottom: 25px;
           transition: all 0.4s;
-          filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.3));
+          filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
         }
 
         .skill-item:hover .skill-icon {
           transform: scale(1.2);
-          filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
+          filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
         }
 
         .skill-content {
@@ -278,7 +278,7 @@ function Skills() {
           right: -20px;
           width: 60px;
           height: 60px;
-          background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
           border-radius: 50%;
           opacity: 0;
           transition: all 0.5s;
@@ -304,7 +304,7 @@ function Skills() {
           position: absolute;
           width: 10px;
           height: 10px;
-          background: rgba(212, 175, 55, 0.6);
+          background: rgba(59, 130, 246, 0.6);
           border-radius: 50%;
           top: 20%;
           left: 20%;
