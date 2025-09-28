@@ -46,19 +46,35 @@ const Projects = () => {
       codeLink: 'https://github.com/Choeng-Rayu/Rayu_Portfolio.git'
     },
     { 
-      title: 'Building a Telegram Bot', 
+      title: 'Building a Telegram Bot (Chat bot asistance)', 
       description: 'I created a free AI assistant on Telegram to help high school students learn math, especially function solving, in a simple and accessible way. This bot is designed to support students with topics like algebra, calculus, and graphing, offering clear solutions and explanations. Built using Python and the Telegram API, it includes useful features such as generating PDF reports and setting study reminders. The goal is to make learning math fun, stress-free, and available to everyone, anytime and anywhere.',
-      tags: ['DeepSeek API', 'Telegram API', 'Python', 'Webhook'],
+      tags: ['DeepSeek API', 'Telegram API', 'Python', 'Webhook', 'Hosting with Digital Ocean'],
       accentColor: '#7700ff',
       demoLink: 'https://t.me/rayumathbot',
       codeLink: 'https://github.com/Choeng-Rayu/MathBot_Python.git'
     },
     { 
-      title: 'Building a Telegram Bot', 
+      title: 'Building a Telegram Bot (Task Bot)', 
+      description: 'Building a Telegram Alarm bot that can set alarm and notify you at the time you set.',
+      tags: ['Telegram API', 'Node.js', 'Webhook', 'MongoDB', 'Digital Ocean'],
+      accentColor: '#7700ff',
+      demoLink: 'https://t.me/rayualarmbot',
+      codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
+    },
+    { 
+      title: 'Building Coffee ordering system (hybridcoffee.me)', 
       description: 'Building a Telegram Alarm bot that can set alarm and notify you at the time you set.',
       tags: ['Telegram API', 'Node.js', 'Webhook', 'MongoDB', 'render.com'],
       accentColor: '#7700ff',
       demoLink: 'https://t.me/rayualarmbot',
+      codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
+    },
+    { 
+      title: 'Full Stack Project (finwise.space)', 
+      description: 'wait',
+      tags: ['Confiiig Domain Name', 'Node.js (backend)','React (frontend)', 'Telegram Bot (Link account)', 'MySQL(aiven)', ' Hosting in VPS by Nginx'],
+      accentColor: '#7700ff',
+      demoLink: 'finwise.space',
       codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
     },
   ];

@@ -14,7 +14,7 @@ function Skills() {
     { name: 'Framer Motion', description: 'Added smooth animations for page transitions and effects.', icon: '✨' },
     { name: 'Responsive Design', description: 'Ensured the portfolio is mobile-friendly and adapts to all screen sizes.', icon: '📱' },
     { name: 'Git', description: 'Managed version control and collaboration using Git.', icon: '🔀' },
-    { name: 'Addintional Skills', description: 'Problem Solving, Ideate, Effective Communication, Critical Thinking, Working With teamates and using AI', icon: '🥷' },
+    { name: 'Addintional Skills', description: 'Problem Solving, Ideate, Effective Communication, Critical Thinking, Working With teamates, System Design and using AI', icon: '🥷' },
   ];
 
   useEffect(() => {

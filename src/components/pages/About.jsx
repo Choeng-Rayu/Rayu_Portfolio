@@ -163,7 +163,7 @@ function About() {
       <div className="timeline-item">
         <div className="timeline-content">
           <h4>Cambodia Academy of Digital Technology</h4>
-          <p className="degree">Bachelor's in Computer Science (currently year 2)</p>
+          <p className="degree">Bachelor's in Computer Science (currently year 3)</p>
           <p className="date">January 2024 – Present</p>
           <div className="description">
             <p>Specializing in Software Engineering with focus on:</p>

@@ -198,7 +198,7 @@
 
 
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 // import "./Chatbot.css"; // Assuming the CSS is in a separate file
 import "font-awesome/css/font-awesome.min.css";
@@ -209,7 +209,7 @@ const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([
     {
-      text: "👋 **Welcome to Rayu's Portfolio!**\n\nI'm your friendly assistant, ready to help with any questions about:\n\n🌐 **Web Development Services**\n💰 **Pricing & Quotes**\n⚛️ **React.js Expertise**\n📞 **Contact Information**\n🚀 **Project Examples**\n⏰ **Timelines & Process**\n\n💡 **Try asking:**\n• \"What services do you offer?\"\n• \"How much does a website cost?\"\n• \"Contact information\"\n• \"Tell me about your experience\"\n\nHow can I help you today? 😊",
+      text: "👋 Welcome to Rayu's portfolio! Ask me about services, pricing, React skills, contact info, projects, or timelines.\n\nTry: \"What services do you offer?\" or \"Website cost?\"",
       type: "bot"
     }
   ]);
@@ -251,7 +251,6 @@ const Chatbot = () => {
       ? { qrCode: textOrQrCode, type }
       : { text: textOrQrCode, type };
     setMessages((prevMessages) => [...prevMessages, message]);
-    scrollToBottom();
   };
 
   // Generate QR code using the qrcode library
@@ -271,149 +270,161 @@ const Chatbot = () => {
     // Greetings
     if (lowerMessage.includes("hello") || lowerMessage.includes("hi") || lowerMessage.includes("hey") || lowerMessage.includes("good morning") || lowerMessage.includes("good afternoon") || lowerMessage.includes("good evening")) {
       const greetings = [
-        "Hello there! 😊 Welcome to Rayu's portfolio! How can I help you today?",
-        "Hi! 👋 Great to see you here! What would you like to know about Rayu?",
-        "Hey! 🌟 I'm excited to help you learn more about Rayu's work!",
-        "Good to see you! 🎉 I'm here to answer any questions about Rayu's services and projects!"
+        "Hi there! � Keen to chat about Rayu's work?",
+        "Hello! 😊 What would you like to explore about Rayu?",
+        "Hey! 🌟 Ask me anything about the services or projects.",
+        "Great to see you! 🎉 How can I help today?"
       ];
       return greetings[Math.floor(Math.random() * greetings.length)];
     }
 
     // Web Development Services
     else if (lowerMessage.includes("web development") || lowerMessage.includes("website") || lowerMessage.includes("web design") || lowerMessage.includes("frontend") || lowerMessage.includes("backend")) {
-      return "🌐 **Web Development Services:**\n\n✨ **Frontend Development:**\n• React.js applications\n• Responsive design\n• Modern UI/UX\n• Interactive animations\n\n🔧 **Backend Development:**\n• API development\n• Database integration\n• Server setup\n\n💼 **Full-Stack Solutions:**\n• Complete web applications\n• E-commerce sites\n• Portfolio websites\n• Business websites\n\nWant to discuss your project? Let's connect! 🚀";
+  return "🌐 Web development: Frontend (React, responsive UI), Backend (APIs, databases), and full-stack builds like e-commerce or business sites. Want to chat about yours? 🚀";
     }
 
     // Technologies & Skills
     else if (lowerMessage.includes("skills") || lowerMessage.includes("technology") || lowerMessage.includes("tech stack") || lowerMessage.includes("programming") || lowerMessage.includes("languages")) {
-      return "💻 **Rayu's Technical Skills:**\n\n🎨 **Frontend:**\n• React.js & Next.js\n• JavaScript (ES6+)\n• HTML5 & CSS3\n• Tailwind CSS\n• Bootstrap\n• Framer Motion\n\n⚙️ **Backend:**\n• Node.js\n• Express.js\n• MongoDB\n• MySQL\n• RESTful APIs\n\n🛠️ **Tools & Others:**\n• Git & GitHub\n• VS Code\n• Figma\n• Responsive Design\n• Performance Optimization\n\nCheck the Skills section for more details! 📊";
+  return "💻 Skills snapshot: Frontend (React, Next, Tailwind), Backend (Node, Express, MongoDB, MySQL), plus Git, Figma, and performance-focused builds. Peek at the Skills section for more. 📊";
     }
 
     // React specific
     else if (lowerMessage.includes("react") || lowerMessage.includes("jsx") || lowerMessage.includes("component")) {
-      return "⚛️ **React Development Expertise:**\n\n🔥 **Specializations:**\n• Custom React components\n• State management (useState, useEffect)\n• React Hooks\n• Component lifecycle\n• Props and state handling\n• Event handling\n• Conditional rendering\n\n🎯 **React Projects:**\n• Interactive portfolios\n• Dynamic web applications\n• Real-time chat systems\n• E-commerce platforms\n\nNeed a React developer? Rayu's got you covered! 🚀";
+  return "⚛️ React focus: custom components, hooks, state handling, and polished UX. Projects include portfolios, real-time apps, and e-commerce builds. Need a React partner? 🚀";
     }
 
     // Pricing & Services
     else if (lowerMessage.includes("price") || lowerMessage.includes("cost") || lowerMessage.includes("rate") || lowerMessage.includes("budget") || lowerMessage.includes("quote") || lowerMessage.includes("estimate")) {
-      return "💰 **Pricing Information:**\n\n📋 **Service Types:**\n• Simple Landing Page: $200-500\n• Business Website: $500-1500\n• E-commerce Site: $1000-3000\n• Custom Web App: $1500-5000+\n\n⏱️ **Hourly Rate:** $25-50/hour\n\n🎁 **What's Included:**\n• Responsive design\n• SEO optimization\n• Performance optimization\n• 30 days support\n• Source code\n\n💬 **Custom Quote:** Every project is unique! Contact Rayu for a personalized quote based on your specific needs.\n\n📞 Ready to discuss? Let's talk!";
+  return "💰 Pricing snapshot: Landing pages $200-500, business sites $500-1500, e-commerce $1000-3000, custom apps $1500+. Hourly rate $25-50. Includes responsive, SEO, performance, 30-day support, and source code. Need a tailored quote? Let's talk.";
     }
 
     // Project Timeline
     else if (lowerMessage.includes("timeline") || lowerMessage.includes("how long") || lowerMessage.includes("duration") || lowerMessage.includes("delivery") || lowerMessage.includes("when")) {
-      return "⏰ **Project Timeline:**\n\n🚀 **Typical Delivery Times:**\n• Landing Page: 3-7 days\n• Business Website: 1-3 weeks\n• E-commerce Site: 2-6 weeks\n• Custom Web App: 4-12 weeks\n\n📅 **Process:**\n1. **Planning** (1-2 days)\n2. **Design** (2-5 days)\n3. **Development** (varies)\n4. **Testing** (1-3 days)\n5. **Deployment** (1 day)\n\n⚡ **Rush Jobs:** Available with 50% surcharge\n\n📞 Need it faster? Let's discuss your deadline!";
+  return "⏰ Timelines: landing pages 3-7 days, business sites 1-3 weeks, e-commerce 2-6 weeks, custom apps 4-12 weeks. Flow: plan → design → build → test → launch. Rush work available with a 50% uplift. Need a deadline estimate?";
     }
 
     // Process & Workflow
     else if (lowerMessage.includes("process") || lowerMessage.includes("workflow") || lowerMessage.includes("how do you work") || lowerMessage.includes("methodology")) {
-      return "🔄 **Development Process:**\n\n📋 **Step-by-Step:**\n1. **Discovery Call** - Understanding your needs\n2. **Proposal** - Detailed plan & quote\n3. **Design Phase** - Mockups & wireframes\n4. **Development** - Coding your solution\n5. **Testing** - Quality assurance\n6. **Launch** - Going live!\n7. **Support** - 30 days included\n\n💬 **Communication:**\n• Daily progress updates\n• Weekly milestone reviews\n• 24/7 availability via Telegram\n\n🔧 **Tools Used:**\n• GitHub for version control\n• Figma for design\n• Slack/Telegram for communication\n\nTransparent and professional! 🌟";
+  return "🔄 Process: discovery call, proposal, design, development, testing, launch, plus 30 days of support. Expect regular updates and quick replies on Telegram, GitHub for code, Figma for visuals."
     }
 
     // Support & Maintenance
     else if (lowerMessage.includes("support") || lowerMessage.includes("maintenance") || lowerMessage.includes("help") || lowerMessage.includes("assistance") || lowerMessage.includes("after delivery")) {
-      return "🤝 **Support & Maintenance:**\n\n✅ **Included Support (30 days):**\n• Bug fixes\n• Minor content updates\n• Performance optimization\n• Technical assistance\n\n🔧 **Extended Support Options:**\n• Monthly maintenance: $50-200/month\n• Content updates\n• Security updates\n• Feature additions\n• Performance monitoring\n\n📞 **24/7 Emergency Support:**\n• Critical bug fixes\n• Server issues\n• Security concerns\n\n💬 **How to Get Help:**\n• Telegram: @President_Alein\n• Email: choengrayu307@gmail.com\n• Phone: 096 998 3479\n\nYour success is my priority! 🌟";
+  return "🤝 Support: 30 days of bug fixes, minor tweaks, and performance help included. Ongoing care from $50-200/month covers updates, security, new features, and monitoring. Reach me anytime via Telegram @President_Alein, email choengrayu307@gmail.com, or phone 096 998 3479.";
     }
 
     // Contact Information
     else if (lowerMessage.includes("contact") || lowerMessage.includes("reach") || lowerMessage.includes("get in touch")) {
-      return "📞 **Contact Rayu:**\n\n🚀 **Quick Response:**\n💬 Telegram: @President_Alein\n🔗 https://t.me/Choeng_Rayu\n\n📧 **Email:**\nchoengrayu307@gmail.com\n\n📱 **Phone/WhatsApp:**\n+855 96 998 3479\n\n🌐 **Social Media:**\n💼 LinkedIn: https://www.linkedin.com/in/rayu-choeng-351243335/\n📘 Facebook: Rayu Choeng\n\n⚡ **Best Response Time:**\nTelegram (within 1 hour) > Email (within 24 hours)\n\nLet's build something amazing together! 🚀";
+  return "📞 Contact options: Telegram @President_Alein (fastest) or https://t.me/Choeng_Rayu, email choengrayu307@gmail.com, phone/WhatsApp +855 96 998 3479. Also on LinkedIn and Facebook. Telegram usually replies within an hour.";
     }
 
     // Specific contact methods
     else if (lowerMessage.includes("email")) {
-      return "📧 **Email Contact:**\n\n✉️ **Primary Email:**\nchoengrayu307@gmail.com\n\n📝 **What to Include:**\n• Project description\n• Timeline requirements\n• Budget range\n• Reference websites (if any)\n\n⏱️ **Response Time:** Within 24 hours\n\n💡 **Tip:** For faster response, try Telegram! 💬\n\nOr click the contact button in the header! ✨";
+  return "📧 Email: choengrayu307@gmail.com. Share your project, timeline, budget, and references for a quick reply (usually within 24 hours). Telegram is still the fastest route.";
     }
 
     else if (lowerMessage.includes("phone") || lowerMessage.includes("call") || lowerMessage.includes("លេខទូរស័ព្ទ")) {
-      return "📱 **Phone Contact:**\n\n☎️ **Phone Number:**\n+855 96 998 3479\n\n💬 **Also Available on:**\n• WhatsApp\n• Telegram\n• Voice calls\n• Video calls\n\n🕐 **Best Calling Hours:**\n• Monday-Friday: 8 AM - 8 PM (GMT+7)\n• Saturday: 9 AM - 6 PM\n• Sunday: Emergency only\n\n💡 **Prefer messaging first?** Send a quick message on Telegram! 🚀";
+  return "📱 Phone/WhatsApp: +855 96 998 3479. Available for voice or video, mainly 8 AM-8 PM GMT+7 (weekends lighter). Prefer a ping on Telegram first.";
     }
 
     else if (lowerMessage.includes("telegram")) {
-      return "💬 **Telegram Contact:**\n\n🚀 **Username:** @President_Alein\n🔗 **Direct Link:** https://t.me/Choeng_Rayu\n\n⚡ **Why Telegram?**\n• Fastest response (usually within 1 hour)\n• File sharing capabilities\n• Voice messages\n• Screen sharing for demos\n• Available 24/7\n\n📱 **Features:**\n• Send project files\n• Quick voice notes\n• Real-time updates\n• Secure messaging\n\nPreferred communication method! 🌟";
+  return "💬 Telegram: @President_Alein or https://t.me/Choeng_Rayu. Fast replies, easy file sharing, and perfect for quick voice notes or demos.";
     }
 
     else if (lowerMessage.includes("whatsapp")) {
-      return "📱 **WhatsApp Contact:**\n\n💚 **Number:** +855 96 998 3479\n\n✨ **Perfect For:**\n• Quick questions\n• Voice messages\n• File sharing\n• Video calls\n• Project updates\n\n🕐 **Response Time:**\n• Business hours: Within 2 hours\n• After hours: Next business day\n\n💡 **Pro Tip:** Save the number and send a message introducing your project! 🚀";
+  return "📱 WhatsApp: +855 96 998 3479 for quick questions, voice notes, and updates. Expect replies within a couple of hours during business time.";
     }
 
     // Social Media
     else if (lowerMessage.includes("linkedin")) {
-      return "💼 **LinkedIn Profile:**\n\n🔗 **Connect Here:**\nhttps://www.linkedin.com/in/rayu-choeng-351243335/\n\n🌟 **What You'll Find:**\n• Professional experience\n• Project showcases\n• Client testimonials\n• Industry insights\n• Networking opportunities\n\n💡 **Great For:**\n• Professional networking\n• Business inquiries\n• Career discussions\n• Industry connections\n\nLet's connect professionally! 🤝";
+  return "💼 LinkedIn: https://www.linkedin.com/in/rayu-choeng-351243335/ for experience highlights, projects, and testimonials. Feel free to connect.";
     }
 
     else if (lowerMessage.includes("facebook")) {
-      return "📘 **Facebook Profile:**\n\n👤 **Name:** Rayu Choeng\n🔗 **Profile:** https://web.facebook.com/choeng.rayu.5\n\n📱 **Also Available:**\n• Facebook Messenger\n• Posts about projects\n• Behind-the-scenes content\n• Community updates\n\n💬 **Messenger Response:** Within 24 hours\n\nStay connected! ✨";
+  return "📘 Facebook: Rayu Choeng (https://web.facebook.com/choeng.rayu.5) if you prefer Messenger or want project updates.";
     }
 
     else if (lowerMessage.includes("instagram")) {
-      return "📸 **Instagram Update:**\n\n🚧 **Coming Soon!** Instagram account is in development\n\n📱 **What to Expect:**\n• Project showcases\n• Development process\n• Behind-the-scenes content\n• Tips & tutorials\n• Client success stories\n\n💬 **For Now, Use:**\n• Telegram (fastest)\n• Email\n• LinkedIn\n• Facebook\n\nThanks for your patience! 😊";
+  return "📸 Instagram is in the works—use Telegram, email, LinkedIn, or Facebook for now. Thanks for sticking around!";
     }
 
     // Projects & Portfolio
     else if (lowerMessage.includes("project") || lowerMessage.includes("work") || lowerMessage.includes("portfolio") || lowerMessage.includes("example") || lowerMessage.includes("showcase")) {
-      return "🚀 **Rayu's Projects & Portfolio:**\n\n💼 **Featured Projects:**\n• Interactive Portfolio Website\n• E-commerce Platform\n• Real-time Chat Application\n• Business Landing Pages\n• Custom Web Applications\n\n🎯 **Project Types:**\n• Personal portfolios\n• Business websites\n• E-commerce stores\n• Web applications\n• Landing pages\n• Blogs & CMS\n\n🔍 **Check Out:**\n• Projects section on this website\n• GitHub repositories\n• Live demos available\n\n💡 **Want to see specific examples?** Ask about any project type! ✨";
+  return "🚀 Projects include portfolio sites, e-commerce builds, real-time chats, landing pages, and full web apps. Browse the Projects section or ask for a specific example.";
     }
 
     // Experience & Background
     else if (lowerMessage.includes("experience") || lowerMessage.includes("background") || lowerMessage.includes("about") || lowerMessage.includes("who are you") || lowerMessage.includes("tell me about")) {
-      return "👨‍💻 **About Rayu:**\n\n🎓 **Background:**\n• Passionate web developer\n• Freelance professional\n• Modern technology enthusiast\n• Problem-solving focused\n\n💪 **Experience:**\n• 2+ years in web development\n• 50+ successful projects\n• Happy clients worldwide\n• Continuous learning mindset\n\n🌟 **Specialties:**\n• React.js development\n• Responsive design\n• User experience (UX)\n• Performance optimization\n• Client communication\n\n🎯 **Mission:** Creating amazing web experiences that help businesses grow! 🚀";
+  return "👨‍💻 About Rayu: freelance web dev with 2+ years' experience, 50+ shipped projects, and a focus on React, responsive UX, performance, and clear client communication.";
     }
 
     // Technologies Deep Dive
     else if (lowerMessage.includes("javascript") || lowerMessage.includes("js")) {
-      return "🟨 **JavaScript Expertise:**\n\n⚡ **Modern JavaScript (ES6+):**\n• Arrow functions\n• Destructuring\n• Async/await\n• Promises\n• Modules\n• Template literals\n\n🔧 **Frameworks & Libraries:**\n• React.js (primary)\n• Node.js\n• Express.js\n• jQuery (when needed)\n\n🎯 **Applications:**\n• Interactive web apps\n• API integrations\n• Real-time features\n• Dynamic content\n• Form validations\n\nJavaScript powers the modern web! 🌐";
+  return "🟨 JavaScript: modern ES6+ practices, strong with React, Node, and Express for interactive, real-time, API-driven apps.";
     }
 
     else if (lowerMessage.includes("css") || lowerMessage.includes("styling") || lowerMessage.includes("design")) {
-      return "🎨 **CSS & Design Skills:**\n\n✨ **CSS Technologies:**\n• CSS3 & Flexbox\n• CSS Grid\n• Animations & Transitions\n• Responsive design\n• Mobile-first approach\n\n🎯 **Frameworks:**\n• Tailwind CSS\n• Bootstrap\n• Material-UI\n• Styled Components\n\n🖌️ **Design Principles:**\n• User-centered design\n• Accessibility (WCAG)\n• Performance optimization\n• Cross-browser compatibility\n\nBeautiful and functional designs! 🌟";
+  return "🎨 CSS: fluent with Flexbox, Grid, animations, responsive design, and tooling like Tailwind, Bootstrap, and Styled Components—always aiming for accessible, fast UI.";
     }
 
     // Business & Freelancing
     else if (lowerMessage.includes("freelance") || lowerMessage.includes("business") || lowerMessage.includes("why choose") || lowerMessage.includes("advantage")) {
-      return "💼 **Why Choose Rayu?**\n\n🌟 **Advantages:**\n• Direct communication (no middleman)\n• Competitive pricing\n• Fast turnaround times\n• Personalized service\n• 100% satisfaction guarantee\n\n🤝 **Client Benefits:**\n• Dedicated developer\n• Flexible working hours\n• Regular updates\n• Post-launch support\n• Long-term partnership\n\n📈 **Success Metrics:**\n• 98% client satisfaction\n• 100% on-time delivery\n• 50+ completed projects\n• 24/7 availability\n\nYour success is my success! 🚀";
+  return "💼 Why choose Rayu? Direct access to the developer, fair pricing, fast delivery, regular updates, and long-term support—backed by 50+ on-time projects.";
     }
 
     // Learning & Growth
     else if (lowerMessage.includes("learn") || lowerMessage.includes("tutorial") || lowerMessage.includes("teach") || lowerMessage.includes("course")) {
-      return "📚 **Learning & Teaching:**\n\n🎓 **Available Services:**\n• One-on-one mentoring\n• Code reviews\n• Technical consultations\n• Best practices guidance\n• Career advice\n\n💡 **Topics Covered:**\n• Web development basics\n• React.js fundamentals\n• JavaScript concepts\n• Project planning\n• Freelancing tips\n\n⏰ **Mentoring Rates:**\n• $30/hour for 1-on-1 sessions\n• Group sessions available\n• Custom learning plans\n\nLet's grow together! 🌱";
+  return "📚 Mentoring offered: 1-on-1 coaching, code reviews, and project planning around web dev, React, JS, and freelancing. Starts around $30/hour.";
     }
 
     // Emergency & Urgent
     else if (lowerMessage.includes("urgent") || lowerMessage.includes("emergency") || lowerMessage.includes("asap") || lowerMessage.includes("rush") || lowerMessage.includes("immediately")) {
-      return "🚨 **Urgent Project Support:**\n\n⚡ **Emergency Services:**\n• 24/7 availability\n• Same-day fixes\n• Rush project delivery\n• Critical bug resolution\n\n💰 **Rush Pricing:**\n• 50% surcharge for urgent work\n• Same-day delivery: +100%\n• Weekend work: +25%\n\n📞 **Immediate Contact:**\n• Telegram: @President_Alein (fastest)\n• Phone: +855 96 998 3479\n• WhatsApp: Same number\n\n⏱️ **Response Time:** Within 30 minutes for emergencies\n\nI've got your back! 🛡️";
+  return "🚨 Need urgent help? I'm available for rush fixes, same-day turnarounds, and critical bugs. Expect surcharges (≈50%+). Ping Telegram @President_Alein or call/WhatsApp +855 96 998 3479 for the fastest response.";
     }
 
     // Payment & Terms
     else if (lowerMessage.includes("payment") || lowerMessage.includes("pay") || lowerMessage.includes("invoice") || lowerMessage.includes("terms")) {
-      return "💳 **Payment Information:**\n\n💰 **Payment Methods:**\n• Bank transfer\n• PayPal\n• Wise (Transferwise)\n• Cryptocurrency (Bitcoin, USDT)\n• Local payment methods\n\n📋 **Payment Terms:**\n• 50% upfront for projects >$500\n• 25% upfront for smaller projects\n• Final payment on completion\n• Net 7 days for invoices\n\n🔒 **Security:**\n• Secure payment processing\n• Invoice-based billing\n• Payment protection\n• Refund policy available\n\nFlexible and secure! 💪";
+  return "💳 Payments: bank transfer, PayPal, Wise, crypto, or local methods. Typically 50% upfront for bigger projects (25% for smaller) and the rest on delivery, with net 7 invoicing.";
     }
 
     // Testimonials & Reviews
     else if (lowerMessage.includes("review") || lowerMessage.includes("testimonial") || lowerMessage.includes("feedback") || lowerMessage.includes("client") || lowerMessage.includes("reference")) {
-      return "⭐ **Client Testimonials:**\n\n🌟 **Recent Feedback:**\n\"Excellent work and communication!\" - Sarah M.\n\"Delivered exactly what we needed, on time!\" - John D.\n\"Professional and skilled developer\" - Mike R.\n\n📊 **Ratings:**\n• Quality: ⭐⭐⭐⭐⭐ (5/5)\n• Communication: ⭐⭐⭐⭐⭐ (5/5)\n• Timeliness: ⭐⭐⭐⭐⭐ (5/5)\n• Value: ⭐⭐⭐⭐⭐ (5/5)\n\n💼 **References Available:**\n• Previous client contacts\n• Project case studies\n• Live project demos\n\nYour satisfaction guaranteed! 🎯";
+  return "⭐ Clients highlight the communication, on-time delivery, and final polish. References and demos are available if you'd like proof.";
     }
 
     // Common Greetings & Politeness
     else if (lowerMessage.includes("thank") || lowerMessage.includes("thanks") || lowerMessage.includes("appreciate")) {
-      return "😊 **You're Very Welcome!**\n\n🙏 Thank you for your interest in Rayu's services!\n\n💡 **Need More Help?**\n• Ask about specific services\n• Request a project quote\n• Schedule a consultation\n• Get technical advice\n\n📞 **Ready to Start?**\nLet's discuss your project! Contact Rayu anytime.\n\nHappy to help! ✨";
+  return "😊 Happy to help! If you need more details, feel free to ask for service info, timelines, or a quote.";
     }
 
     else if (lowerMessage.includes("bye") || lowerMessage.includes("goodbye") || lowerMessage.includes("see you") || lowerMessage.includes("talk later")) {
-      return "👋 **Goodbye & Thank You!**\n\n🌟 Thanks for visiting Rayu's portfolio!\n\n📞 **Before You Go:**\n• Save contact information\n• Follow on social media\n• Bookmark this website\n• Share with friends who need web development\n\n💬 **Remember:**\nI'm always here to help with your web development needs!\n\nHave a wonderful day! 🌈";
+  return "👋 Thanks for visiting! Save the contact info and reach out anytime you need web help.";
     }
 
     // Default response with helpful suggestions
     else {
-      return "🤔 **I'd love to help you with that!**\n\n💡 **Popular Questions:**\n• \"What services do you offer?\"\n• \"How much does a website cost?\"\n• \"What's your experience with React?\"\n• \"How long does a project take?\"\n• \"Can you help with urgent projects?\"\n• \"What's included in your support?\"\n\n📞 **Quick Actions:**\n• Type \"contact\" for all contact info\n• Type \"pricing\" for service costs\n• Type \"skills\" for technical abilities\n• Type \"process\" for how I work\n\n💬 **Or ask me anything specific about web development!**\n\nI'm here to help! 🚀";
+  return "🤔 I'm ready to help—ask about services, pricing, skills, timelines, urgent work, or support. Type keywords like \"contact\", \"pricing\", or \"skills\" to jump straight in.";
     }
   };
 
   // Scroll to the bottom of the messages div
-  const scrollToBottom = () => {
-    if (messagesRef.current) {
-      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+  const scrollToBottom = (smooth = true) => {
+    if (!messagesRef.current) return;
+
+    const behavior = smooth ? "smooth" : "auto";
+    const node = messagesRef.current;
+
+    if (typeof node.scrollTo === "function") {
+      node.scrollTo({ top: node.scrollHeight, behavior });
+    } else {
+      node.scrollTop = node.scrollHeight;
     }
   };
+
+  useEffect(() => {
+    if (!isChatOpen) return;
+    scrollToBottom(messages.length > 1);
+  }, [messages, isChatOpen]);
 
   // JSX structure
     return (
