@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/hacker-svgrepo-com.svg" />
+    <link rel="icon" type="image/png" href="/rayu-logo.png" />
+    <link rel="apple-touch-icon" href="/rayu-logo.png" />
+    <link rel="shortcut icon" type="image/png" href="/rayu-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Google Site Verification -->
@@ -22,8 +24,12 @@
     <meta property="og:url" content="https://rayu-choeng.tech" />
     <meta property="og:title" content="Rayu | Full Stack Developer - Rayu Choeng Portfolio" />
     <meta property="og:description" content="Rayu (Choeng Rayu) - Professional full-stack developer and software engineer. Explore Rayu's innovative web development projects and cutting-edge software solutions." />
-    <meta property="og:image" content="https://rayu-choeng.tech/src/assets/RayuProfile.jpg" />
-    <meta property="og:image:alt" content="Rayu Choeng Profile Picture" />
+    <meta property="og:image" content="https://rayu-choeng.tech/rayu-profile.jpg" />
+    <meta property="og:image:secure_url" content="https://rayu-choeng.tech/rayu-profile.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="1200" />
+    <meta property="og:image:alt" content="Rayu Choeng - Full Stack Developer Profile Picture" />
     <meta property="og:site_name" content="Rayu Choeng Portfolio" />
     
     <!-- Twitter -->
@@ -31,17 +37,19 @@
     <meta property="twitter:url" content="https://rayu-choeng.tech" />
     <meta property="twitter:title" content="Rayu | Full Stack Developer - Rayu Choeng Portfolio" />
     <meta property="twitter:description" content="Rayu (Choeng Rayu) - Professional full-stack developer and software engineer. Explore Rayu's innovative web development projects and software solutions." />
-    <meta property="twitter:image" content="https://rayu-choeng.tech/src/assets/RayuProfile.jpg" />
+    <meta property="twitter:image" content="https://rayu-choeng.tech/rayu-profile.jpg" />
+    <meta property="twitter:image:alt" content="Rayu Choeng - Full Stack Developer Profile Picture" />
     
     <!-- Additional SEO Tags -->
     <meta name="theme-color" content="#000000" />
     <meta name="msapplication-TileColor" content="#000000" />
     
-    <!-- Structured Data -->
+    <!-- Structured Data - Person Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://rayu-choeng.tech/#person",
       "name": "Rayu Choeng",
       "alternateName": ["Rayu", "Choeng Rayu", "Rayu Tech"],
       "givenName": "Rayu",
@@ -51,11 +59,67 @@
       "jobTitle": "Full Stack Developer",
       "description": "Rayu is a Full Stack Developer and Software Engineer specializing in modern web technologies, React, JavaScript, and Node.js. Rayu creates innovative web solutions and software applications.",
       "knowsAbout": ["Web Development", "Full Stack Development", "React", "JavaScript", "Node.js", "Software Engineering", "Frontend Development", "Backend Development"],
-      "image": "https://rayu-choeng.tech/src/assets/RayuProfile.jpg",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rayu-choeng.tech/rayu-profile.jpg",
+        "width": 1200,
+        "height": 1200,
+        "caption": "Rayu Choeng - Full Stack Developer"
+      },
       "sameAs": [
         "https://github.com/Choeng-Rayu",
         "https://rayu-choeng.tech"
       ]
+    }
+    </script>
+    
+    <!-- Structured Data - Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://rayu-choeng.tech/#organization",
+      "name": "Rayu Choeng",
+      "alternateName": "Rayu",
+      "url": "https://rayu-choeng.tech",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rayu-choeng.tech/rayu-logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Rayu Logo"
+      },
+      "image": "https://rayu-choeng.tech/rayu-profile.jpg",
+      "description": "Professional portfolio of Rayu, a Full Stack Developer and Software Engineer",
+      "founder": {
+        "@id": "https://rayu-choeng.tech/#person"
+      },
+      "sameAs": [
+        "https://github.com/Choeng-Rayu"
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data - WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://rayu-choeng.tech/#website",
+      "url": "https://rayu-choeng.tech",
+      "name": "Rayu | Full Stack Developer Portfolio",
+      "description": "Rayu (Choeng Rayu) - Professional full-stack developer and software engineer portfolio",
+      "publisher": {
+        "@id": "https://rayu-choeng.tech/#person"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://rayu-choeng.tech?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
   </head>
