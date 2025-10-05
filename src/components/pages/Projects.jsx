@@ -66,16 +66,16 @@ const Projects = () => {
       description: 'Building a Telegram Alarm bot that can set alarm and notify you at the time you set.',
       tags: ['Telegram API', 'Node.js', 'Webhook', 'MongoDB', 'render.com'],
       accentColor: '#7700ff',
-      demoLink: 'https://t.me/rayualarmbot',
-      codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
+      demoLink: 'https://hybridcoffee.me/',
+      codeLink: 'https://github.com/Choeng-Rayu/CoffeeHybrid-Year2.git'
     },
     { 
       title: 'Full Stack Project (finwise.space)', 
-      description: 'wait',
+      description: 'Finwise.space is a smart financial management platform that helps users track income, expenses, and savings efficiently. It supports multi-bank data import, analytics for spending insights, and budget monitoring. Finwise aims to simplify money management through responsive design, multi-currency support, and AI-powered financial guidance for individuals and small businesses.',
       tags: ['Confiiig Domain Name', 'Node.js (backend)','React (frontend)', 'Telegram Bot (Link account)', 'MySQL(aiven)', ' Hosting in VPS by Nginx'],
       accentColor: '#7700ff',
-      demoLink: 'finwise.space',
-      codeLink: 'https://github.com/Choeng-Rayu/AlarmBot.git'
+      demoLink: 'https://finwise.space',
+      codeLink: 'https://github.com/Choeng-Rayu/Finwise2.git'
     },
   ];
   
