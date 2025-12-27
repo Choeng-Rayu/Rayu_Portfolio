@@ -1,0 +1,284 @@
+/* ==========================================
+   MOBILE OPTIMIZATION STYLES
+   Clean, smooth experience for phone screens
+   ========================================== */
+
+/* Hide unnecessary elements on mobile */
+@media (max-width: 768px) {
+  /* Hide heavy visual effects on mobile */
+  .pointer-effect,
+  #pointer-effect,
+  .splash-cursor,
+  .performance-monitor {
+    display: none !important;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize body for mobile */
+  body {
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Reduce padding on main containers */
+  .app {
+    padding: 0;
+  }
+
+  /* Welcome message mobile optimization */
+  .welcome-message {
+    bottom: 20px !important;
+    left: 10px !important;
+    right: 10px !important;
+    transform: none !important;
+    padding: 1rem 1.5rem !important;
+    margin: 0 !important;
+    width: auto !important;
+    font-size: 0.9rem;
+  }
+
+  .welcome-message h1 {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.5rem;
+  }
+
+  .welcome-message p {
+    font-size: 0.85rem !important;
+    line-height: 1.4;
+  }
+
+  /* Section spacing */
+  section {
+    padding: 40px 15px !important;
+  }
+
+  /* Typography adjustments */
+  h1 { font-size: 1.8rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.2rem !important; }
+  h4 { font-size: 1rem !important; }
+  
+  p {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Buttons mobile styling */
+  button, .cv-button {
+    padding: 10px 20px !important;
+    font-size: 0.9rem !important;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  /* Grid layouts - single column on mobile */
+  .expertise-grid,
+  .skills-container,
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+  }
+
+  /* Timeline mobile optimization */
+  .timeline-container {
+    gap: 20px !important;
+  }
+
+  .timeline {
+    padding-left: 20px !important;
+  }
+
+  .timeline-item::before {
+    left: -29px !important;
+    width: 14px !important;
+    height: 14px !important;
+  }
+
+  .timeline-content {
+    padding: 15px !important;
+  }
+
+  /* Cards mobile styling */
+  .skill-item,
+  .project-card,
+  .expertise-item {
+    padding: 20px !important;
+  }
+
+  /* Contact form mobile */
+  .contact-container {
+    padding: 20px !important;
+    margin: 10px !important;
+  }
+
+  .contact-form {
+    gap: 15px !important;
+  }
+
+  input, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 12px !important;
+  }
+
+  /* Footer mobile */
+  .footer-container {
+    padding: 40px 15px 20px !important;
+  }
+
+  .social-links {
+    gap: 10px !important;
+  }
+
+  .social-link {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  /* ChatBot mobile positioning */
+  .bot-icon {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 10px !important;
+    left: 10px !important;
+  }
+
+  .chat-window {
+    width: calc(100vw - 30px) !important;
+    max-width: 320px !important;
+    left: 10px !important;
+    bottom: 70px !important;
+  }
+
+  /* Profile card mobile */
+  .new-profile-card {
+    max-width: 100% !important;
+    margin: 0 10px !important;
+  }
+
+  .avatar-container {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .user-name {
+    font-size: 1.4rem !important;
+  }
+
+  /* Reduce animations on mobile for performance */
+  .gradient-orb,
+  .skill-orb,
+  .skill-particles,
+  .card-glow {
+    display: none !important;
+  }
+
+  /* Simplify hover effects - disable on touch */
+  .project-card:hover,
+  .skill-item:hover,
+  .expertise-item:hover {
+    transform: none !important;
+  }
+}
+
+/* Extra small screens (< 480px) */
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.3rem !important; }
+  h3 { font-size: 1.1rem !important; }
+
+  .welcome-message {
+    padding: 0.8rem 1rem !important;
+  }
+
+  .welcome-message h1 {
+    font-size: 1.1rem !important;
+  }
+
+  section {
+    padding: 30px 12px !important;
+  }
+
+  .about-container {
+    gap: 20px !important;
+  }
+
+  .about-content p {
+    font-size: 0.9rem !important;
+    text-align: left !important;
+  }
+
+  /* Smaller buttons */
+  button, .cv-button {
+    padding: 8px 16px !important;
+    font-size: 0.85rem !important;
+  }
+
+  /* Footer extra small */
+  .brand-logo {
+    font-size: 1.4rem !important;
+    flex-direction: column !important;
+  }
+
+  .social-link {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .social-icon {
+    font-size: 1.2rem !important;
+  }
+
+  .social-name {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* Performance optimizations */
+@media (max-width: 768px) {
+  /* Reduce backdrop blur for performance */
+  .welcome-message,
+  .contact-container,
+  .new-profile-card,
+  .skill-item,
+  .project-card {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  /* Reduce box shadows */
+  * {
+    box-shadow: none !important;
+  }
+
+  .new-profile-card,
+  .project-card,
+  .contact-container {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Disable hover states on touch devices */
+  .project-card:hover,
+  .skill-item:hover,
+  .expertise-item:hover,
+  .social-link:hover,
+  .nav-link:hover {
+    transform: none !important;
+  }
+
+  /* Increase touch targets */
+  .nav-link,
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+

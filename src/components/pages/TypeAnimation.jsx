@@ -8,7 +8,7 @@ const TextAnimation = ({
   backSpeed = 30,
   loop = true,
   showCursor = true,
-  cursorChar = '|',
+  cursorChar = '$',
   className = '',
   motionProps = {
     initial: { opacity: 0, y: 20 },

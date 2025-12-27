@@ -13,6 +13,15 @@
   --icon: none;
   --behind-gradient: none;
   --inner-gradient: none;
+  /* ENHANCED COLORS - COMMENTED OUT
+  --sunpillar-1: hsl(320, 100%, 65%);   Vibrant Hot Pink
+  --sunpillar-2: hsl(280, 95%, 65%);    Rich Purple
+  --sunpillar-3: hsl(240, 100%, 65%);   Bright Blue
+  --sunpillar-4: hsl(200, 100%, 55%);   Vivid Cyan
+  --sunpillar-5: hsl(160, 100%, 45%);   Emerald Green
+  --sunpillar-6: hsl(45, 100%, 60%);    Golden Yellow
+  */
+  /* ORIGINAL COLORS */
   --sunpillar-1: hsl(320, 100%, 75%);   /* Hot pink */
   --sunpillar-2: hsl(280, 100%, 80%);   /* Purple */
   --sunpillar-3: hsl(240, 100%, 75%);   /* Blue */

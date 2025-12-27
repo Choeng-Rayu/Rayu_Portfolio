@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaReact, FaBars, FaTimes, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import TextAnimation from './TypeAnimation';
+import AsciiTyping from './AsciiTyping';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 function Header() {
@@ -67,14 +68,11 @@ function Header() {
             <FaReact className="react-icon" />
           </motion.div>
           <div className="logo-text">
-            <motion.span
-              className="name"
-              initial={{ x: -20, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              CHOENG RAYU
-            </motion.span>
+            <AsciiTyping 
+              className="ascii-name"
+              typeSpeed={10}
+              pauseAfterComplete={2000}
+            />
             <motion.span
               className="title"
               initial={{ x: -20, opacity: 0 }}
@@ -83,9 +81,16 @@ function Header() {
             >
               <TextAnimation
                 strings={[
-                  "Welcome!",
-                  'I know you are ',
-                  'Visiting my portfolio',
+                  // "Welcome!",
+                  // 'I know you are ',
+                  // 'Visiting my portfolio',
+                  // AsciiTyping,
+                  // AsciiTyping
+                  // <AsciiTyping 
+                  //   className="ascii-welcome"
+                  //   typeSpeed={15}
+                  //   pauseAfterComplete={2000}
+                  // />
                 ]}
                 typeSpeed={40}
                 backSpeed={20}
@@ -257,6 +262,22 @@ function Header() {
         .logo-text {
           display: flex;
           flex-direction: column;
+        }
+
+        .ascii-name {
+          margin-bottom: 0.5rem;
+        }
+
+        .ascii-name pre {
+          font-family: 'Courier New', Courier, monospace !important;
+          font-size: 8px !important;
+          line-height: 1 !important;
+          color: #d4af37 !important;
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          white-space: pre;
+          overflow: visible;
         }
 
         .name {
@@ -442,6 +463,10 @@ function Header() {
             padding: 0.8rem 1.5rem;
           }
 
+          .ascii-name pre {
+            font-size: 5px !important;
+          }
+
           .name {
             font-size: 1.2rem;
           }
@@ -458,6 +483,10 @@ function Header() {
 
           .react-icon {
             font-size: 1.8rem;
+          }
+
+          .ascii-name pre {
+            font-size: 4px !important;
           }
 
           .mobile-nav {

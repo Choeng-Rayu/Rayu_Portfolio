@@ -1,120 +1,281 @@
-# 3D Frontend Experience
+# 👋 Hi, I'm **Rayu Choeng**
 
-A modern, interactive 3D website built with React, Three.js, and React Three Fiber. This project demonstrates advanced 3D web development techniques including interactive objects, particle systems, dynamic lighting, and responsive design.
-
-## 🚀 Features
-
-- **Interactive 3D Objects**: Click and hover on cubes, spheres, and torus shapes
-- **Particle System**: Dynamic floating particles with color variations
-- **Advanced Lighting**: Multiple light sources with shadows
-- **Smooth Animations**: Spring-based animations using React Spring
-- **Performance Monitoring**: Real-time FPS and memory usage tracking
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Modern UI**: Glass-morphism design with smooth transitions
-
-## 🛠️ Technologies Used
-
-- **React 19** - Modern React with hooks
-- **Vite** - Fast build tool and development server
-- **Three.js** - 3D graphics library
-- **React Three Fiber** - React renderer for Three.js
-- **React Three Drei** - Useful helpers for React Three Fiber
-- **React Spring** - Spring-physics based animations
-
-## 📦 Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd 3DFrontend
+<div align="center">
+  
+```ascii
+██████╗  █████╗ ██╗   ██╗██╗   ██╗     ██████╗██╗  ██╗ ██████╗ ███████╗███╗   ██╗ ██████╗ 
+██╔══██╗██╔══██╗╚██╗ ██╔╝██║   ██║    ██╔════╝██║  ██║██╔═══██╗██╔════╝████╗  ██║██╔════╝ 
+██████╔╝███████║ ╚████╔╝ ██║   ██║    ██║     ███████║██║   ██║█████╗  ██╔██╗ ██║██║  ███╗
+██╔══██╗██╔══██║  ╚██╔╝  ██║   ██║    ██║     ██╔══██║██║   ██║██╔══╝  ██║╚██╗██║██║   ██║
+██║  ██║██║  ██║   ██║   ╚██████╔╝    ╚██████╗██║  ██║╚██████╔╝███████╗██║ ╚████║╚██████╔╝
+╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝      ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═══╝ ╚═════╝ 
 ```
 
-2. Install dependencies:
-```bash
-npm install
+### 💻 Software Engineering Student | 🚀 Tech Builder | 🇰🇭 Cambodia
+
+[![Location](https://img.shields.io/badge/Location-Cambodia-red?style=for-the-badge&logo=google-maps)](https://www.google.com/maps/place/Cambodia)
+[![University](https://img.shields.io/badge/University-CADT-blue?style=for-the-badge&logo=graduation-cap)](https://cadt.edu.kh)
+[![Year](https://img.shields.io/badge/Year-3-green?style=for-the-badge)]()
+[![Status](https://img.shields.io/badge/Status-Open_to_Internships-brightgreen?style=for-the-badge)]()
+
+</div>
+
+---
+
+## 🎯 Mission Statement
+
+```javascript
+const rayu = {
+    mission: "Turning real-life problems into practical digital solutions",
+    mindset: "I don't just learn technology — I apply it",
+    philosophy: "Consistency beats talent. Impact beats theory."
+};
 ```
 
-3. Start the development server:
-```bash
-npm run dev
-```
+---
 
-4. Open your browser and navigate to `http://localhost:5173` (or the port shown in terminal)
+## 🌱 About Me
 
-## 🎮 Controls
-
-- **Mouse**: Rotate the camera around the scene
-- **Scroll**: Zoom in and out
-- **Right-click + Drag**: Pan the camera
-- **Click Objects**: Interact with 3D objects (cubes, spheres, torus)
-- **Info Panel**: Click the info button (ℹ) on the right to see detailed controls
-- **Performance Monitor**: Click the chart icon (📊) on the left to view performance stats
-
-## 🏗️ Project Structure
-
-```
-src/
-├── components/
-│   ├── 3d/
-│   │   ├── Cube.jsx          # Interactive rotating cube
-│   │   ├── Sphere.jsx        # Floating sphere with animations
-│   │   ├── Torus.jsx         # Interactive torus shape
-│   │   ├── Particles.jsx     # Particle system
-│   │   └── Lighting.jsx      # Scene lighting setup
-│   ├── ui/
-│   │   ├── Navigation.jsx    # Top navigation bar
-│   │   ├── InfoPanel.jsx     # Information sidebar
-│   │   └── PerformanceMonitor.jsx # Performance tracking
-│   └── Scene3D.jsx           # Main 3D scene component
-├── App.jsx                   # Main application component
-├── App.css                   # Application styles
-└── index.css                 # Global styles
-```
-
-## 🎨 Customization
-
-### Adding New 3D Objects
-
-1. Create a new component in `src/components/3d/`
-2. Import and add it to `Scene3D.jsx`
-3. Use React Three Fiber's mesh components and Three.js geometries
-
-### Modifying Animations
-
-- Edit spring configurations in individual components
-- Adjust `useFrame` callbacks for custom animations
-- Modify particle behavior in `Particles.jsx`
-
-### Styling
-
-- Update CSS custom properties in `index.css` for theme changes
-- Modify component-specific styles in their respective CSS files
-
-## 🚀 Building for Production
+> **Hands-on software engineering student** driven by curiosity, discipline, and purpose.  
+> Coming from a financially challenged family, I see **education and technology as tools for change** — not just for myself, but for my community.
 
 ```bash
-npm run build
+$ whoami
+└─> Rayu Choeng
+
+$ cat profile.txt
+├─ 🔍 Curious about how systems work and how to improve them
+├─ 🛠️ Love building real, usable software
+├─ 🌍 Focused on local impact with scalable ideas
+└─ 🤝 Active in volunteering, events, and youth development
 ```
 
-The built files will be in the `dist/` directory, ready for deployment.
+---
 
-## 📱 Browser Support
+## 🧠 Core Interests
 
-- Chrome 80+
-- Firefox 75+
-- Safari 13+
-- Edge 80+
+<div align="center">
 
-Requires WebGL support for 3D rendering.
+| 💊 Health Technology | 💰 FinTech & Financial Literacy |
+|:---:|:---:|
+| 🤖 **Robotics & Automation** | 🏙️ **Smart Cities & Urban Digital Design** |
+| 🚗 **Automotive & Mechanical Systems** | 🌐 **Scalable Digital Solutions** |
 
-## 🤝 Contributing
+</div>
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+---
 
-## 📄 License
+## 🛠️ Tech Stack
 
-This project is open source and available under the MIT License.
+### 👨‍💻 Programming Languages
+```javascript
+const languages = ['Java', 'C++', 'C', 'JavaScript', 'Node.js'];
+```
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+  <img src="https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+</p>
+
+### 🌐 Web & App Development
+```javascript
+const webStack = ['React.js', 'HTML5', 'CSS3', 'REST APIs'];
+```
+
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/REST_API-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+</p>
+
+### 🗄️ Databases & Tools
+```javascript
+const tools = ['MySQL', 'MongoDB', 'Git', 'GitHub', 'Telegram Bot API', 'Cisco IT'];
+```
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
+  <img src="https://img.shields.io/badge/Cisco-1BA0D7?style=for-the-badge&logo=cisco&logoColor=white" />
+</p>
+
+---
+
+## 🚀 Projects
+
+```python
+projects = {
+    "active": [
+        {
+            "name": "Telegram Alarm Bot 🔔",
+            "tech": ["Node.js", "MongoDB"],
+            "description": "Reminder & alert system with database integration"
+        },
+        {
+            "name": "Java E-Commerce Application 🛒",
+            "tech": ["Java", "MySQL", "GUI"],
+            "description": "Console & GUI app with full database integration"
+        },
+        {
+            "name": "School Management System 🏫",
+            "tech": ["C++"],
+            "description": "Automation tools for school operations & billing"
+        },
+        {
+            "name": "Finwise.space 💰",
+            "tech": ["Web", "Telegram Bot", "Freemium Model"],
+            "description": "Financial tracking platform for smart money management"
+        },
+        {
+            "name": "Hybridcoffee.me ☕",
+            "tech": ["Web Platform"],
+            "description": "Digital coffee ordering system"
+        }
+    ],
+    "ideas": [
+        "🚗 Online car wash booking platform",
+        "🛍️ Telegram-based e-commerce ordering system"
+    ]
+}
+```
+
+<details>
+<summary>🔥 Featured Project: Finwise.space</summary>
+
+### 💰 Financial Tracking Platform
+- **Stack:** Web + Telegram Bot Integration
+- **Model:** Freemium with scalable features
+- **Goal:** Empower Cambodians with financial literacy tools
+- **Status:** In Development
+
+</details>
+
+---
+
+## 🌍 Experience & Impact
+
+### 👨‍🏫 Teaching & Mentorship
+```bash
+├─ Math Tutor (Grades 4 & 8)
+└─ Khoding-Hero Volunteer
+   ├─ Led 3-member team
+   └─ Taught Scratch to ~700 students
+```
+
+### 🎤 Event Leadership & Technical Roles
+<div align="center">
+
+| Event | Role |
+|:------|:-----|
+| 🏛️ Digital Government Forum | Technical & Logistics |
+| 🎓 Cambodia Higher Education Forum | Technical & Logistics |
+| 💼 National Career & Productivity Fair | Technical & Logistics |
+| 🏅 National & Para-National Sports Events | Technical Support |
+
+</div>
+
+### 📈 Community Engagement
+- **Volunteer Leader** @ *My First Stock* (Financial Education Initiative)
+- Focus: Youth development & digital literacy
+
+---
+
+## 🎯 Vision & Goals
+
+```typescript
+interface Goals {
+  personal: string[];
+  community: string[];
+  professional: string[];
+}
+
+const myGoals: Goals = {
+  personal: [
+    "Use education to uplift my family",
+    "Build financial independence through technology"
+  ],
+  community: [
+    "Build technology that solves Cambodian problems",
+    "Support youth development & digital literacy"
+  ],
+  professional: [
+    "Grow startups in tech & tourism",
+    "Create scalable, impactful digital solutions"
+  ]
+};
+```
+
+---
+
+## 📊 GitHub Stats
+
+<div align="center">
+  
+![Rayu's GitHub stats](https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=radical)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=radical)
+
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=radical)
+
+</div>
+
+---
+
+## 📫 Let's Connect
+
+<div align="center">
+
+[![Phone](https://img.shields.io/badge/Phone-096_99_83_479-green?style=for-the-badge&logo=whatsapp)](tel:+85596998479)
+[![Email](https://img.shields.io/badge/Email-Contact_Me-red?style=for-the-badge&logo=gmail)](mailto:your.email@example.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/YOUR_PROFILE)
+[![Telegram](https://img.shields.io/badge/Telegram-Chat-blue?style=for-the-badge&logo=telegram)](https://t.me/YOUR_USERNAME)
+
+</div>
+
+```yaml
+status: "Open to internships, collaborations, and meaningful projects"
+location: "Cambodia"
+timezone: "ICT (UTC+7)"
+response_time: "Usually within 24 hours"
+```
+
+---
+
+## 💭 Philosophy
+
+<div align="center">
+
+> ### ⭐ *"Consistency beats talent. Impact beats theory."*
+> 
+> *Let's build something meaningful together.*
+
+```
+  ____                _   _                                             __       _ 
+ |  _ \              | | | |                                           / _|     | |
+ | |_) |_   _  ____ _| |_| |__     ___  ___  _ __ ___   ___ _   ___ _| |_  _  _| |
+ |  _ <| | | ||_  /| | __| '_ \   / __|/ _ \| '_ ` _ \ / _ \ |  | | | |  _|| | | |
+ | |_) | |_| | / / | | |_| | | |  \__ \ (_) | | | | | |  __/ |_ | |_| | |_ | |_| |
+ |____/ \__,_|/___|_|\__|_| |_|  |___/\___/|_| |_| |_|\___|\__| \__,_|_|  \__,_|
+                                                                                   
+```
+
+</div>
+
+---
+
+<div align="center">
+
+### 🔥 *"From challenges come opportunities. From code comes change."* 🔥
+
+![Profile Views](https://komarev.com/ghpvc/?username=YOUR_USERNAME&color=brightgreen&style=for-the-badge)
+
+**⚡ Built with passion in Cambodia 🇰🇭**
+
+</div>

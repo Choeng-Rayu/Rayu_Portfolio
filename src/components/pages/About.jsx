@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import profileImage from '../../assets/nang2.jpg';
 import rayuProfileNoBg from '../../assets/RayuProfile-removebg-preview.png';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
 import { BsJustify } from 'react-icons/bs';
-import ProfileCard from './ProfileCard.jsx';
+import NewProfileCard from './NewProfileCard.jsx';
 
 function About() {
+  const navigate = useNavigate();
   const expertiseItems = [
     { name: "Teaching Skills", icon: <FaCode /> },
     { name: "Mathematic Teaching", icon: <FaCode /> },
@@ -37,17 +39,11 @@ function About() {
             <div className="image-border"></div>
           </div>
         </motion.div> */}
-        <ProfileCard
+        <NewProfileCard
           name="Choeng Rayu"
-          title="Software Engineer"
-          handle="President_Alein"
-          status="Online"
-          contactText="Contact Me"
-          // avatarUrl="https://github.com/Choeng-Rayu/Rayu_Portfolio/blob/1b0b9efa473a5aa21ae333b88b08665445d341b2/src/assets/nang2.jpg"
+          title="Software Engineer Student"
           avatarUrl={rayuProfileNoBg}
-          showUserInfo={true}
-          enableTilt={true}
-          onContactClick={() => console.log('Contact clicked')}
+          onContactClick={() => navigate('/contact')}
         />
         
         <motion.div
