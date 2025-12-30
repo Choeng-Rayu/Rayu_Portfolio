@@ -1,284 +1,744 @@
 /* ==========================================
    MOBILE OPTIMIZATION STYLES
    Clean, smooth experience for phone screens
+   Optimized for performance and readability
    ========================================== */
 
-/* Hide unnecessary elements on mobile */
+/* Base mobile reset */
 @media (max-width: 768px) {
+  /* GPU acceleration for smooth scrolling */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+
   /* Hide heavy visual effects on mobile */
   .pointer-effect,
   #pointer-effect,
   .splash-cursor,
-  .performance-monitor {
+  .performance-monitor,
+  .gradient-orb,
+  .skill-orb,
+  .skill-particles,
+  .card-glow {
     display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
   }
 
-  /* Smooth scrolling */
+  /* Smooth scrolling with momentum */
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
+    font-size: 16px;
   }
 
   /* Optimize body for mobile */
   body {
     overflow-x: hidden;
     -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Reduce padding on main containers */
+  /* Main app container */
   .app {
     padding: 0;
+    overflow-x: hidden;
+    width: 100%;
   }
 
-  /* Welcome message mobile optimization */
+  /* ========== WELCOME MESSAGE ========== */
   .welcome-message {
-    bottom: 20px !important;
+    position: fixed !important;
+    bottom: 15px !important;
     left: 10px !important;
     right: 10px !important;
     transform: none !important;
-    padding: 1rem 1.5rem !important;
+    padding: 1rem 1.2rem !important;
     margin: 0 !important;
     width: auto !important;
+    max-width: calc(100vw - 20px) !important;
     font-size: 0.9rem;
+    border-radius: 12px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    z-index: 50 !important;
   }
 
   .welcome-message h1 {
-    font-size: 1.3rem !important;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem !important;
+    margin-bottom: 0.3rem;
   }
 
   .welcome-message p {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
     line-height: 1.4;
   }
 
-  /* Section spacing */
-  section {
-    padding: 40px 15px !important;
+  .welcome-message span {
+    font-size: 1rem !important;
   }
 
-  /* Typography adjustments */
-  h1 { font-size: 1.8rem !important; }
-  h2 { font-size: 1.5rem !important; }
-  h3 { font-size: 1.2rem !important; }
-  h4 { font-size: 1rem !important; }
+  /* ========== SECTIONS ========== */
+  section {
+    padding: 50px 16px !important;
+    overflow-x: hidden;
+  }
+
+  .section-header {
+    padding: 0 10px !important;
+    margin-bottom: 30px !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.9rem !important;
+    padding: 0 5px !important;
+  }
+
+  /* ========== TYPOGRAPHY ========== */
+  h1 { 
+    font-size: 1.75rem !important; 
+    line-height: 1.3 !important;
+  }
+  h2 { 
+    font-size: 1.5rem !important; 
+    line-height: 1.3 !important;
+  }
+  h3 { 
+    font-size: 1.2rem !important; 
+    line-height: 1.4 !important;
+  }
+  h4 { 
+    font-size: 1.05rem !important; 
+    line-height: 1.4 !important;
+  }
   
   p {
     font-size: 0.95rem !important;
-    line-height: 1.6 !important;
+    line-height: 1.65 !important;
+    word-wrap: break-word;
   }
 
-  /* Buttons mobile styling */
+  /* ========== BUTTONS ========== */
   button, .cv-button {
-    padding: 10px 20px !important;
+    padding: 12px 24px !important;
     font-size: 0.9rem !important;
-    min-height: 44px;
+    min-height: 48px;
     touch-action: manipulation;
+    border-radius: 8px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
   }
 
-  /* Grid layouts - single column on mobile */
+  /* ========== GRIDS - SINGLE COLUMN ========== */
   .expertise-grid,
   .skills-container,
   .projects-grid {
     grid-template-columns: 1fr !important;
-    gap: 15px !important;
+    gap: 16px !important;
+    padding: 0 5px !important;
   }
 
-  /* Timeline mobile optimization */
-  .timeline-container {
-    gap: 20px !important;
+  /* ========== ABOUT SECTION ========== */
+  .about-section {
+    padding: 40px 16px !important;
   }
 
-  .timeline {
-    padding-left: 20px !important;
+  .about-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+    align-items: center !important;
   }
 
-  .timeline-item::before {
-    left: -29px !important;
-    width: 14px !important;
-    height: 14px !important;
+  .about-content {
+    padding: 0 5px !important;
+    text-align: center !important;
   }
 
-  .timeline-content {
-    padding: 15px !important;
+  .about-content h2 {
+    text-align: center !important;
+    margin-bottom: 20px !important;
   }
 
-  /* Cards mobile styling */
-  .skill-item,
-  .project-card,
-  .expertise-item {
-    padding: 20px !important;
+  .about-content p {
+    text-align: justify !important;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    padding: 0 5px !important;
   }
 
-  /* Contact form mobile */
-  .contact-container {
-    padding: 20px !important;
-    margin: 10px !important;
-  }
-
-  .contact-form {
-    gap: 15px !important;
-  }
-
-  input, textarea {
-    font-size: 16px !important; /* Prevents zoom on iOS */
-    padding: 12px !important;
-  }
-
-  /* Footer mobile */
-  .footer-container {
-    padding: 40px 15px 20px !important;
-  }
-
-  .social-links {
-    gap: 10px !important;
-  }
-
-  .social-link {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  /* ChatBot mobile positioning */
-  .bot-icon {
-    width: 50px !important;
-    height: 50px !important;
-    bottom: 10px !important;
-    left: 10px !important;
-  }
-
-  .chat-window {
-    width: calc(100vw - 30px) !important;
-    max-width: 320px !important;
-    left: 10px !important;
-    bottom: 70px !important;
-  }
-
-  /* Profile card mobile */
+  /* ========== PROFILE CARD ========== */
   .new-profile-card {
     max-width: 100% !important;
+    width: calc(100% - 20px) !important;
     margin: 0 10px !important;
+    padding: 25px 20px !important;
   }
 
   .avatar-container {
-    width: 100px !important;
-    height: 100px !important;
+    width: 110px !important;
+    height: 110px !important;
   }
 
   .user-name {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
   }
 
-  /* Reduce animations on mobile for performance */
-  .gradient-orb,
-  .skill-orb,
-  .skill-particles,
-  .card-glow {
-    display: none !important;
+  .user-title {
+    font-size: 0.9rem !important;
   }
 
-  /* Simplify hover effects - disable on touch */
+  /* ========== SKILLS SECTION ========== */
+  .skills-section {
+    padding: 50px 16px !important;
+  }
+
+  .skill-item {
+    padding: 20px 16px !important;
+    margin-bottom: 12px !important;
+    border-radius: 12px !important;
+  }
+
+  .skill-icon {
+    font-size: 2rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .skill-content h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .skill-content p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+
+  /* ========== PROJECTS SECTION ========== */
+  .projects-section {
+    padding: 50px 16px !important;
+  }
+
+  .project-card {
+    padding: 20px !important;
+    margin-bottom: 16px !important;
+    border-radius: 12px !important;
+  }
+
+  .project-card h3 {
+    font-size: 1.15rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .project-card p {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 15px !important;
+  }
+
+  .project-tags {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  .project-tags span,
+  .tag {
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+    border-radius: 15px !important;
+  }
+
+  .project-links {
+    margin-top: 15px !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .project-links a {
+    padding: 10px 16px !important;
+    font-size: 0.85rem !important;
+    min-height: 44px !important;
+  }
+
+  /* ========== EXPERTISE SECTION ========== */
+  .expertise-section {
+    padding: 40px 16px !important;
+  }
+
+  .expertise-item {
+    padding: 18px 16px !important;
+    border-radius: 10px !important;
+  }
+
+  .expertise-icon {
+    font-size: 1.5rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .expertise-item p {
+    font-size: 0.9rem !important;
+  }
+
+  /* ========== TIMELINE ========== */
+  .timeline-container {
+    flex-direction: column !important;
+    gap: 30px !important;
+    padding: 0 10px !important;
+  }
+
+  .timeline {
+    padding-left: 25px !important;
+  }
+
+  .timeline-item {
+    margin-bottom: 25px !important;
+  }
+
+  .timeline-item::before {
+    left: -33px !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .timeline-content {
+    padding: 18px !important;
+    border-radius: 10px !important;
+  }
+
+  .timeline-content h4 {
+    font-size: 1.05rem !important;
+    margin-bottom: 8px !important;
+  }
+
+  .timeline-content .degree,
+  .timeline-content .position {
+    font-size: 0.9rem !important;
+  }
+
+  .timeline-content .date {
+    font-size: 0.8rem !important;
+    margin-bottom: 10px !important;
+  }
+
+  .timeline-content .description {
+    font-size: 0.85rem !important;
+  }
+
+  .timeline-content ul {
+    padding-left: 18px !important;
+    margin-top: 8px !important;
+  }
+
+  .timeline-content li {
+    font-size: 0.85rem !important;
+    margin-bottom: 5px !important;
+  }
+
+  /* ========== CONTACT SECTION ========== */
+  .contact-section {
+    padding: 50px 16px !important;
+  }
+
+  .contact-container {
+    padding: 25px 20px !important;
+    margin: 0 !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .contact-form {
+    gap: 18px !important;
+  }
+
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 14px 16px !important;
+    border-radius: 8px !important;
+    min-height: 48px !important;
+  }
+
+  textarea {
+    min-height: 120px !important;
+    resize: vertical !important;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer-container {
+    padding: 40px 16px 25px !important;
+  }
+
+  .brand-logo {
+    font-size: 1.3rem !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    text-align: center !important;
+  }
+
+  .social-links {
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .social-link {
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 12px !important;
+  }
+
+  .social-icon {
+    font-size: 1.3rem !important;
+  }
+
+  .social-name {
+    font-size: 0.65rem !important;
+    margin-top: 4px !important;
+  }
+
+  .footer-bottom {
+    padding-top: 20px !important;
+    margin-top: 25px !important;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem !important;
+    text-align: center !important;
+  }
+
+  /* ========== CHATBOT ========== */
+  .bot-icon {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 80px !important;
+    left: 12px !important;
+    z-index: 100 !important;
+  }
+
+  .chat-window {
+    position: fixed !important;
+    width: calc(100vw - 24px) !important;
+    max-width: none !important;
+    max-height: 60vh !important;
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 140px !important;
+    border-radius: 12px !important;
+    z-index: 101 !important;
+  }
+
+  .chat-messages {
+    max-height: 40vh !important;
+    padding: 12px !important;
+  }
+
+  .chat-input-container {
+    padding: 10px !important;
+  }
+
+  .chat-input-container input {
+    padding: 12px !important;
+  }
+
+  /* ========== HEADER & NAVIGATION ========== */
+  .header {
+    padding: 10px 16px !important;
+  }
+
+  .logo {
+    max-width: 60% !important;
+  }
+
+  .logo-text {
+    overflow: hidden !important;
+  }
+
+  .ascii-name {
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .menu-toggle {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    padding: 10px !important;
+  }
+
+  .mobile-nav {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 80px 20px 30px !important;
+    border-radius: 0 !important;
+  }
+
+  .mobile-nav ul {
+    gap: 5px !important;
+  }
+
+  .mobile-nav li {
+    width: 100% !important;
+  }
+
+  .mobile-nav .nav-link {
+    padding: 14px 20px !important;
+    font-size: 1rem !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+    border-radius: 8px !important;
+  }
+
+  .mobile-social-links {
+    margin-top: 30px !important;
+    gap: 15px !important;
+  }
+
+  /* ========== 3D SCENE OPTIMIZATION ========== */
+  .scene-container,
+  .canvas-container {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -1 !important;
+  }
+
+  /* Reduce 3D scene complexity hint */
+  canvas {
+    image-rendering: optimizeSpeed !important;
+  }
+
+  /* ========== DISABLE HOVER EFFECTS ========== */
   .project-card:hover,
   .skill-item:hover,
-  .expertise-item:hover {
+  .expertise-item:hover,
+  .social-link:hover,
+  .nav-link:hover,
+  .cv-button:hover {
     transform: none !important;
+  }
+
+  /* Add active state for touch feedback */
+  .project-card:active,
+  .skill-item:active,
+  .expertise-item:active,
+  .social-link:active,
+  .nav-link:active,
+  .cv-button:active,
+  button:active {
+    transform: scale(0.98) !important;
+    opacity: 0.9 !important;
   }
 }
 
-/* Extra small screens (< 480px) */
-@media (max-width: 480px) {
+/* ========== EXTRA SMALL SCREENS (< 380px) ========== */
+@media (max-width: 380px) {
+  html {
+    font-size: 14px;
+  }
+
   h1 { font-size: 1.5rem !important; }
   h2 { font-size: 1.3rem !important; }
   h3 { font-size: 1.1rem !important; }
 
+  section {
+    padding: 35px 12px !important;
+  }
+
   .welcome-message {
     padding: 0.8rem 1rem !important;
+    bottom: 10px !important;
+    left: 8px !important;
+    right: 8px !important;
   }
 
-  .welcome-message h1 {
-    font-size: 1.1rem !important;
-  }
-
-  section {
-    padding: 30px 12px !important;
+  .welcome-message span {
+    font-size: 0.9rem !important;
   }
 
   .about-container {
     gap: 20px !important;
   }
 
-  .about-content p {
-    font-size: 0.9rem !important;
-    text-align: left !important;
+  .new-profile-card {
+    padding: 20px 15px !important;
   }
 
-  /* Smaller buttons */
-  button, .cv-button {
-    padding: 8px 16px !important;
-    font-size: 0.85rem !important;
+  .avatar-container {
+    width: 90px !important;
+    height: 90px !important;
   }
 
-  /* Footer extra small */
-  .brand-logo {
-    font-size: 1.4rem !important;
-    flex-direction: column !important;
-  }
-
-  .social-link {
-    width: 50px !important;
-    height: 50px !important;
-  }
-
-  .social-icon {
+  .user-name {
     font-size: 1.2rem !important;
   }
 
-  .social-name {
-    font-size: 0.7rem !important;
+  button, .cv-button {
+    padding: 10px 18px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .skill-item,
+  .project-card,
+  .expertise-item {
+    padding: 16px 14px !important;
+  }
+
+  .contact-container {
+    padding: 20px 15px !important;
+  }
+
+  .social-link {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .social-icon {
+    font-size: 1.1rem !important;
+  }
+
+  .brand-logo {
+    font-size: 1.1rem !important;
+  }
+
+  .bot-icon {
+    width: 45px !important;
+    height: 45px !important;
+    bottom: 70px !important;
+  }
+
+  .chat-window {
+    bottom: 125px !important;
+    max-height: 55vh !important;
   }
 }
 
-/* Performance optimizations */
+/* ========== PERFORMANCE OPTIMIZATIONS ========== */
 @media (max-width: 768px) {
-  /* Reduce backdrop blur for performance */
+  /* Reduce backdrop blur for better performance */
   .welcome-message,
   .contact-container,
   .new-profile-card,
   .skill-item,
-  .project-card {
+  .project-card,
+  .timeline-content,
+  .expertise-item {
     backdrop-filter: blur(8px) !important;
     -webkit-backdrop-filter: blur(8px) !important;
   }
 
-  /* Reduce box shadows */
-  * {
-    box-shadow: none !important;
-  }
-
+  /* Optimize shadows for performance */
   .new-profile-card,
   .project-card,
-  .contact-container {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+  .contact-container,
+  .skill-item {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Reduce animation complexity */
+  * {
+    animation-duration: 0.3s !important;
+    transition-duration: 0.2s !important;
+  }
+
+  /* Disable complex animations */
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
   }
 }
 
-/* Touch device optimizations */
+/* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
 @media (hover: none) and (pointer: coarse) {
-  /* Disable hover states on touch devices */
-  .project-card:hover,
-  .skill-item:hover,
-  .expertise-item:hover,
-  .social-link:hover,
-  .nav-link:hover {
+  /* Disable all hover states on touch devices */
+  *:hover {
     transform: none !important;
   }
 
   /* Increase touch targets */
   .nav-link,
   button,
-  a {
+  a,
+  .social-link,
+  .project-links a {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Better touch feedback */
+  button:active,
+  a:active,
+  .nav-link:active,
+  .social-link:active {
+    opacity: 0.8 !important;
+    transform: scale(0.97) !important;
+  }
+
+  /* Smooth scrolling for touch */
+  .skills-container,
+  .projects-grid,
+  .timeline {
+    scroll-snap-type: y proximity;
+  }
+}
+
+/* ========== LANDSCAPE MODE ON MOBILE ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .welcome-message {
+    bottom: 10px !important;
+    padding: 0.6rem 1rem !important;
+  }
+
+  .welcome-message span {
+    font-size: 0.85rem !important;
+  }
+
+  section {
+    padding: 30px 20px !important;
+  }
+
+  .mobile-nav {
+    padding-top: 60px !important;
+  }
+
+  .bot-icon {
+    bottom: 10px !important;
+  }
+
+  .chat-window {
+    max-height: 70vh !important;
+    bottom: 70px !important;
+  }
+}
+
+/* ========== iOS SPECIFIC FIXES ========== */
+@supports (-webkit-touch-callout: none) {
+  /* Fix for iOS safari 100vh issue */
+  .app,
+  .skills-section,
+  .projects-section,
+  .about-section,
+  .contact-section {
+    min-height: -webkit-fill-available;
+  }
+
+  /* Prevent iOS zoom on input focus */
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Fix for iOS momentum scrolling */
+  .chat-messages,
+  .mobile-nav {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
