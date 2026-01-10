@@ -77,15 +77,20 @@ const AsciiTyping = ({
         fontFamily: 'monospace',
         fontSize: '12px',
         lineHeight: '1.2',
-        color: '#00ff00',
+        color: '#d4af37',
         margin: 0,
+        padding: 0,
         whiteSpace: 'pre',
-        overflow: 'auto'
+        overflow: 'hidden',
+        background: 'transparent',
+        border: 'none',
+        outline: 'none',
+        boxShadow: 'none'
       }}>
         {displayedText}
         <span style={{ 
           opacity: showCursor ? 1 : 0,
-          color: '#00ff00'
+          color: '#d4af37'
         }}>█</span>
       </pre>
     </motion.div>

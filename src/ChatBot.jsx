@@ -1,203 +1,3 @@
-// return (
-//   <>
-//     <div className="chatbot">
-//       {/* Chatbot Icon */}
-//       <div className="bot-icon" onClick={toggleChat}>
-//         <div className="icon-inner">
-//           <i className="fa fa-commenting" aria-hidden="true"></i>
-//         </div>
-//       </div>
-
-//       {/* Chatbot Window */}
-//       {isChatOpen && (
-//         <div className="chat-window">
-//           <div className="chat-header">
-//             <span className="close-icon" onClick={toggleChat}>
-//               <i className="fa fa-window-close" aria-hidden="true"></i>
-//             </span>
-//             <h4>How can we help you?</h4>
-//           </div>
-//           <div className="chat-content">
-//             <div className="messages" ref={messagesRef}>
-//               {messages.map((msg, index) => (
-//                 <div key={index} className={`message ${msg.type}`}>
-//                   {msg.type === "bot" && (
-//                     <img className="avatar" src={avatarUrl} alt="Bot Avatar" />
-//                   )}
-//                   <div className="message-text">
-//                     {msg.qrCode ? (
-//                       <img src={msg.qrCode} alt="QR Code" />
-//                     ) : (
-//                       <div style={{ color: "black" }}>{msg.text}</div>
-//                     )}
-//                   </div>
-//                 </div>
-//               ))}
-//             </div>
-//             <form onSubmit={sendMessage} className="chat-input">
-//               <input
-//                 value={message}
-//                 onChange={(e) => setMessage(e.target.value)}
-//                 type="text"
-//                 placeholder="Send a message..."
-//                 className="input-field"
-//               />
-//               <button type="submit" className="send-button">
-//                 <i className="fa fa-paper-plane" aria-hidden="true"></i>
-//               </button>
-//             </form>
-//           </div>
-//         </div>
-//       )}
-//     </div>
-//     <style jsx>{`
-//       /* ...your styles here... */
-//       /* Chatbot Icon */
-//         .bot-icon {
-//         position: fixed;
-//         bottom: 15px;
-//         left: 15px;
-//         background: #3b4f69;
-//         border-radius: 50%;
-//         width: 60px;
-//         height: 60px;
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         cursor: pointer;
-//         z-index: 1000;
-//         }
-
-//         .icon-inner {
-//         color: white;
-//         font-size: 1.5rem;
-//         margin: 17px;
-//         }
-
-//         /* Chat Window */
-//         .chat-window {
-//         position: fixed;
-//         bottom: 80px;
-//         left: 15px;
-//         width: 320px;
-//         background: white;
-//         border-radius: 10px;
-//         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-//         display: flex;
-//         flex-direction: column;
-//         z-index: 1000;
-//         }
-
-//         .chat-header {
-//         background: gray;
-//         color: white;
-//         padding: 10px;
-//         justify-content: space-between;
-//         align-items: center;
-//         border-radius: 10px 10px 0 0;
-//         }
-
-//         .close-icon {
-//         cursor: pointer;
-//         }
-
-//         .chat-content {
-//         display: flex;
-//         flex-direction: column;
-//         padding: 10px;
-//         overflow-y: auto;
-//         }
-
-//         .messages {
-//         overflow-y: auto;
-//         margin-bottom: 10px;
-//         }
-
-//         .message {
-//         display: flex;
-//         align-items: center;
-//         margin-bottom: 10px;
-//         }
-
-//         .message.user {
-//         justify-content: flex-end;
-//         }
-
-//         .message.bot {
-//         justify-content: flex-start;
-//         }
-
-//         .message .avatar {
-//         width: 30px;
-//         height: 30px;
-//         border-radius: 50%;
-//         margin-right: 10px;
-//         }
-
-//         .message-text {
-//         background: #f1f1f1;
-//         border-radius: 15px;
-//         padding: 10px;
-//         max-width: 70%;
-//         color: black !important;
-//         }
-
-//         .message.user .message-text {
-//         background: #4caf50;
-//         color: white;
-//         }
-
-//         /* Input Field */
-//         .chat-input {
-//         display: flex;
-//         align-items: center;
-//         padding: 10px;
-//         border-top: 1px solid #ddd;
-//         }
-
-//         .input-field {
-//         border: none;
-//         padding: 10px;
-//         border-radius: 20px;
-//         margin-right: 10px;
-//         background: #f1f1f1;
-//         color: black;
-//         }
-
-//         .send-button {
-//         background: #4caf50;
-//         border-radius: 10px;
-//         width: 50px;
-//         color: white;
-//         border: none;
-//         cursor: pointer;
-//         }
-
-//         .send-button:hover {
-//         background: #45a049;
-//         }
-//     `}</style>
-//   </>
-// );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState, useRef, useEffect } from "react";
 import QRCode from "qrcode";
 // import "./Chatbot.css"; // Assuming the CSS is in a separate file
@@ -488,18 +288,23 @@ const Chatbot = () => {
       <style jsx>{`
         /* Chatbot Container */
         .chatbot {
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          z-index: 1000;
+          position: fixed !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          z-index: 9999 !important;
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          pointer-events: none;
+        }
+
+        .chatbot * {
+          pointer-events: auto;
         }
 
         /* Chatbot Icon */
         .bot-icon {
-          position: fixed;
-          bottom: 20px;
-          left: 20px;
+          position: fixed !important;
+          bottom: 20px !important;
+          left: 20px !important;
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           border-radius: 50%;
           width: 70px;
@@ -508,7 +313,7 @@ const Chatbot = () => {
           justify-content: center;
           align-items: center;
           cursor: pointer;
-          z-index: 1001;
+          z-index: 10000 !important;
           box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           border: 3px solid rgba(255, 255, 255, 0.2);
@@ -527,9 +332,9 @@ const Chatbot = () => {
 
         /* Chat Window */
         .chat-window {
-          position: fixed;
-          bottom: 100px;
-          left: 20px;
+          position: fixed !important;
+          bottom: 100px !important;
+          left: 20px !important;
           width: 380px;
           max-height: 500px;
           background: rgba(255, 255, 255, 0.95);
@@ -538,7 +343,7 @@ const Chatbot = () => {
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
           display: flex;
           flex-direction: column;
-          z-index: 1000;
+          z-index: 10000 !important;
           border: 1px solid rgba(255, 255, 255, 0.3);
           animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -754,6 +559,109 @@ const Chatbot = () => {
             .send-button:hover {
             background: #45a049;
             }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+          .chatbot {
+            position: fixed !important;
+            z-index: 99999 !important;
+          }
+
+          .bot-icon {
+            position: fixed !important;
+            width: 60px !important;
+            height: 60px !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            left: auto !important;
+            z-index: 99999 !important;
+          }
+
+          .icon-inner {
+            font-size: 1.3rem;
+          }
+
+          .chat-window {
+            position: fixed !important;
+            width: calc(100vw - 40px) !important;
+            max-width: 340px !important;
+            bottom: 90px !important;
+            right: 20px !important;
+            left: auto !important;
+            max-height: 450px !important;
+            z-index: 99999 !important;
+          }
+
+          .chat-header {
+            padding: 14px 16px;
+          }
+
+          .header-avatar {
+            width: 36px;
+            height: 36px;
+          }
+
+          .header-text h4 {
+            font-size: 15px;
+          }
+
+          .status {
+            font-size: 11px;
+          }
+
+          .message-text {
+            max-width: 80%;
+            font-size: 13px;
+          }
+
+          .input-field {
+            flex: 1;
+            font-size: 14px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .chatbot {
+            position: fixed !important;
+            z-index: 99999 !important;
+          }
+
+          .bot-icon {
+            position: fixed !important;
+            width: 55px !important;
+            height: 55px !important;
+            bottom: 20px !important;
+            right: 15px !important;
+            left: auto !important;
+            z-index: 99999 !important;
+          }
+
+          .chat-window {
+            position: fixed !important;
+            width: calc(100vw - 30px) !important;
+            bottom: 85px !important;
+            right: 15px !important;
+            left: auto !important;
+            max-height: 400px !important;
+            z-index: 99999 !important;
+          }
+
+          .header-text h4 {
+            font-size: 14px;
+          }
+
+          .message-text {
+            padding: 10px 14px;
+            font-size: 13px;
+          }
+        }
+
+        /* Ensure fixed positioning overrides */
+        .chatbot,
+        .bot-icon,
+        .chat-window {
+          position: fixed !important;
+        }
         `}</style>
     </>
     );

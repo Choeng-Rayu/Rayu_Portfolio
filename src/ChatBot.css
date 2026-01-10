@@ -1,8 +1,8 @@
 /* Chatbot Icon */
 .bot-icon {
-  position: fixed;
-  bottom: 15px;
-  left: 15px;
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 20px !important;
   background: #3b4f69;
   border-radius: 50%;
   width: 60px;
@@ -12,6 +12,16 @@
   align-items: center;
   cursor: pointer;
   z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.bot-icon:hover {
+  background: #4a5f7f;
+  transform: scale(1.05);
+}
+
+.bot-icon:active {
+  transform: scale(0.98);
 }
 
 .icon-inner {
@@ -22,16 +32,17 @@
 
 /* Chat Window */
 .chat-window {
-  position: fixed;
-  bottom: 80px;
-  left: 15px;
+  position: fixed !important;
+  bottom: 90px !important;
+  left: 20px !important;
   width: 320px;
   background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  z-index: 1000;
+  z-index: 999;
+  max-height: 500px;
 }
 
 .chat-header {

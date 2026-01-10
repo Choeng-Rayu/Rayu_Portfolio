@@ -21,6 +21,8 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      {/* ChatBot appears on all pages */}
+      <ChatBot />
       {/* Hide heavy pointer effects on mobile for better performance */}
       {!isMobile && <SplashCursorPointer />}
       {!isMobile && <PointerEffect />}
@@ -28,36 +30,30 @@ function App() {
       <Routes>
         <Route path="/" element={
           isMobile ? (
-            <>
-              <ChatBot />
-              <MobileHome />
-            </>
+            <MobileHome />
           ) : (
-            <>
-              <ChatBot />
-              <div className="app">
-                {/* 3D Scene Background */}
-                <Scene3D />
+            <div className="app">
+              {/* 3D Scene Background */}
+              <Scene3D />
 
-                <div className="welcome-message">
-                  <TextAnimation
-                    strings={[
-                      "Welcome to my Portfolio!",
-                      'Explore my projects and skills',
-                      'Interact with the 3D objects',
-                      'Thank you for visiting!',
-                    ]}
-                    typeSpeed={50}
-                    backSpeed={30}
-                    motionProps={{
-                      initial: { opacity: 0, scale: 0.8 },
-                      animate: { opacity: 1, scale: 1 },
-                      transition: { type: "spring", stiffness: 100 }
-                    }}
-                  />
-                </div>
+              <div className="welcome-message">
+                <TextAnimation
+                  strings={[
+                    "Welcome to my Portfolio!",
+                    'Explore my projects and skills',
+                    'Interact with the 3D objects',
+                    'Thank you for visiting!',
+                  ]}
+                  typeSpeed={50}
+                  backSpeed={30}
+                  motionProps={{
+                    initial: { opacity: 0, scale: 0.8 },
+                    animate: { opacity: 1, scale: 1 },
+                    transition: { type: "spring", stiffness: 100 }
+                  }}
+                />
               </div>
-            </>
+            </div>
           )
         } />
         <Route path="/about" element={<About />} />
