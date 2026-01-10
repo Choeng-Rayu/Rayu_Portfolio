@@ -13,6 +13,7 @@ import Footer from '../src/components/pages/Footer.jsx'
 import SplashCursorPointer from './SplashCursorPointer.jsx'
 import TextAnimation from './components/pages/TypeAnimation.jsx'
 import { useMobile } from './hooks/useMobile.js'
+import MobileHome from './components/pages/MobileHome.jsx'
 
 function App() {
   const { isMobile } = useMobile();
@@ -26,31 +27,38 @@ function App() {
 
       <Routes>
         <Route path="/" element={
-          <>
-            <ChatBot />
-            <div className="app">
-              {/* 3D Scene Background */}
-              <Scene3D />
+          isMobile ? (
+            <>
+              <ChatBot />
+              <MobileHome />
+            </>
+          ) : (
+            <>
+              <ChatBot />
+              <div className="app">
+                {/* 3D Scene Background */}
+                <Scene3D />
 
-              <div className="welcome-message">
-                <TextAnimation
-                  strings={[
-                    "Welcome to my Portfolio!",
-                    'Explore my projects and skills',
-                    'Interact with the 3D objects',
-                    'Thank you for visiting!',
-                  ]}
-                  typeSpeed={50}
-                  backSpeed={30}
-                  motionProps={{
-                    initial: { opacity: 0, scale: 0.8 },
-                    animate: { opacity: 1, scale: 1 },
-                    transition: { type: "spring", stiffness: 100 }
-                  }}
-                />
+                <div className="welcome-message">
+                  <TextAnimation
+                    strings={[
+                      "Welcome to my Portfolio!",
+                      'Explore my projects and skills',
+                      'Interact with the 3D objects',
+                      'Thank you for visiting!',
+                    ]}
+                    typeSpeed={50}
+                    backSpeed={30}
+                    motionProps={{
+                      initial: { opacity: 0, scale: 0.8 },
+                      animate: { opacity: 1, scale: 1 },
+                      transition: { type: "spring", stiffness: 100 }
+                    }}
+                  />
+                </div>
               </div>
-            </div>
-          </>
+            </>
+          )
         } />
         <Route path="/about" element={<About />} />
         <Route path="/skills" element={<Skills />} />
