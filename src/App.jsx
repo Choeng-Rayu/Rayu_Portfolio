@@ -13,16 +13,25 @@ import Footer from '../src/components/pages/Footer.jsx'
 import SplashCursorPointer from './SplashCursorPointer.jsx'
 import TextAnimation from './components/pages/TypeAnimation.jsx'
 import { useMobile } from './hooks/useMobile.js'
-import MobileHome from './components/pages/MobileHome.jsx'
+import MobileLayout from './mobile/MobileLayout.jsx'
+
+// Mobile components
+import MobileAbout from './mobile/About.jsx'
+import MobileSkills from './mobile/Skills.jsx'
+import MobileProjects from './mobile/Project.jsx'
+import MobileContact from './mobile/Contact.jsx'
 
 function App() {
   const { isMobile } = useMobile();
 
   return (
     <BrowserRouter>
-      <Header />
+      {/* Header only shows on desktop, mobile has its own navigation */}
+      {!isMobile && <Header />}
+      
       {/* ChatBot appears on all pages */}
       <ChatBot />
+      
       {/* Hide heavy pointer effects on mobile for better performance */}
       {!isMobile && <SplashCursorPointer />}
       {!isMobile && <PointerEffect />}
@@ -30,7 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           isMobile ? (
-            <MobileHome />
+            <MobileLayout />
           ) : (
             <div className="app">
               {/* 3D Scene Background */}
@@ -56,13 +65,15 @@ function App() {
             </div>
           )
         } />
-        <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        
+        {/* Responsive routes - mobile uses mobile components, desktop uses desktop components */}
+        <Route path="/about" element={isMobile ? <MobileLayout /> : <About />} />
+        <Route path="/skills" element={isMobile ? <MobileLayout /> : <Skills />} />
+        <Route path="/projects" element={isMobile ? <MobileLayout /> : <Projects />} />
+        <Route path="/contact" element={isMobile ? <MobileLayout /> : <Contact />} />
       </Routes>
-      <Footer />
+      
+      {/* Footer only shows on desktop */}
+      {!isMobile && <Footer />}
     </BrowserRouter>
     
   )

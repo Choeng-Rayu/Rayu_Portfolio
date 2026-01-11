@@ -23,13 +23,13 @@ const Hero = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fadeIn">
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-6 animate-slideUp">
-            Hi, I'm <span className="text-blue-300">Rayu</span>
+            Hi, I'm <span className="text-blue-300">Choeng Rayu</span>
           </h1>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 text-blue-100 animate-slideUp delay-100">
-            Full Stack Developer & Software Engineer
+            Software Engineering Student
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl mb-12 text-blue-50 max-w-3xl mx-auto animate-slideUp delay-200">
-            Creating innovative web applications using React, JavaScript, Node.js, and cutting-edge technologies
+            Building practical digital solutions with React, JavaScript, Node.js, and modern technologies
           </p>
 
           <div className="flex justify-center space-x-6 mb-12 animate-slideUp delay-300">
@@ -38,28 +38,25 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110"
+              aria-label="GitHub"
             >
               <Github size={24} />
             </a>
             <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
+              href="https://www.linkedin.com/in/rayu-choeng-351243335/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110"
-            >
-              <Mail size={24} />
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection('contact');
-              }}
-              className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110"
+              aria-label="LinkedIn"
             >
               <Linkedin size={24} />
+            </a>
+            <a
+              href="mailto:choengrayu307@gmail.com"
+              className="p-3 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transition-all hover:scale-110"
+              aria-label="Email"
+            >
+              <Mail size={24} />
             </a>
           </div>
 
