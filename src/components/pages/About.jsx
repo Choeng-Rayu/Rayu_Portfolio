@@ -6,22 +6,15 @@ import rayuProfileNoBg from '../../assets/RayuProfile-removebg-preview.png';
 import { FaDownload, FaCode, FaGraduationCap, FaBriefcase, FaLaptopCode } from 'react-icons/fa';
 import { BsJustify } from 'react-icons/bs';
 import NewProfileCard from './NewProfileCard.jsx';
+import { expertiseItems as rawExpertiseItems } from '../../repo/aboutData';
 
 function About() {
   const navigate = useNavigate();
-  const expertiseItems = [
-    { name: "Teaching Skills", icon: <FaCode /> },
-    { name: "Mathematic Teaching", icon: <FaCode /> },
-    { name: "English langauge", icon: <FaCode /> },
-    { name: "HTML & CSS", icon: <FaCode /> },
-    { name: "JavaScript", icon: <FaCode /> },
-    { name: "Java Programming", icon: <FaCode /> },
-    { name: "Building Chat Bot in Telegram", icon: <FaCode /> },
-    { name: "C++", icon: <FaCode /> },
-    { name: "C", icon: <FaCode /> },
-    
-       
-  ];
+  // Map string icon names to actual icon components
+  const expertiseItems = rawExpertiseItems.map(item => ({
+    ...item,
+    icon: <FaCode />
+  }));
 
   return (
     <section className="about-section" id="about">

@@ -4,8 +4,14 @@ import { FaReact, FaBars, FaTimes, FaGithub, FaLinkedin, FaEnvelope } from 'reac
 import TextAnimation from './TypeAnimation';
 import AsciiTyping from './AsciiTyping';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { navItems, socialLinks } from '../../repo/navigationData';
 
 function Header() {
+  const iconMap = {
+    FaGithub: <FaGithub />,
+    FaLinkedin: <FaLinkedin />,
+    FaEnvelope: <FaEnvelope />,
+  };
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -30,20 +36,7 @@ function Header() {
     };
   }, []);
 
-  const navItems = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
-    { name: 'Skills', to: '/skills' },
-    { name: 'Projects', to: '/projects' },
-    { name: 'Contact', to: '/contact' },
-    { name: 'Universe', to: 'https://universe-rayu.netlify.app/'}
-  ];
 
-  const socialLinks = [
-    { icon: <FaGithub />, url: 'https://github.com/Choeng-Rayu' },
-    { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/rayu-choeng-351243335/' },
-    { icon: <FaEnvelope />, url: 'mailto:choengrayu307@gmail.com' }
-  ];
 
   return (
     <motion.header
@@ -168,7 +161,7 @@ function Header() {
                         whileTap={{ scale: 0.9 }}
                         className="social-icon"
                       >
-                        {link.icon}
+                        {iconMap[link.icon]}
                       </motion.a>
                     ))}
                   </div>
@@ -210,7 +203,7 @@ function Header() {
                   whileTap={{ scale: 0.9 }}
                   className="social-icon"
                 >
-                  {link.icon}
+                  {iconMap[link.icon]}
                 </motion.a>
               ))}
             </div>

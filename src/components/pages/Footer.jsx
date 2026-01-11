@@ -2,40 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCode, FaFacebook } from 'react-icons/fa';
 import { SiLeetcode, SiTelegram } from 'react-icons/si';
+import { socialLinks } from '../../repo/footerData';
 
 function Footer() {
-  const socialLinks = [
-    { 
-      name: 'GitHub', 
-      href: 'https://github.com/Choeng-Rayu', 
-      icon: <FaGithub />,
-      color: '#6e5494'
-    },
-    { 
-      name: 'LinkedIn', 
-      href: 'https://www.linkedin.com/in/rayu-choeng-351243335/', 
-      icon: <FaLinkedin />,
-      color: '#0077b5'
-    },
-    { 
-      name: 'Facebook', 
-      href: 'https://www.facebook.com/choeng.rayu.5', 
-      icon: <FaFacebook />,
-      color: '#1da1f2'
-    },
-    { 
-      name: 'Telegram', 
-      href: 'https://t.me/President_Alein', 
-      icon: <SiTelegram />,
-      color: '#ffa116'
-    },
-    { 
-      name: 'Email', 
-      href: 'mailto:choengrayu307@gmail.com', 
-      icon: <FaEnvelope />,
-      color: '#d44638'
-    }
-  ];
+  const iconMap = {
+    FaGithub: <FaGithub />,
+    FaLinkedin: <FaLinkedin />,
+    FaFacebook: <FaFacebook />,
+    SiTelegram: <SiTelegram />,
+  };
 
   return (
     <motion.footer
@@ -109,7 +84,7 @@ function Footer() {
                 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="social-icon">{link.icon}</span>
+                <span className="social-icon">{iconMap[link.icon]}</span>
                 <span className="social-name">{link.name}</span>
               </motion.a>
             ))}

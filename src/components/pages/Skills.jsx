@@ -1,21 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { skills } from '../../repo/skillsData';
 
 function Skills() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSkill, setActiveSkill] = useState(null);
   const skillsRef = useRef(null);
-
-  const skills = [
-    { name: 'Mathematic', description: 'I have experienced for 2 years in Teaching math both Khmer and English from grade 1-6 and espacially grade 12 for BacII', icon: '🧑‍🏫' },
-    { name: 'React.js', description: 'Built this portfolio using React for dynamic, component-based UI.', icon: '⚛️' },
-    { name: 'JavaScript', description: 'Used JavaScript for interactivity and logic in the portfolio.', icon: '📜' },
-    { name: 'HTML', description: 'Structured the portfolio website with semantic HTML.', icon: '🖊️' },
-    { name: 'CSS', description: 'Styled the portfolio with responsive and modern CSS designs.', icon: '🎨' },
-    { name: 'Framer Motion', description: 'Added smooth animations for page transitions and effects.', icon: '✨' },
-    { name: 'Responsive Design', description: 'Ensured the portfolio is mobile-friendly and adapts to all screen sizes.', icon: '📱' },
-    { name: 'Git', description: 'Managed version control and collaboration using Git.', icon: '🔀' },
-    { name: 'Addintional Skills', description: 'Problem Solving, Ideate, Effective Communication, Critical Thinking, Working With teamates, System Design and using AI', icon: '🥷' },
-  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
