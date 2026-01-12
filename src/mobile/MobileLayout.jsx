@@ -1,58 +1,29 @@
-import React, { useEffect } from 'react';
-import Navigation from './Navigation';
+import React from 'react';
 import Hero from './Hero';
 import About from './About';
 import Skills from './Skills';
 import Projects from './Project';
 import Contact from './Contact';
+import Navigation from './Navigation';
 import './mobile-layout.css';
 
 const MobileLayout = () => {
-  useEffect(() => {
-    // Enable smooth scrolling
-    document.documentElement.style.scrollBehavior = 'smooth';
-    
-    // Cleanup
-    return () => {
-      document.documentElement.style.scrollBehavior = 'auto';
-    };
-  }, []);
-
   return (
-    <div className="mobile-layout" style={{
-      width: '100%',
-      minHeight: '100vh',
-      background: '#ffffff',
-      overflowX: 'hidden'
-    }}>
+    <div className="mobile-portfolio">
       <Navigation />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <main className="mobile-main">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
       
-      <style>{`
-        .mobile-layout {
-          padding-top: 0;
-        }
-        
-        /* Smooth scroll behavior */
-        html {
-          scroll-behavior: smooth;
-        }
-        
-        /* Hide desktop elements on mobile */
-        @media (max-width: 768px) {
-          .header,
-          .footer-container,
-          .pointer-effect,
-          .splash-cursor,
-          canvas {
-            display: none !important;
-          }
-        }
-      `}</style>
+      {/* Footer */}
+      <footer className="mobile-footer">
+        <p>© 2024 Choeng Rayu. All rights reserved.</p>
+        <p>Built with React & ❤️</p>
+      </footer>
     </div>
   );
 };

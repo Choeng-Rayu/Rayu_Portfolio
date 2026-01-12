@@ -8,7 +8,7 @@ export const quickLinks = [
 export const socialLinks = [
   { icon: 'FaGithub', url: 'https://github.com/Choeng-Rayu', name: 'GitHub' },
   { icon: 'FaLinkedin', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', name: 'LinkedIn' },
-  { icon: 'FaTelegram', url: 'https://t.me/RayuChoeng', name: 'Telegram' },
+  { icon: 'FaTelegram', url: 'https://t.me/President_Alien', name: 'Telegram' },
 ];
 
 export const techStack = ['React.js', 'JavaScript', 'Java', 'C++', 'Flutter', 'Node.js', 'MySQL', 'MongoDB'];

@@ -19,7 +19,7 @@ export const socialLinks = [
   },
   { 
     name: 'Telegram', 
-    href: 'https://t.me/President_Alein', 
+    href: 'https://t.me/President_Alien', 
     icon: 'SiTelegram',
     color: '#ffa116'
   },

@@ -72,7 +72,7 @@ function About() {
             transition={{ duration: 0.5, delay: 0.8 }}
           >
             
-            With experiences in <span>HTML, CSS, JavaScript, Java, C++, and C</span>, I'm dedicated to crafting efficient, user-friendly applications that solve real-world problems through clean, maintainable code.
+            With experiences in <span>HTML, CSS, JavaScript, Java, C++, and C, Flutter</span>, I'm dedicated to crafting efficient, user-friendly applications that solve real-world problems through clean, maintainable code.
             <br />
             <br />Please download my <span>CV</span> for more information about me.
           </motion.p>
@@ -84,7 +84,7 @@ function About() {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <a 
-              href="https://drive.google.com/uc?export=download&id=1OMPpxq4KtLMBqRY9sbYQ5qd0Pxnazpgg" 
+              href="https://drive.google.com/uc?export=download&id=1dcOqSAMxC3dAIc8_orut0R4yQAHusl0w" 
               download
               className="cv-button"
             >

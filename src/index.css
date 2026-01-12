@@ -5,6 +5,43 @@
   box-sizing: border-box;
 }
 
+/* Ensure Chatbot is ALWAYS visible on all screens */
+body .chatbot,
+html .chatbot,
+#root .chatbot,
+.chatbot {
+  position: fixed !important;
+  z-index: 2147483647 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
+body .bot-icon,
+html .bot-icon,
+#root .bot-icon,
+.bot-icon {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
+body .chat-window,
+html .chat-window,
+#root .chat-window,
+.chat-window {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
 :root {
   font-family: 'Inter', 'Segoe UI', 'Roboto', system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -34,20 +71,26 @@
 }
 
 html, body {
-  height: auto !important;
+  height: 100% !important;
+  width: 100% !important;
   overflow: auto !important;
+  position: relative;
 }
 
 body {
   margin: 0;
   background: var(--background-dark);
   color: var(--text-light);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #root {
   width: 100vw;
   min-height: 100vh;
   overflow: visible !important;
+  position: relative;
+  display: block;
 }
 
 /* Typography */
