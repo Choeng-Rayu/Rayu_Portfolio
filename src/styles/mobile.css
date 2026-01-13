@@ -12,6 +12,19 @@
     transform: translateZ(0);
   }
 
+  /* Critical override: keep chatbot elements fixed on mobile */
+  html,
+  body,
+  #root,
+  .chatbot,
+  .chatbot *,
+  .bot-icon,
+  .chat-window {
+    -webkit-transform: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
   /* Hide heavy visual effects on mobile */
   .pointer-effect,
   #pointer-effect,

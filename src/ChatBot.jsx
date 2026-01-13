@@ -338,11 +338,18 @@ const Chatbot = () => {
           visibility: visible !important;
           opacity: 1 !important;
           transform: none !important;
+          will-change: auto !important;
         }
 
         .bot-icon:hover {
-          transform: translateY(-3px) scale(1.05);
           box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        @media (max-width: 768px) {
+          .bot-icon:hover {
+            transform: none !important;
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+          }
         }
 
         .icon-inner {
@@ -372,6 +379,7 @@ const Chatbot = () => {
           visibility: visible !important;
           opacity: 1 !important;
           transform: none !important;
+          will-change: auto !important;
         }
 
         @keyframes slideUp {
@@ -589,14 +597,33 @@ const Chatbot = () => {
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
           .chatbot {
-            z-index: 99999 !important;
+            position: fixed !important;
+            z-index: 999999 !important;
             display: block !important;
+            inset: 0 !important;
+            top: auto !important;
+            left: auto !important;
+            bottom: 0 !important;
+            right: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            pointer-events: none !important;
+            transform: none !important;
+            will-change: auto !important;
           }
 
           .bot-icon {
+            position: fixed !important;
             width: 60px !important;
             height: 60px !important;
             right: 20px !important;
+            bottom: 20px !important;
+            left: auto !important;
+            top: auto !important;
+            z-index: 999999 !important;
+            pointer-events: auto !important;
+            transform: none !important;
+            will-change: auto !important;
           }
 
           .icon-inner {
@@ -604,11 +631,17 @@ const Chatbot = () => {
           }
 
           .chat-window {
+            position: fixed !important;
             width: calc(100vw - 40px) !important;
             max-width: 340px !important;
             bottom: 90px !important;
             right: 20px !important;
+            left: auto !important;
+            top: auto !important;
             max-height: 450px !important;
+            z-index: 999999 !important;
+            transform: none !important;
+            will-change: auto !important;
           }
 
           .chat-header {
@@ -640,21 +673,36 @@ const Chatbot = () => {
 
         @media (max-width: 480px) {
           .chatbot {
-            z-index: 99999 !important;
+            position: fixed !important;
+            z-index: 999999 !important;
             display: block !important;
           }
 
           .bot-icon {
+            position: fixed !important;
             width: 55px !important;
             height: 55px !important;
             right: 15px !important;
+            bottom: 15px !important;
+            left: auto !important;
+            top: auto !important;
+            z-index: 999999 !important;
+            pointer-events: auto !important;
+            transform: none !important;
+            will-change: auto !important;
           }
 
           .chat-window {
+            position: fixed !important;
             width: calc(100vw - 30px) !important;
             bottom: 85px !important;
             right: 15px !important;
+            left: auto !important;
+            top: auto !important;
             max-height: 400px !important;
+            z-index: 999999 !important;
+            transform: none !important;
+            will-change: auto !important;
           }
 
           .header-text h4 {
