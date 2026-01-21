@@ -1,7 +1,7 @@
 // Portfolio Data for Rayu Choeng
 
 export const personalInfo = {
-  name: "Rayu Choeng",
+  name: "Choeng Rayu",
   title: "Software Engineering Student",
   subtitle: "Full Stack Developer | Tech Builder",
   location: "Cambodia 🇰🇭",
