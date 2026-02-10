@@ -4,7 +4,7 @@ export const personalInfo = {
   name: "Choeng Rayu",
   title: "Software Engineering Student",
   subtitle: "Full Stack Developer | Tech Builder",
-  location: "Cambodia 🇰🇭",
+  location: "Cambodia",
   university: "CADT (Cambodia Academy of Digital Technology)",
   year: "Year 3",
   email: "choengrayu307@gmail.com",
@@ -19,10 +19,10 @@ export const aboutMe = {
   headline: "Hands-on software engineering student driven by curiosity, discipline, and purpose.",
   description: `Coming from a financially challenged family, I see education and technology as tools for change — not just for myself, but for my community. I don't just learn technology — I apply it.`,
   highlights: [
-    { icon: "🔍", text: "Curious about how systems work and how to improve them" },
-    { icon: "🛠️", text: "Love building real, usable software" },
-    { icon: "🌍", text: "Focused on local impact with scalable ideas" },
-    { icon: "🤝", text: "Active in volunteering, events, and youth development" },
+    { icon: "curious", text: "Curious about how systems work and how to improve them" },
+    { icon: "build", text: "Love building real, usable software" },
+    { icon: "impact", text: "Focused on local impact with scalable ideas" },
+    { icon: "volunteer", text: "Active in volunteering, events, and youth development" },
   ],
   stats: [
     { number: "3+", label: "Years Coding" },
@@ -33,55 +33,55 @@ export const aboutMe = {
 };
 
 export const coreInterests = [
-  { icon: "💊", title: "Health Technology" },
-  { icon: "💰", title: "FinTech & Financial Literacy" },
-  { icon: "🤖", title: "Robotics & Automation" },
-  { icon: "🏙️", title: "Smart Cities & Urban Design" },
-  { icon: "🚗", title: "Automotive Systems" },
-  { icon: "🌐", title: "Scalable Digital Solutions" },
+  { icon: "health", title: "Health Technology" },
+  { icon: "fintech", title: "FinTech & Financial Literacy" },
+  { icon: "robotics", title: "Robotics & Automation" },
+  { icon: "smartCity", title: "Smart Cities & Urban Design" },
+  { icon: "automotive", title: "Automotive Systems" },
+  { icon: "scalable", title: "Scalable Digital Solutions" },
 ];
 
 export const skills = {
   programming: [
-    { name: "Java", icon: "☕", level: 85 },
-    { name: "C++", icon: "⚙️", level: 80 },
-    { name: "C", icon: "🔧", level: 75 },
-    { name: "JavaScript", icon: "📜", level: 90 },
-    { name: "TypeScript", icon: "🔷", level: 80 },
-    { name: "Python", icon: "🐍", level: 75 },
+    { name: "Java", icon: "java", level: 85 },
+    { name: "C++", icon: "cpp", level: 80 },
+    { name: "C", icon: "c", level: 75 },
+    { name: "JavaScript", icon: "javascript", level: 90 },
+    { name: "TypeScript", icon: "typescript", level: 80 },
+    { name: "Python", icon: "python", level: 75 },
   ],
   frontend: [
-    { name: "React.js", icon: "⚛️", level: 88 },
-    { name: "Next.js", icon: "▲", level: 80 },
-    { name: "HTML5", icon: "🌐", level: 95 },
-    { name: "CSS3", icon: "🎨", level: 90 },
-    { name: "Tailwind CSS", icon: "💨", level: 85 },
-    { name: "Flutter", icon: "📱", level: 70 },
+    { name: "React.js", icon: "react", level: 88 },
+    { name: "Next.js", icon: "nextjs", level: 80 },
+    { name: "HTML5", icon: "html5", level: 95 },
+    { name: "CSS3", icon: "css3", level: 90 },
+    { name: "Tailwind CSS", icon: "tailwind", level: 85 },
+    { name: "Flutter", icon: "flutter", level: 70 },
   ],
   backend: [
-    { name: "Node.js", icon: "🟢", level: 85 },
-    { name: "Express.js", icon: "🚀", level: 80 },
-    { name: "REST APIs", icon: "🔌", level: 88 },
+    { name: "Node.js", icon: "nodejs", level: 85 },
+    { name: "Express.js", icon: "express", level: 80 },
+    { name: "REST APIs", icon: "api", level: 88 },
   ],
   databases: [
-    { name: "MySQL", icon: "🐬", level: 85 },
-    { name: "MongoDB", icon: "🍃", level: 80 },
-    { name: "PostgreSQL", icon: "🐘", level: 70 },
+    { name: "MySQL", icon: "mysql", level: 85 },
+    { name: "MongoDB", icon: "mongodb", level: 80 },
+    { name: "PostgreSQL", icon: "postgresql", level: 70 },
   ],
   tools: [
-    { name: "Git/GitHub", icon: "🔀", level: 90 },
-    { name: "Telegram Bot API", icon: "🤖", level: 90 },
-    { name: "Docker", icon: "🐳", level: 65 },
-    { name: "Digital Ocean", icon: "🌊", level: 75 },
-    { name: "Nginx", icon: "🔒", level: 70 },
+    { name: "Git/GitHub", icon: "git", level: 90 },
+    { name: "Telegram Bot API", icon: "telegram", level: 90 },
+    { name: "Docker", icon: "docker", level: 65 },
+    { name: "Digital Ocean", icon: "digitalocean", level: 75 },
+    { name: "Nginx", icon: "nginx", level: 70 },
   ],
   soft: [
-    { name: "Teaching", icon: "🧑‍🏫" },
-    { name: "Problem Solving", icon: "🧩" },
-    { name: "Communication", icon: "💬" },
-    { name: "Team Collaboration", icon: "👥" },
-    { name: "System Design", icon: "📐" },
-    { name: "Critical Thinking", icon: "🤔" },
+    { name: "Teaching", icon: "teaching" },
+    { name: "Problem Solving", icon: "problemSolving" },
+    { name: "Communication", icon: "communication" },
+    { name: "Team Collaboration", icon: "collaboration" },
+    { name: "System Design", icon: "systemDesign" },
+    { name: "Critical Thinking", icon: "criticalThinking" },
   ],
 };
 
@@ -181,12 +181,12 @@ export const experience = {
     {
       title: "Math Tutor",
       description: "2 years experience teaching math (Grades 4-8 and Grade 12 for BacII) in both Khmer and English",
-      icon: "📚",
+      icon: "math",
     },
     {
       title: "Khoding-Hero Volunteer",
       description: "Led 3-member team and taught Scratch programming to ~700 students",
-      icon: "💻",
+      icon: "coding",
     },
   ],
   events: [
@@ -232,11 +232,11 @@ export const chatbotKnowledge = {
   • Telegram bots for math tutoring and alarms
   • Coffee ordering system`,
   contact: `You can reach Rayu at:
-  📧 Email: choengrayu307@gmail.com
-  📱 Phone: +855 969983479
-  💼 LinkedIn: linkedin.com/in/rayu-choeng-351243335
-  🐙 GitHub: github.com/Choeng-Rayu
-  ✈️ Telegram: @President_Alien`,
+  Email: choengrayu307@gmail.com
+  Phone: +855 969983479
+  LinkedIn: linkedin.com/in/rayu-choeng-351243335
+  GitHub: github.com/Choeng-Rayu
+  Telegram: @President_Alien`,
   education: `Rayu is a Year 3 student at Cambodia Academy of Digital Technology (CADT), studying Software Engineering. Rayu has also completed Cisco IT certifications and is constantly learning new technologies.`,
   experience: `Rayu has diverse experience including:
   • Math Tutor (2 years) - Teaching grades 4-8 and BacII
@@ -246,10 +246,10 @@ export const chatbotKnowledge = {
   cv: `You can download Rayu's CV to learn more about qualifications and experience. Would you like the download link?`,
   hire: `Rayu is currently open to internships and collaborations! With strong skills in full-stack development, a passion for solving real problems, and experience in teaching and teamwork, Rayu would be a valuable addition to any team. Contact via email at choengrayu307@gmail.com or connect on LinkedIn.`,
   interests: `Rayu is particularly interested in:
-  💊 Health Technology
-  💰 FinTech & Financial Literacy
-  🤖 Robotics & Automation
-  🏙️ Smart Cities & Urban Design
-  🚗 Automotive & Mechanical Systems
-  🌐 Scalable Digital Solutions`,
+  - Health Technology
+  - FinTech & Financial Literacy
+  - Robotics & Automation
+  - Smart Cities & Urban Design
+  - Automotive & Mechanical Systems
+  - Scalable Digital Solutions`,
 };

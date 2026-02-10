@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Icon from '../icons';
 
 interface IconDisplayProps {
   iconName: string;
@@ -8,69 +9,69 @@ interface IconDisplayProps {
   size?: 'sm' | 'md' | 'lg';
 }
 
-// Icon name to display mapping
-const iconDisplayMap: Record<string, string> = {
+// Map old icon names to new icon names
+const iconNameMap: Record<string, string> = {
   // Programming
-  'coffee-icon': '☕',
-  'gear-icon': '⚙️',
-  'cpu-icon': '💻',
-  'javascript-icon': '✨',
-  'typescript-icon': '🔷',
-  'python-icon': '🐍',
+  'coffee-icon': 'java',
+  'gear-icon': 'cpp',
+  'cpu-icon': 'c',
+  'javascript-icon': 'javascript',
+  'typescript-icon': 'typescript',
+  'python-icon': 'python',
   
   // Frontend
-  'brand-react-icon': '⚛️',
-  'brand-nextjs-icon': '▲',
-  'code-icon': '📝',
-  'paint-icon': '🎨',
-  'layers-icon': '📚',
+  'brand-react-icon': 'react',
+  'brand-nextjs-icon': 'nextjs',
+  'code-icon': 'html5',
+  'paint-icon': 'css3',
+  'layers-icon': 'tailwind',
   
   // Backend
-  'nodejs-icon': '🟢',
-  'rocket-icon': '🚀',
-  'plug-connected-icon': '🔌',
+  'nodejs-icon': 'nodejs',
+  'rocket-icon': 'express',
+  'plug-connected-icon': 'api',
   
   // Databases
-  'mysql-icon': '🐬',
-  'database-icon': '🗄️',
+  'mysql-icon': 'mysql',
+  'database-icon': 'mongodb',
   
   // Tools
-  'github-icon': '🐙',
-  'brand-telegram-icon': '✈️',
-  'docker-icon': '🐳',
-  'globe-icon': '🌐',
-  'router-icon': '🔒',
+  'github-icon': 'git',
+  'brand-telegram-icon': 'telegram',
+  'docker-icon': 'docker',
+  'globe-icon': 'digitalocean',
+  'router-icon': 'nginx',
   
   // Experience & Skills
-  'book-icon': '📚',
-  'bulb-svg': '💡',
-  'message-circle-icon': '💬',
-  'users-group-icon': '👥',
-  'layout-dashboard-icon': '📊',
-  'focus-icon': '🎯',
+  'book-icon': 'math',
+  'bulb-svg': 'problemSolving',
+  'message-circle-icon': 'communication',
+  'users-group-icon': 'collaboration',
+  'layout-dashboard-icon': 'systemDesign',
+  'focus-icon': 'criticalThinking',
   
   // Interests
-  'scan-heart-icon': '❤️',
-  'currency-dollar-icon': '💵',
-  'truck-electric-icon': '🚗',
+  'scan-heart-icon': 'health',
+  'currency-dollar-icon': 'fintech',
+  'truck-electric-icon': 'automotive',
   
   // About highlights
-  'magnifier-icon': '🔍',
-  'hand-heart-icon': '🤝',
+  'magnifier-icon': 'curious',
+  'hand-heart-icon': 'volunteer',
   
   // Experience icons
-  'alarm-clock-plus-icon': '⏰',
+  'alarm-clock-plus-icon': 'robotics',
   
   // Contact & Social
-  'brand-github-icon': '🐙',
-  'brand-linkedin-icon': '💼',
-  'brand-facebook-icon': '📘',
+  'brand-github-icon': 'github',
+  'brand-linkedin-icon': 'linkedin',
+  'brand-facebook-icon': 'facebook',
 };
 
-const sizeClasses = {
-  sm: 'text-sm',
-  md: 'text-base',
-  lg: 'text-lg',
+const sizeMap = {
+  sm: 16,
+  md: 24,
+  lg: 32,
 };
 
 export default function IconDisplay({ 
@@ -78,15 +79,11 @@ export default function IconDisplay({
   className = '', 
   size = 'md' 
 }: IconDisplayProps) {
-  const displaySymbol = iconDisplayMap[iconName] || '•';
+  const mappedName = iconNameMap[iconName] || iconName;
   
   return (
-    <span 
-      className={`inline-flex items-center justify-center ${sizeClasses[size]} ${className}`}
-      role="img"
-      aria-label={iconName}
-    >
-      {displaySymbol}
+    <span className={`inline-flex items-center justify-center ${className}`}>
+      <Icon name={mappedName} size={sizeMap[size]} />
     </span>
   );
 }

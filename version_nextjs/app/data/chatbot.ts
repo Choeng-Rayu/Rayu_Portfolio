@@ -16,11 +16,11 @@ export const chatbotKnowledge = {
   • Telegram bots for math tutoring and alarms
   • Coffee ordering system`,
   contact: `You can reach Rayu at:
-  📧 Email: choengrayu307@gmail.com
-  📱 Phone: +855 969983479
-  💼 LinkedIn: linkedin.com/in/rayu-choeng-351243335
-  🐙 GitHub: github.com/Choeng-Rayu
-  ✈️ Telegram: @President_Alien`,
+  Email: choengrayu307@gmail.com
+  Phone: +855 969983479
+  LinkedIn: linkedin.com/in/rayu-choeng-351243335
+  GitHub: github.com/Choeng-Rayu
+  Telegram: @President_Alien`,
   education: `Rayu is a Year 3 student at Cambodia Academy of Digital Technology (CADT), studying Software Engineering. Rayu has also completed Cisco IT certifications and is constantly learning new technologies.`,
   experience: `Rayu has diverse experience including:
   • Math Tutor (2 years) - Teaching grades 4-8 and BacII

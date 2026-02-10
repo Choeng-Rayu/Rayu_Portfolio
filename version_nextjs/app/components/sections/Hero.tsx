@@ -6,6 +6,7 @@ import AnimatedBackground from '../ui/AnimatedBackground';
 import AsciiTyping from '../ui/asciiTyping';
 import { personalInfo, aboutMe, socialLinks } from '../../data/portfolio';
 import { asciArtStyles, defaultStyle, getAsciiArtByStyle } from '../../data/asciArtStyle';
+import Icon from '../icons';
 
 export default function Hero() {
   const [selectedStyle, setSelectedStyle] = useState(defaultStyle);
@@ -51,14 +52,10 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-text">
           <div className="hero-greeting">
-            <span className="wave">👋</span>
+            <span className="wave"><Icon name="wave" size={24} /></span>
             <span>Hello, I&apos;m</span>
           </div>
           
-          <h1 className="hero-name">
-            <span className="name-gradient">{personalInfo.name}</span>
-          </h1>
-
           <div className="my-6 flex justify-center">
             <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-cyan-400/40 bg-gray-900/30 hover:bg-gray-900/50 hover:border-cyan-400/60 transition-all">
               <label htmlFor="ascii-style-select" className="text-sm font-medium text-gray-300">
@@ -163,10 +160,10 @@ export default function Hero() {
                 />
               </div>
               <div className="floating-tags">
-                <span className="floating-tag tag-1">⚛️ React</span>
-                <span className="floating-tag tag-2">🟢 Node.js</span>
-                <span className="floating-tag tag-3">☕ Java</span>
-                <span className="floating-tag tag-4">🐍 Python</span>
+                <span className="floating-tag tag-1"><Icon name="react" size={16} /> React</span>
+                <span className="floating-tag tag-2"><Icon name="nodejs" size={16} /> Node.js</span>
+                <span className="floating-tag tag-3"><Icon name="java" size={16} /> Java</span>
+                <span className="floating-tag tag-4"><Icon name="python" size={16} /> Python</span>
               </div>
             </div>
           </div>

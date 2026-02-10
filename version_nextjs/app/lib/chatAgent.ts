@@ -52,9 +52,9 @@ const intents: Intent[] = [
     keywords: ['contact', 'reach', 'email', 'phone', 'call', 'message', 'get in touch', 'connect', 'social', 'linkedin', 'github', 'telegram', 'how to contact'],
     responses: [chatbotKnowledge.contact],
     actions: [
-      { type: 'email', label: '📧 Send Email', url: `mailto:${personalInfo.email}`, icon: '📧' },
-      { type: 'link', label: '💼 LinkedIn', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: '💼' },
-      { type: 'link', label: '🐙 GitHub', url: 'https://github.com/Choeng-Rayu', icon: '🐙' },
+      { type: 'email', label: 'Send Email', url: `mailto:${personalInfo.email}`, icon: 'email' },
+      { type: 'link', label: 'LinkedIn', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: 'linkedin' },
+      { type: 'link', label: 'GitHub', url: 'https://github.com/Choeng-Rayu', icon: 'github' },
     ],
   },
   {
@@ -70,10 +70,10 @@ const intents: Intent[] = [
   {
     name: 'cv',
     keywords: ['cv', 'resume', 'curriculum', 'download', 'pdf', 'document', 'qualification', 'get cv', 'download cv'],
-    responses: ["Here's Rayu's CV! 📄 Click the button below to view or download it. The CV contains detailed information about education, skills, projects, and experience."],
+    responses: ["Here's Rayu's CV! Click the button below to view or download it. The CV contains detailed information about education, skills, projects, and experience."],
     actions: [
-      { type: 'download', label: '📄 Download CV (PDF)', url: '/Choeng_Rayu_CV.pdf', icon: '📄' },
-      { type: 'link', label: '💼 View LinkedIn Profile', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: '💼' },
+      { type: 'download', label: 'Download CV (PDF)', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
+      { type: 'link', label: 'View LinkedIn Profile', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: 'linkedin' },
     ],
   },
   {
@@ -81,9 +81,9 @@ const intents: Intent[] = [
     keywords: ['hire', 'hiring', 'job', 'position', 'internship', 'opportunity', 'work with', 'collaborate', 'available', 'looking for', 'recruit', 'employment', 'open to', 'freelance'],
     responses: [chatbotKnowledge.hire],
     actions: [
-      { type: 'email', label: '💼 Contact for Opportunities', url: `mailto:${personalInfo.email}?subject=Job/Internship Opportunity`, icon: '💼' },
-      { type: 'link', label: '🔗 View LinkedIn', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: '🔗' },
-      { type: 'download', label: '📄 Get CV', url: '/Choeng_Rayu_CV.pdf', icon: '📄' },
+      { type: 'email', label: 'Contact for Opportunities', url: `mailto:${personalInfo.email}?subject=Job/Internship Opportunity`, icon: 'briefcase' },
+      { type: 'link', label: 'View LinkedIn', url: 'https://www.linkedin.com/in/rayu-choeng-351243335/', icon: 'linkedin' },
+      { type: 'download', label: 'Get CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
     ],
   },
   {
@@ -94,44 +94,44 @@ const intents: Intent[] = [
   {
     name: 'location',
     keywords: ['location', 'where', 'country', 'city', 'based', 'live', 'cambodia', 'from', 'located'],
-    responses: [`Rayu is based in ${personalInfo.location}. 🏠
+    responses: [`Rayu is based in ${personalInfo.location}.
 
 Currently studying at ${personalInfo.university} (Year 3).
 
-📍 Open to remote opportunities and collaborations worldwide!`],
+Open to remote opportunities and collaborations worldwide!`],
   },
   {
     name: 'help',
     keywords: ['help', 'what can you', 'options', 'menu', 'commands', 'features', 'guide', 'how to use'],
-    responses: [`I can help you learn about Rayu! 🤖 Try asking about:
+    responses: [`I can help you learn about Rayu! Try asking about:
 
-🧑‍💻 **About** - Who is Rayu?
-🛠️ **Skills** - Technical abilities & expertise
-📂 **Projects** - Work portfolio & demos
-📧 **Contact** - How to reach Rayu
-📄 **CV** - Download resume
-💼 **Hire** - Job/internship availability
-🎓 **Education** - Academic background
-🌟 **Interests** - Areas of focus
+**About** - Who is Rayu?
+**Skills** - Technical abilities & expertise
+**Projects** - Work portfolio & demos
+**Contact** - How to reach Rayu
+**CV** - Download resume
+**Hire** - Job/internship availability
+**Education** - Academic background
+**Interests** - Areas of focus
 
-Just type your question naturally! 💬`],
+Just type your question naturally!`],
   },
   {
     name: 'thanks',
     keywords: ['thank', 'thanks', 'appreciate', 'grateful', 'helpful', 'great', 'awesome', 'cool', 'nice'],
     responses: [
-      "You're welcome! 😊 Feel free to ask more questions or reach out to Rayu directly!",
-      "Glad I could help! 🙌 Don't hesitate to contact Rayu for more details!",
-      "Happy to assist! ✨ Is there anything else you'd like to know about Rayu?",
+      "You're welcome! Feel free to ask more questions or reach out to Rayu directly!",
+      "Glad I could help! Don't hesitate to contact Rayu for more details!",
+      "Happy to assist! Is there anything else you'd like to know about Rayu?",
     ],
   },
   {
     name: 'bye',
     keywords: ['bye', 'goodbye', 'see you', 'later', 'exit', 'quit', 'close', 'take care'],
     responses: [
-      "Goodbye! 👋 Thanks for learning about Rayu. Feel free to come back anytime!",
-      "Take care! 🚀 Hope to see you again. Don't forget to check out Rayu's projects!",
-      "See you! ✌️ Feel free to reach out to Rayu directly if you have any questions!",
+      "Goodbye! Thanks for learning about Rayu. Feel free to come back anytime!",
+      "Take care! Hope to see you again. Don't forget to check out Rayu's projects!",
+      "See you! Feel free to reach out to Rayu directly if you have any questions!",
     ],
   },
 ];
@@ -184,20 +184,20 @@ function detectProjectQuery(message: string): typeof projects[0] | null {
 
 // Generate response for specific project
 function generateProjectResponse(project: typeof projects[0]): { content: string; actions: ChatAction[] } {
-  const content = `**${project.title}** ${project.featured ? '⭐' : ''}
+  const content = `**${project.title}** ${project.featured ? '(Featured)' : ''}
 
 ${project.description}
 
-🏷️ **Technologies:** ${project.tags.join(', ')}
-📁 **Category:** ${project.category}`;
+**Technologies:** ${project.tags.join(', ')}
+**Category:** ${project.category}`;
 
   const actions: ChatAction[] = [];
   
   if (project.codeLink) {
-    actions.push({ type: 'link', label: '💻 View Code', url: project.codeLink, icon: '💻' });
+    actions.push({ type: 'link', label: 'View Code', url: project.codeLink, icon: 'github' });
   }
   if (project.demoLink) {
-    actions.push({ type: 'link', label: '🌐 Live Demo', url: project.demoLink, icon: '🌐' });
+    actions.push({ type: 'link', label: 'Live Demo', url: project.demoLink, icon: 'link' });
   }
 
   return { content, actions };
@@ -228,7 +228,7 @@ export function generateChatResponse(userMessage: string): { content: string; ac
   
   // Default response for unrecognized queries
   return {
-    content: `I'm not sure I understand that question. 🤔 Here are some things you can ask me:
+    content: `I'm not sure I understand that question. Here are some things you can ask me:
 
 • Who is Rayu?
 • What are Rayu's skills?
@@ -237,10 +237,10 @@ export function generateChatResponse(userMessage: string): { content: string; ac
 • Download CV
 • Is Rayu available for hire?
 
-Feel free to ask any of these questions! 😊`,
+Feel free to ask any of these questions!`,
     actions: [
-      { type: 'download', label: '📄 Get CV', url: '/Choeng_Rayu_CV.pdf', icon: '📄' },
-      { type: 'email', label: '📧 Contact Rayu', url: `mailto:${personalInfo.email}`, icon: '📧' },
+      { type: 'download', label: 'Get CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
+      { type: 'email', label: 'Contact Rayu', url: `mailto:${personalInfo.email}`, icon: 'email' },
     ],
   };
 }
@@ -250,20 +250,20 @@ export function getInitialGreeting(): ChatMessage {
   return {
     id: 'initial',
     role: 'assistant',
-    content: `👋 **Hi! I'm Rayu's AI Assistant.**
+    content: `**Hi! I'm Rayu's AI Assistant.**
 
 I can help you learn about:
-• 🧑‍💻 Rayu's background and story
-• 🛠️ Technical skills and expertise
-• 📂 Projects and portfolio
-• 💼 Hiring/internship availability
-• 📄 CV download
+• Rayu's background and story
+• Technical skills and expertise
+• Projects and portfolio
+• Hiring/internship availability
+• CV download
 
-**What would you like to know?** 💬`,
+**What would you like to know?**`,
     timestamp: new Date(),
     actions: [
-      { type: 'download', label: '📄 Download CV', url: '/Choeng_Rayu_CV.pdf', icon: '📄' },
-      { type: 'email', label: '📧 Contact', url: `mailto:${personalInfo.email}`, icon: '📧' },
+      { type: 'download', label: 'Download CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
+      { type: 'email', label: 'Contact', url: `mailto:${personalInfo.email}`, icon: 'email' },
     ],
   };
 }

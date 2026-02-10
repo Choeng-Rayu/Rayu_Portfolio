@@ -77,7 +77,7 @@ export default function Footer() {
         <div className="footer-bottom">
           <p className="copyright">
             © {currentYear} {personalInfo.name}. Built with 
-            <span className="heart"> ❤️ </span> 
+            <span className="heart"> love </span> 
             using Next.js & TypeScript
           </p>
           <p className="footer-quote">&quot;{personalInfo.philosophy}&quot;</p>

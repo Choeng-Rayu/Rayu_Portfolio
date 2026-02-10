@@ -45,20 +45,20 @@ export function detectProjectQuery(message: string): typeof projects[0] | null {
  * Generate response for specific project
  */
 export function generateProjectResponse(project: typeof projects[0]): { content: string; actions: ChatAction[] } {
-  const content = `**${project.title}** ${project.featured ? '⭐' : ''}
+  const content = `**${project.title}** ${project.featured ? '(Featured)' : ''}
 
 ${project.description}
 
-🏷️ **Technologies:** ${project.tags.join(', ')}
-📁 **Category:** ${project.category}`;
+**Technologies:** ${project.tags.join(', ')}
+**Category:** ${project.category}`;
 
   const actions: ChatAction[] = [];
   
   if (project.codeLink) {
-    actions.push({ type: 'link', label: '💻 View Code', url: project.codeLink, icon: '💻' });
+    actions.push({ type: 'link', label: 'View Code', url: project.codeLink, icon: 'github' });
   }
   if (project.demoLink) {
-    actions.push({ type: 'link', label: '🌐 Live Demo', url: project.demoLink, icon: '🌐' });
+    actions.push({ type: 'link', label: 'Live Demo', url: project.demoLink, icon: 'link' });
   }
 
   return { content, actions };

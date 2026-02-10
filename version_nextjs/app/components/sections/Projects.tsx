@@ -35,8 +35,8 @@ export default function Projects() {
               className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
               onClick={() => setActiveFilter(category)}
             >
-              {category === 'all' ? '🔥 All' : 
-               category === 'featured' ? '⭐ Featured' : 
+              {category === 'all' ? 'All' : 
+               category === 'featured' ? 'Featured' : 
                category}
             </button>
           ))}
@@ -57,7 +57,7 @@ export default function Projects() {
         
         {filteredProjects.length === 0 && (
           <div className="no-projects">
-            <span>🔍</span>
+            <span>No projects found</span>
             <p>No projects in this category yet</p>
           </div>
         )}

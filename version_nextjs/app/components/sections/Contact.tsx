@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SectionTitle from '../ui/SectionTitle';
 import { personalInfo, socialLinks } from '../../data/portfolio';
+import Icon from '../icons';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -88,21 +89,21 @@ export default function Contact() {
               
               <div className="contact-details">
                 <a href={`mailto:${personalInfo.email}`} className="contact-item">
-                  <span className="contact-icon">📧</span>
+                  <span className="contact-icon"><Icon name="email" size={20} /></span>
                   <div>
                     <span className="contact-label">Email</span>
                     <span className="contact-value">{personalInfo.email}</span>
                   </div>
                 </a>
                 <a href={`tel:${personalInfo.phone.replace(/\s/g, '')}`} className="contact-item">
-                  <span className="contact-icon">📱</span>
+                  <span className="contact-icon"><Icon name="phone" size={20} /></span>
                   <div>
                     <span className="contact-label">Phone</span>
                     <span className="contact-value">{personalInfo.phone}</span>
                   </div>
                 </a>
                 <div className="contact-item">
-                  <span className="contact-icon">📍</span>
+                  <span className="contact-icon"><Icon name="home" size={20} /></span>
                   <div>
                     <span className="contact-label">Location</span>
                     <span className="contact-value">{personalInfo.location}</span>
@@ -210,8 +211,8 @@ export default function Contact() {
                   </>
                 )}
                 {status === 'sending' && <span>Sending...</span>}
-                {status === 'success' && <span>✓ Message Sent!</span>}
-                {status === 'error' && <span>⚠ Error, try again</span>}
+                {status === 'success' && <span>Message Sent!</span>}
+                {status === 'error' && <span>Error, try again</span>}
               </button>
             </form>
           </div>

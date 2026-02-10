@@ -2,6 +2,7 @@
 
 import SectionTitle from '../ui/SectionTitle';
 import { experience } from '../../data/portfolio';
+import Icon from '../icons';
 
 export default function Experience() {
   return (
@@ -17,7 +18,7 @@ export default function Experience() {
           {/* Teaching Experience */}
           <div className="experience-column">
             <h3 className="exp-category-title">
-              <span>📚</span> Teaching & Mentoring
+              <span><Icon name="math" size={24} /></span> Teaching & Mentoring
             </h3>
             <div className="exp-cards">
               {experience.teaching.map((item, index) => (
@@ -35,7 +36,7 @@ export default function Experience() {
           {/* Events & Volunteering */}
           <div className="experience-column">
             <h3 className="exp-category-title">
-              <span>🎯</span> Events & Volunteering
+              <span><Icon name="star" size={24} /></span> Events & Volunteering
             </h3>
             <div className="events-timeline">
               {experience.events.map((event, index) => (
@@ -54,22 +55,22 @@ export default function Experience() {
         {/* Impact Stats */}
         <div className="impact-banner">
           <div className="impact-item">
-            <span className="impact-icon">👨‍🏫</span>
+            <span className="impact-icon"><Icon name="teaching" size={24} /></span>
             <span className="impact-number">700+</span>
             <span className="impact-label">Students Taught</span>
           </div>
           <div className="impact-item">
-            <span className="impact-icon">🎓</span>
+            <span className="impact-icon"><Icon name="graduation" size={24} /></span>
             <span className="impact-number">2+</span>
             <span className="impact-label">Years Teaching</span>
           </div>
           <div className="impact-item">
-            <span className="impact-icon">🤝</span>
+            <span className="impact-icon"><Icon name="star" size={24} /></span>
             <span className="impact-number">5+</span>
             <span className="impact-label">Major Events</span>
           </div>
           <div className="impact-item">
-            <span className="impact-icon">💻</span>
+            <span className="impact-icon"><Icon name="collaboration" size={24} /></span>
             <span className="impact-number">3</span>
             <span className="impact-label">Team Members Led</span>
           </div>

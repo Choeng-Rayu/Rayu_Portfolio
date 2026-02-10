@@ -4,7 +4,7 @@ export const personalInfo = {
   name: "Choeng Rayu",
   title: "Software Engineering Student",
   subtitle: "Full Stack Developer | Tech Builder",
-  location: "Cambodia 🇰🇭",
+  location: "Cambodia",
   university: "CADT (Cambodia Academy of Digital Technology)",
   year: "Year 3",
   email: "choengrayu307@gmail.com",
