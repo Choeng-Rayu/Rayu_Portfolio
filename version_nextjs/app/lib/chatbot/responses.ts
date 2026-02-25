@@ -3,61 +3,77 @@
 import { ChatMessage, ChatAction, QuickAction } from './types';
 import { personalInfo } from '../../data/portfolio';
 
+const FALLBACKS = [
+  `Hmm, I'm not sure about that specific question. Here are some popular topics:
+
+• **Who is Rayu?** — background and story
+• **Skills** — tech stack and expertise
+• **Projects** — portfolio and demos
+• **GitHub** — live repo stats
+• **Contact / Send Message** — reach Rayu directly
+• **Download CV** — full resume PDF
+• **Hire** — internship / job availability
+
+Try rephrasing or type "help" for the full menu!`,
+  `I didn't quite catch that. You can ask me things like:
+
+• "What languages does Rayu know?"
+• "Tell me about DasTern project"
+• "Is Rayu available for internship?"
+• "Show me his GitHub repos"
+• "I want to send Rayu a message"
+
+Or type **help** to see all options!`,
+];
+
 /**
  * Generate fallback response for unrecognized queries
  */
 export function getFallbackResponse(): { content: string; actions: ChatAction[] } {
   return {
-    content: `I'm not sure I understand that question. Here are some things you can ask me:
-
-• Who is Rayu?
-• What are Rayu's skills?
-• Show me projects
-• How can I contact Rayu?
-• Download CV
-• Is Rayu available for hire?
-
-Feel free to ask any of these questions!`,
+    content: FALLBACKS[Math.floor(Math.random() * FALLBACKS.length)],
     actions: [
-      { type: 'download', label: 'Get CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
-      { type: 'email', label: 'Contact Rayu', url: `mailto:${personalInfo.email}`, icon: 'email' },
+      { type: 'download', label: '⬇ Download CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
+      { type: 'contact-form', label: '✉ Send Message', url: '#contact-form', icon: 'email' },
     ],
   };
 }
 
 /**
- * Generate initial greeting message
+ * Initial greeting message shown when chat opens
  */
 export function getInitialGreeting(): ChatMessage {
   return {
     id: 'initial',
     role: 'assistant',
-    content: `**Hi! I'm Rayu's AI Assistant.**
+    content: `**Hi there! I'm Rayu's AI assistant.** 👋
 
-I can help you learn about:
-• Rayu's background and story
-• Technical skills and expertise
-• Projects and portfolio
-• Hiring/internship availability
-• CV download
+I can answer questions about:
+• 👤 Background & story
+• 🛠️ Skills & tech stack
+• 📁 Projects & portfolio
+• 🐙 GitHub activity (live!)
+• 📄 CV download
+• 💼 Hiring & availability
+• ✉ Send Rayu a message directly
 
-**What would you like to know?**`,
+**Just ask naturally — what would you like to know?**`,
     timestamp: new Date(),
     actions: [
-      { type: 'download', label: 'Download CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
-      { type: 'email', label: 'Contact', url: `mailto:${personalInfo.email}`, icon: 'email' },
+      { type: 'download', label: '⬇ Download CV', url: '/Choeng_Rayu_CV.pdf', icon: 'document' },
+      { type: 'contact-form', label: '✉ Contact Rayu', url: '#contact-form', icon: 'email' },
     ],
   };
 }
 
 /**
- * Quick action suggestions for user
+ * Quick action chip suggestions shown above the input
  */
 export const quickActions: QuickAction[] = [
-  { label: "Who is Rayu?", message: "Tell me about Rayu" },
-  { label: "Skills", message: "What are Rayu's skills?" },
-  { label: "Projects", message: "Show me projects" },
-  { label: "Contact", message: "How to contact Rayu?" },
-  { label: "Download CV", message: "I want to download the CV" },
-  { label: "Hiring", message: "Is Rayu available for hire?" },
+  { label: '👤 About Rayu', message: 'Tell me about Rayu' },
+  { label: '🛠️ Skills', message: "What are Rayu's skills?" },
+  { label: '📁 Projects', message: 'Show me projects' },
+  { label: '🐙 GitHub', message: "Show Rayu's GitHub activity" },
+  { label: '📄 Download CV', message: 'I want to download the CV' },
+  { label: '✉ Send Message', message: 'I want to send Rayu a message' },
 ];

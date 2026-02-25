@@ -9,7 +9,7 @@ export interface ChatMessage {
 }
 
 export interface ChatAction {
-  type: 'link' | 'download' | 'email' | 'phone';
+  type: 'link' | 'download' | 'email' | 'contact-form';
   label: string;
   url: string;
   icon?: string;
@@ -17,12 +17,19 @@ export interface ChatAction {
 
 export interface Intent {
   name: string;
-  keywords: string[];
+  patterns: (string | RegExp)[];
   responses: string[];
   actions?: ChatAction[];
+  async?: boolean;
 }
 
 export interface QuickAction {
   label: string;
+  message: string;
+}
+
+export interface ContactData {
+  email: string;
+  subject: string;
   message: string;
 }

@@ -36,4 +36,10 @@ export const chatbotKnowledge = {
   • Smart Cities & Urban Design
   • Automotive & Mechanical Systems
   • Scalable Digital Solutions`,
+  github: `Rayu is active on GitHub with 55+ public repositories showcasing a wide range of projects. Key highlights:
+  • GitHub username: Choeng-Rayu
+  • Profile: github.com/Choeng-Rayu
+  • 55+ public repos, 12 followers
+  • Featured projects: DasTern (Prescription OCR), Finwise2 (FinTech), DerLg-Startup (Tour platform), CoffeeHybrid-Year2, AlarmBot, DeepSeekAPITelegramBot
+  • Main languages: JavaScript, TypeScript, Python, Java`,
 };

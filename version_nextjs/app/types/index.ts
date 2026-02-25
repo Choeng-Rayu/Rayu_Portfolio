@@ -10,6 +10,10 @@ export interface Project {
   demoLink?: string;
   codeLink: string;
   featured?: boolean;
+  githubRepoName?: string;
+  /** Live data from GitHub API */
+  stars?: number;
+  forks?: number;
 }
 
 export interface Skill {

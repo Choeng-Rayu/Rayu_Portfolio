@@ -1,4 +1,5 @@
 // Projects Data
+// Each project has an optional githubRepoName field for live star/fork counts
 
 export const projects = [
   {
@@ -9,6 +10,7 @@ export const projects = [
     accentColor: "#5e17eb",
     demoLink: "",
     codeLink: "https://github.com/Choeng-Rayu/DasTern",
+    githubRepoName: "DasTern",
     featured: true,
     category: "AI/ML",
   },
@@ -20,6 +22,7 @@ export const projects = [
     accentColor: "#00b894",
     demoLink: "https://finwise.space",
     codeLink: "https://github.com/Choeng-Rayu/Finwise2.git",
+    githubRepoName: "Finwise2",
     featured: true,
     category: "Full Stack",
   },
@@ -32,6 +35,7 @@ export const projects = [
     demoLink: "",
     codeLink: "https://github.com/Choeng-Rayu/RayuOS",
     downloadLink: "/rayuos-gnome-amd64.iso",
+    githubRepoName: "RayuOS",
     featured: true,
     category: "Systems",
   },
@@ -43,6 +47,7 @@ export const projects = [
     accentColor: "#ff3b3b",
     demoLink: "",
     codeLink: "https://github.com/Choeng-Rayu/cyber_project_T1Y3",
+    githubRepoName: "cyber_project_T1Y3",
     featured: false,
     category: "Security",
   },
@@ -54,6 +59,7 @@ export const projects = [
     accentColor: "#0095ff",
     demoLink: "",
     codeLink: "https://github.com/Choeng-Rayu/DerLg-Startup",
+    githubRepoName: "DerLg-Startup",
     featured: false,
     category: "Startup",
   },
@@ -65,6 +71,7 @@ export const projects = [
     accentColor: "#7700ff",
     demoLink: "https://t.me/rayumathbot",
     codeLink: "https://github.com/Choeng-Rayu/MathBot_Python.git",
+    githubRepoName: "fucntion-solving-telegram-bot",
     featured: false,
     category: "Bot",
   },
@@ -76,6 +83,7 @@ export const projects = [
     accentColor: "#ff9500",
     demoLink: "https://t.me/rayualarmbot",
     codeLink: "https://github.com/Choeng-Rayu/AlarmBot.git",
+    githubRepoName: "AlarmBot",
     featured: false,
     category: "Bot",
   },
@@ -87,6 +95,7 @@ export const projects = [
     accentColor: "#6f4e37",
     demoLink: "https://hybridcoffee.me/",
     codeLink: "https://github.com/Choeng-Rayu/CoffeeHybrid-Year2",
+    githubRepoName: "CoffeeHybrid-Year2",
     featured: false,
     category: "Full Stack",
   },

@@ -1,14 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import SectionTitle from '../ui/SectionTitle';
 import ProjectCard from '../ui/ProjectCard';
 import { projects } from '../../data/portfolio';
+import { getGitHubData, findRepo } from '../../lib/github';
+import type { GitHubRepo } from '../../data/github';
 
 type FilterCategory = 'all' | 'featured' | 'Full Stack' | 'AI/ML' | 'Bot' | 'Systems';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('all');
+  const [ghRepos, setGhRepos] = useState<GitHubRepo[]>([]);
+
+  useEffect(() => {
+    getGitHubData().then(({ repos }) => setGhRepos(repos)).catch(() => {});
+  }, []);
 
   const filteredProjects = projects.filter((project) => {
     if (activeFilter === 'all') return true;
@@ -50,7 +57,11 @@ export default function Projects() {
               className="project-item"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <ProjectCard {...project} />
+              <ProjectCard
+                {...project}
+                stars={project.githubRepoName ? findRepo(ghRepos, project.githubRepoName)?.stars : undefined}
+                forks={project.githubRepoName ? findRepo(ghRepos, project.githubRepoName)?.forks : undefined}
+              />
             </div>
           ))}
         </div>
