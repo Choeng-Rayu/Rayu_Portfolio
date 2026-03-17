@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   creator: "Rayu Choeng",
   publisher: "Rayu Choeng",
   alternates: {
-    canonical: "/",
+    canonical: "https://rayu-choeng.tech",
   },
   robots: {
     index: true,

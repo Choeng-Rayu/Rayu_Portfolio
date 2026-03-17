@@ -14,17 +14,26 @@ export function useWindowSize(): WindowSize {
   });
 
   useEffect(() => {
+    let debounceTimer: NodeJS.Timeout;
+
     function handleResize() {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }, 150); // Debounce resize events
     }
 
     window.addEventListener('resize', handleResize);
+    // Call immediately on mount
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(debounceTimer);
+    };
   }, []);
 
   return windowSize;
@@ -38,4 +47,9 @@ export function useIsMobile(breakpoint: number = 768): boolean {
 export function useIsTablet(breakpoint: number = 1024): boolean {
   const { width } = useWindowSize();
   return width !== undefined && width < breakpoint && width >= 768;
+}
+
+export function useIsDesktop(breakpoint: number = 1024): boolean {
+  const { width } = useWindowSize();
+  return width !== undefined && width >= breakpoint;
 }

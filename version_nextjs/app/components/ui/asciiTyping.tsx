@@ -1,6 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
-const AsciiTyping = ({ 
+interface AsciiTypingProps {
+  className?: string;
+  typeSpeed?: number;
+  pauseAfterComplete?: number;
+  cursorBlinkSpeed?: number;
+  asciiArt?: string;
+}
+
+const AsciiTyping: React.FC<AsciiTypingProps> = ({ 
   className = '',
   typeSpeed = 10,
   pauseAfterComplete = 5000,
@@ -13,6 +21,9 @@ const AsciiTyping = ({
   const [isComplete, setIsComplete] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  // Memoize ASCII art to prevent unnecessary recalculations
+  const artLength = useMemo(() => asciiArt?.length || 0, [asciiArt]);
+
   // Reset animation when ASCII art changes (when selection changes)
   useEffect(() => {
     setDisplayedText('');
@@ -21,7 +32,7 @@ const AsciiTyping = ({
     setIsDeleting(false);
   }, [asciiArt]);
 
-  // Typing and looping effect
+  // Typing and looping effect with optimized performance
   useEffect(() => {
     if (!asciiArt) return;
 
@@ -41,7 +52,7 @@ const AsciiTyping = ({
       }
     } else {
       // Typing phase
-      if (currentIndex < asciiArt.length) {
+      if (currentIndex < artLength) {
         timeout = setTimeout(() => {
           setDisplayedText(asciiArt.slice(0, currentIndex + 1));
           setCurrentIndex(currentIndex + 1);
@@ -56,7 +67,7 @@ const AsciiTyping = ({
     }
 
     return () => clearTimeout(timeout);
-  }, [currentIndex, isComplete, isDeleting, asciiArt, typeSpeed, pauseAfterComplete]);
+  }, [currentIndex, isComplete, isDeleting, asciiArt, artLength, typeSpeed, pauseAfterComplete]);
 
   // Cursor blink effect
   useEffect(() => {

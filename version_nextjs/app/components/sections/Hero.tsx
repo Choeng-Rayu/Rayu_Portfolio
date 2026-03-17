@@ -1,16 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import TypeWriter from '../ui/TypeWriter';
 import AnimatedBackground from '../ui/AnimatedBackground';
 import AsciiTyping from '../ui/asciiTyping';
 import { personalInfo, aboutMe, socialLinks } from '../../data/portfolio';
 import { asciArtStyles, defaultStyle, getAsciiArtByStyle } from '../../data/asciArtStyle';
+import { useIsDesktop } from '../../hooks/useWindowSize';
 import Icon from '../icons';
 
 export default function Hero() {
   const [selectedStyle, setSelectedStyle] = useState(defaultStyle);
-  const currentArt = getAsciiArtByStyle(selectedStyle);
+  const isDesktop = useIsDesktop();
+  
+  const currentArt = useMemo(() => {
+    return getAsciiArtByStyle(selectedStyle);
+  }, [selectedStyle]);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -56,36 +61,40 @@ export default function Hero() {
             <span>Hello, I&apos;m</span>
           </div>
           
-          <div className="my-6 flex justify-center">
-            <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-cyan-400/40 bg-gray-900/30 hover:bg-gray-900/50 hover:border-cyan-400/60 transition-all">
-              <label htmlFor="ascii-style-select" className="text-sm font-medium text-gray-300">
-                ASCII Style:
-              </label>
-              <select 
-                id="ascii-style-select"
-                value={selectedStyle} 
-                onChange={(e) => setSelectedStyle(e.target.value)}
-                className="px-3 py-1 rounded bg-gray-800 text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/60 cursor-pointer text-sm focus:outline-none focus:border-cyan-400/80 transition-all"
-                style={{ color: '#00d4ff' }}
-              >
-                {asciArtStyles.map(style => (
-                  <option key={style.styleType} value={style.styleType}>
-                    {style.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          {isDesktop && (
+            <>
+              <div className="my-6 flex justify-center">
+                <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-cyan-400/40 bg-gray-900/30 hover:bg-gray-900/50 hover:border-cyan-400/60 transition-all">
+                  <label htmlFor="ascii-style-select" className="text-sm font-medium text-gray-300">
+                    ASCII Style:
+                  </label>
+                  <select 
+                    id="ascii-style-select"
+                    value={selectedStyle} 
+                    onChange={(e) => setSelectedStyle(e.target.value)}
+                    className="px-3 py-1 rounded bg-gray-800 text-cyan-300 border border-cyan-400/30 hover:border-cyan-400/60 cursor-pointer text-sm focus:outline-none focus:border-cyan-400/80 transition-all"
+                    style={{ color: '#00d4ff' }}
+                  >
+                    {asciArtStyles.map(style => (
+                      <option key={style.styleType} value={style.styleType}>
+                        {style.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
 
-          <div className="my-10">
-            <AsciiTyping 
-              key={selectedStyle}
-              className="overflow-x-auto"
-              typeSpeed={10}
-              pauseAfterComplete={5000}
-              asciiArt={currentArt.art}
-            />
-          </div>
+              <div className="my-10">
+                <AsciiTyping 
+                  key={selectedStyle}
+                  className="overflow-x-auto"
+                  typeSpeed={10}
+                  pauseAfterComplete={5000}
+                  asciiArt={Array.isArray(currentArt.art) ? currentArt.art.join('\n') : currentArt.art}
+                />
+              </div>
+            </>
+          )}
           
           <div className="hero-title">
             <TypeWriter 
