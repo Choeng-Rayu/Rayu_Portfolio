@@ -1,0 +1,8 @@
+export const socialLinks = [
+  { name: 'GitHub', icon: 'FaGithub', href: 'https://github.com/Rayu-Portfolio', color: '#ffffff' },
+  { name: 'LinkedIn', icon: 'FaLinkedin', href: 'https://linkedin.com/in/rayu-portfolio', color: '#0a66c2' },
+  { name: 'Twitter', icon: 'FaTwitter', href: 'https://twitter.com/rayu_portfolio', color: '#1da1f2' },
+  { name: 'Email', icon: 'FaEnvelope', href: 'mailto:rayu@example.com', color: '#ea4335' },
+  { name: 'LeetCode', icon: 'SiLeetcode', href: 'https://leetcode.com/rayu-portfolio', color: '#f5a623' },
+  { name: 'Telegram', icon: 'SiTelegram', href: 'https://t.me/rayu_portfolio', color: '#0088cc' }
+];
