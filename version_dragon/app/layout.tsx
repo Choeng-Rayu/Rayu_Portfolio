@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
+import Navigation from './components/Navigation';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -26,8 +27,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Kinematic Typography',
-  description: 'Interactive physics-based typography with a kinematic Eastern dragon',
+  title: 'Rayu Choeng | Full Stack Developer',
+  description: 'Full Stack Developer & Software Engineering Student from Cambodia. Specialized in React, Three.js, and modern web technologies.',
+  keywords: ['Rayu Choeng', 'Full Stack Developer', 'Software Engineer', 'React', 'Three.js', 'Cambodia', 'Web Developer'],
+  authors: [{ name: 'Rayu Choeng' }],
+  openGraph: {
+    title: 'Rayu Choeng | Full Stack Developer',
+    description: 'Full Stack Developer & Software Engineering Student from Cambodia. Specialized in React, Three.js, and modern web technologies.',
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +47,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-black">{children}</body>
+      <body className="min-h-full flex flex-col bg-black">
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }

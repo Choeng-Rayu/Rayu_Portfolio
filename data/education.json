@@ -1,0 +1,64 @@
+{
+  "education": [
+    {
+      "institution": "Cambodia Academy of Digital Technology",
+      "degree": "Bachelor's in Computer Science",
+      "status": "Currently Year 3",
+      "period": "January 2024 – Present",
+      "details": [
+        "Specializing in Software Engineering",
+        "Programming languages: Java, C++, C",
+        "Web development: React.js, HTML, CSS",
+        "Applying theory to practical projects"
+      ],
+      "scholarship": "Techo Digital Talent Scholarship",
+      "reference": "https://verify.gov.kh/verify/3b35764c208b34af1c95ab3a09f5b2aefa7332b65e98b1c8e184eb635e9508f2?key=2c43a7002735a6333689d5088412f4f870c205535bdc92913e892b21bf5bd44a"
+    },
+    {
+      "institution": "Joint ALCPP Program In The Capacity Specialists",
+      "program": "Professional Development Program",
+      "status": "Awaiting Internship",
+      "period": "November 2024 – Present",
+      "details": [
+        "5-month program (3 months classroom + 2 months internship)",
+        "Focus areas: Teamwork, Communication, Growth Mindset, Critical Thinking, Self-discipline, Problem-solving"
+      ]
+    },
+    {
+      "institution": "Hun Sen Borey 100 Knong High School",
+      "degree": "Baccalauréat (Bac II)",
+      "grade": "Grade B",
+      "graduationDate": "November 24, 2023",
+      "reference": "https://verify.gov.kh/verify/ba1d31fd9f3c2853edd973e955cc7845e484a182774a5d12568f7caeea471ac3?key=0037327bb0844bf7691ae5c882a2bc1e4933739b4dfc16d53c89558900a590fc"
+    },
+    {
+      "institution": "Paññāsāstra International School - Institute of Foreign Languages",
+      "degree": "General English Diploma",
+      "level": "Level 12",
+      "status": "Certificate Pending"
+    }
+  ],
+  "certifications": [
+    {
+      "organization": "CISCO Networking Academy",
+      "course": "IT Essentials: PC Hardware and Software",
+      "completedDate": "May 14, 2024",
+      "topics": [
+        "Computer hardware and software installation",
+        "Troubleshooting and maintenance",
+        "PC assembly and operating system management"
+      ],
+      "reference": "https://drive.google.com/file/d/1oXMj11rTBcqAv8aSn0ER5J138DXmyAW1/view?usp=drivesdk"
+    },
+    {
+      "organization": "NICC",
+      "program": "12th Startup Camp - TechTourism Ignite",
+      "completedDate": "September 14, 2024",
+      "topics": [
+        "Entrepreneurship in tourism sector through technology",
+        "Mentorship, workshops, and networking"
+      ],
+      "reference": "https://drive.google.com/file/d/1odE4Bo0jImOM72HfIUurMetj00JTy6LW/view?usp=drivesdk"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "file": "src/repo/projectsData.js",
+  "type": "data",
+  "content": {
+    "projects": [
+      {
+        "title": "3D Portfolio Website",
+        "description": "An interactive 3D portfolio showcasing skills and projects with smooth animations and responsive design.",
+        "tags": ["React", "Three.js", "Framer Motion", "CSS3"],
+        "accentColor": "#00ff88",
+        "demoLink": "https://rayu-portfolio.netlify.app",
+        "codeLink": "https://github.com/Rayu-Portfolio/version_reactjs"
+      },
+      {
+        "title": "E-commerce Platform",
+        "description": "A full-stack e-commerce application with product catalog, shopping cart, and payment integration.",
+        "tags": ["React", "Node.js", "MongoDB", "Express"],
+        "accentColor": "#ff6b6b",
+        "demoLink": "#",
+        "codeLink": "#"
+      },
+      {
+        "title": "Task Management App",
+        "description": "A productivity app for managing tasks and projects with real-time collaboration features.",
+        "tags": ["React", "Firebase", "Material-UI"],
+        "accentColor": "#4ecdc4",
+        "demoLink": "#",
+        "codeLink": "#"
+      },
+      {
+        "title": "Weather Dashboard",
+        "description": "A weather application that displays current conditions and forecasts using a weather API.",
+        "tags": ["React", "API Integration", "CSS Grid"],
+        "accentColor": "#45b7d1",
+        "demoLink": "#",
+        "codeLink": "#"
+      }
+    ]
+  }
+}

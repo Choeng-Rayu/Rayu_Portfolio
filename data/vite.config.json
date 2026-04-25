@@ -1,0 +1,5 @@
+{
+  "file": "vite.config.js",
+  "type": "config",
+  "content": "import { defineConfig } from 'vite'\nimport react from '@vitejs/plugin-react'\n\nexport default defineConfig({\n  plugins: [react()],\n  server: {\n    allowedHosts: ['95b2-202-93-153-254.ngrok-free.app']\n  }\n})"
+}

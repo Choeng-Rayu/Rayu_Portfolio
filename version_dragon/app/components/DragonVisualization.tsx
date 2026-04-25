@@ -23,14 +23,38 @@ const DragonVisualization: React.FC = () => {
     canvas.style.height = `${height}px`;
     ctx.scale(dpr, dpr);
 
-    // Article text explaining the concept demo
-    const baseText = `The intersection of dynamic rendering and physics-based typography opens new paradigms for digital interaction. In this concept demonstration, an ethereal, kinematic Eastern dragon serves as a living force field. As the entity navigates the viewport, its skeletal structure—driven by inverse kinematics—displaces the surrounding typographic elements in real-time. Each word functions as an independent physical body bound by spring constraints, reacting to the dragon's proximity through calculated distance fields. The resulting visual is enhanced by a post-processing bloom effect, blending a dark neon aura with screen compositing to simulate pure energy. This experiment showcases how modern web technologies can elevate traditional reading experiences into immersive, reactive environments.
+    // Rayu Choeng's CV Content
+    const baseText = `PROFILE
+Full Stack Developer & Software Engineer driven by curiosity, discipline, and purpose. Specialized in React, Three.js, and modern web technologies. Computer Science student at Cambodia Academy of Digital Technology. Techo Digital Talent Scholarship recipient.
 
-By treating typography not as static pixels, but as a fluid medium, we bridge the gap between content and interactive art. The dragon itself is constructed using a series of connected segments, each following the one before it to create a natural, slithering motion. The head tracks the user's input, while the body trails behind, applying a repulsive force to any text it encounters. This repulsive force is calculated based on the distance between each word and the nearest segment of the dragon. When a word falls within the dragon's radius, it is pushed outward, creating a parting effect that mimics a physical interaction.
+EDUCATION
+Cambodia Academy of Digital Technology — Bachelor's in Computer Science (Year 3)
+Specializing in Software Engineering. Programming: Java, C++, C. Web: React.js, HTML, CSS.
+Joint ALCPP Program — The Capacity Specialists
+5-month program focusing on Teamwork, Communication, Growth Mindset, Critical Thinking.
+Hun Sen Borey 100 Knong High School — Baccalauréat (Bac II), Grade B
+Graduated November 2023.
 
-To maintain readability, the words are constrained by a relaxation algorithm. This algorithm ensures that words do not overlap with each other, pushing neighboring words aside as needed to make room. The result is a dynamic, self-organizing layout that adapts to the dragon's presence. The visual aesthetic is heavily inspired by brutalist and minimalist design principles, combined with a touch of cyberpunk neon. The dark background and subtle text provide a canvas for the vibrant, glowing dragon to stand out, creating a striking contrast.
+TECHNICAL SKILLS
+JavaScript, React, Three.js, Framer Motion, HTML5, CSS3, Java, C++, Flutter, Node.js, MongoDB, Express, Firebase, Git, Tailwind CSS, TypeScript.
 
-Ultimately, this project is an exploration of what is possible when we combine physics, typography, and interactive design. It challenges the traditional notion of a web page as a static document, offering a glimpse into a future where content is alive and responsive.`;
+CERTIFICATIONS
+CISCO Networking Academy — IT Essentials: PC Hardware and Software (May 2024)
+NICC 12th Startup Camp — TechTourism Ignite (September 2024)
+
+EXPERIENCE
+Part-Time Math Tutor (2024 - February 2025)
+Conducted one-on-one tutoring for Grade 4 and Grade 8 students. Teaching math in Khmer and English.
+Khoding-Hero Volunteer — Team Leader & Instructor (August - September 2024)
+Led a three-member team teaching 700 students. Taught ICT and coding with Scratch.
+My First Stock Campaign — Volunteer Leader (October 2024)
+Led all volunteer members for the campaign.
+
+CONTACT
+Email: choengrayu307@gmail.com
+Portfolio: rayu-choeng.tech
+GitHub: github.com/Choeng-Rayu
+Location: Cambodia`;
 
     const textContent = baseText.repeat(3);
 
@@ -108,23 +132,23 @@ Ultimately, this project is an exploration of what is possible when we combine p
         });
       };
 
-      layoutLetters('KINEMATIC', marginX, currentY, titleFont1, '#E4E3E0', titleSize);
-      currentY += titleSize * 0.85;
-      layoutLetters(
-        'TYPOGRAPHY',
-        marginX,
-        currentY,
-        titleFont2,
-        '#ff4500',
-        titleSize,
-        25,
-        'rgba(255,69,0,0.8)'
-      );
-      currentY += titleSize * 1.4;
+    layoutLetters('RAYU', marginX, currentY, titleFont1, '#E4E3E0', titleSize);
+    currentY += titleSize * 0.85;
+    layoutLetters(
+      'CHOENG',
+      marginX,
+      currentY,
+      titleFont2,
+      '#ff4500',
+      titleSize,
+      25,
+      'rgba(255,69,0,0.8)'
+    );
+    currentY += titleSize * 1.4;
 
-      const subFont = `300 10px 'Inter', monospace`;
-      ctx.font = subFont;
-      const subText = 'Vol. 01 // Interactive Force Fields';
+    const subFont = `300 10px 'Inter', monospace`;
+    ctx.font = subFont;
+    const subText = 'Full Stack Developer & Software Engineer';
       const subWidth = ctx.measureText(subText).width;
       lines.push({
         y: currentY,
