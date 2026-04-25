@@ -1,0 +1,91 @@
+{
+  "certificates": [
+    {
+      "type": "Academic",
+      "title": "Baccalauréat (Bac II)",
+      "institution": "Hun Sen Borey 100 Knong High School",
+      "grade": "Grade B",
+      "date": "November 24, 2023",
+      "verificationUrl": "https://verify.gov.kh/verify/ba1d31fd9f3c2853edd973e955cc7845e484a182774a5d12568f7caeea471ac3?key=0037327bb0844bf7691ae5c882a2bc1e4933739b4dfc16d53c89558900a590fc"
+    },
+    {
+      "type": "Academic",
+      "title": "Bachelor's in Computer Science (Year 3)",
+      "institution": "Cambodia Academy of Digital Technology",
+      "status": "Currently Enrolled",
+      "period": "January 2024 – Present",
+      "verificationUrl": "https://verify.gov.kh/verify/3b35764c208b34af1c95ab3a09f5b2aefa7332b65e98b1c8e184eb635e9508f2?key=2c43a7002735a6333689d5088412f4f870c205535bdc92913e892b21bf5bd44a"
+    },
+    {
+      "type": "Professional Training",
+      "title": "IT Essentials: PC Hardware and Software",
+      "organization": "CISCO Networking Academy",
+      "completedDate": "May 14, 2024",
+      "topics": [
+        "Computer hardware and software installation",
+        "Troubleshooting and maintenance",
+        "PC assembly",
+        "Operating system management"
+      ],
+      "verificationUrl": "https://drive.google.com/file/d/1oXMj11rTBcqAv8aSn0ER5J138DXmyAW1/view?usp=drivesdk"
+    },
+    {
+      "type": "Professional Training",
+      "title": "NICC 12th Startup Camp: TechTourism Ignite",
+      "organization": "National Institute of Cambodia (NICC)",
+      "completedDate": "September 14, 2024",
+      "focus": "Empowering entrepreneurs to innovate in tourism through technology",
+      "verificationUrl": "https://drive.google.com/file/d/1odE4Bo0jImOM72HfIUurMetj00JTy6LW/view?usp=drivesdk"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "Digital Government Forum Participation",
+      "role": "Crowd Team",
+      "period": "March 11-13, 2024",
+      "verificationUrl": "https://verify.gov.kh/verify/97e7ce8f61a4f43c10f3441636e517f92466e94216fb65e265a3c9f0f997a158?key=8940f9bd54c3283d3c981f01a6787ccfdfa43b90298d3fea628c26cc0b31980b"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "Cambodia High Education Forum and Exhibition",
+      "role": "Seat Arrangement",
+      "period": "October 19-20, 2024",
+      "verificationUrl": "https://drive.google.com/file/d/1oh1oD2nvVWCTzBfG2KbYXQxyQ85AdhyE/view?usp=sharing"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "National Career and Productivity Fair 2024",
+      "role": "Technical Team",
+      "period": "October 26-27, 2024",
+      "verificationUrl": "https://drive.google.com/file/d/1ofiNpycGDZoZUm-Sgdcq-FzoqsosZ7C5/view?usp=drivesdk"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "National Sports Games (4th National Sports & 2nd Para Games 2024)",
+      "role": "Technical Team",
+      "period": "October 30 – November 8, 2024",
+      "verificationUrl": "https://drive.google.com/file/d/1orE867zXvRCmM2aLCI94CRA4zyRl4kOK/view?usp=drivesdk"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "My First Stock Campaign",
+      "role": "Technical Team Leader",
+      "period": "October 25-28, 2024",
+      "verificationUrl": "https://drive.google.com/file/d/1orowX4bd6gmRW8Q8AZhhJvOQVPlcHFRU/view?usp=drivesdk"
+    },
+    {
+      "type": "Work Certificate",
+      "title": "Mathematics Tutor",
+      "role": "Part-Time Tutor",
+      "period": "2024 – February 2025",
+      "verificationUrl": "https://drive.google.com/file/d/1nsf1lkeDqp0i5Md9cn272b1fhiYwRlfs/view?usp=sharing"
+    },
+    {
+      "type": "Volunteer Certificate",
+      "title": "Khoding-Hero Volunteer Program",
+      "role": "Team Leader & Instructor",
+      "period": "August – September 2024",
+      "location": "Samky High School, Siem Reap Province",
+      "verificationUrl": "https://drive.google.com/file/d/1ozrvWrgUTzZs2szScNf9SP9dnCQuLrCh/view?usp=sharing"
+    }
+  ]
+}

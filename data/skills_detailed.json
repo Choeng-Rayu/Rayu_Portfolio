@@ -1,0 +1,117 @@
+{
+  "programmingLanguages": [
+    {
+      "name": "Java",
+      "level": "Proficient",
+      "experience": "Academic projects and application development"
+    },
+    {
+      "name": "JavaScript",
+      "level": "Proficient",
+      "experience": "Web development and interactive applications"
+    },
+    {
+      "name": "C++",
+      "level": "Intermediate",
+      "experience": "Academic coursework and system programming"
+    },
+    {
+      "name": "C",
+      "level": "Intermediate",
+      "experience": "Fundamental programming concepts"
+    },
+    {
+      "name": "Python",
+      "level": "Intermediate",
+      "experience": "Bot development and automation scripts"
+    }
+  ],
+  "webDevelopment": [
+    {
+      "name": "React.js",
+      "level": "Proficient",
+      "description": "Building dynamic user interfaces with hooks, context API, and performance optimization"
+    },
+    {
+      "name": "HTML5",
+      "level": "Proficient",
+      "description": "Semantic markup for accessible and SEO-friendly web pages"
+    },
+    {
+      "name": "CSS3",
+      "level": "Proficient",
+      "description": "Flexbox, Grid, animations, and responsive design principles"
+    },
+    {
+      "name": "Framer Motion",
+      "level": "Proficient",
+      "description": "Creating smooth animations and transitions"
+    },
+    {
+      "name": "Three.js",
+      "level": "Intermediate",
+      "description": "Creating 3D graphics and animations for immersive web experiences"
+    },
+    {
+      "name": "REST APIs",
+      "level": "Intermediate",
+      "description": "Integration and consumption of RESTful services"
+    },
+    {
+      "name": "Responsive Design",
+      "level": "Proficient",
+      "description": "Mobile-first and responsive web design"
+    }
+  ],
+  "databases": [
+    {
+      "name": "MySQL",
+      "level": "Intermediate",
+      "description": "Relational database design and management"
+    },
+    {
+      "name": "MongoDB",
+      "level": "Intermediate",
+      "description": "NoSQL database for modern applications"
+    }
+  ],
+  "toolsAndPlatforms": [
+    {
+      "name": "Git",
+      "level": "Proficient",
+      "description": "Version control and collaboration"
+    },
+    {
+      "name": "GitHub",
+      "level": "Proficient",
+      "description": "Repository management and open source contribution"
+    },
+    {
+      "name": "Telegram Bot API",
+      "level": "Proficient",
+      "description": "Building automated chat bots"
+    },
+    {
+      "name": "Digital Ocean",
+      "level": "Intermediate",
+      "description": "Cloud server deployment and management"
+    },
+    {
+      "name": "Nginx",
+      "level": "Intermediate",
+      "description": "Web server configuration and reverse proxy"
+    }
+  ],
+  "softSkills": [
+    "Problem Solving",
+    "Communication",
+    "Team Collaboration",
+    "Critical Thinking",
+    "Self-discipline",
+    "Growth Mindset"
+  ],
+  "aiTools": [
+    "DeepSeek API",
+    "AI-powered development tools"
+  ]
+}

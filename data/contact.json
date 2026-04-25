@@ -1,0 +1,36 @@
+{
+  "contactInfo": {
+    "email": {
+      "address": "choengrayu307@gmail.com",
+      "link": "mailto:choengrayu307@gmail.com"
+    },
+    "phone": {
+      "number": "+855 96 998 3479",
+      "link": "tel:+855969983479"
+    },
+    "telegram": {
+      "username": "@President_Alein",
+      "link": "https://t.me/President_Alein"
+    }
+  },
+  "socialLinks": {
+    "github": {
+      "username": "Choeng-Rayu",
+      "url": "https://github.com/Choeng-Rayu"
+    },
+    "linkedin": {
+      "name": "Rayu Choeng",
+      "url": "https://www.linkedin.com/in/rayu-choeng-351243335/"
+    },
+    "telegram": {
+      "username": "@President_Alein",
+      "url": "https://t.me/President_Alein"
+    }
+  },
+  "portfolio": {
+    "url": "https://rayu-portfolio.netlify.app",
+    "github": "https://github.com/Choeng-Rayu/portfolio"
+  },
+  "availability": "Open to internships, collaborations, and meaningful projects",
+  "location": "Phnom Penh, Cambodia"
+}

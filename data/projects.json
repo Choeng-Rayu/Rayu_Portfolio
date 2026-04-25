@@ -1,0 +1,54 @@
+{
+  "projects": [
+    {
+      "name": "Finwise.space",
+      "type": "Full Stack Project",
+      "description": "Smart financial management platform for tracking income, expenses, and savings",
+      "technologies": ["Node.js", "React", "MySQL", "Telegram Bot", "VPS Hosting", "Nginx"],
+      "category": "Financial Technology",
+      "demoLink": "https://finwise.space"
+    },
+    {
+      "name": "HybridCoffee.me",
+      "type": "Web Platform",
+      "description": "Digital coffee ordering system",
+      "technologies": ["Telegram API", "Node.js", "MongoDB", "Webhook"],
+      "category": "E-Commerce"
+    },
+    {
+      "name": "Telegram AI Math Bot",
+      "type": "Chat Bot Application",
+      "description": "Free AI assistant helping high school students learn mathematics",
+      "technologies": ["DeepSeek API", "Telegram API", "Python"],
+      "category": "Education Technology"
+    },
+    {
+      "name": "E-Commerce Platform",
+      "type": "Full Stack Application",
+      "description": "Full-featured offline application with cart, buy/sell products, payments, and inventory management",
+      "features": [
+        "Shopping cart functionality",
+        "Buy/sell products",
+        "Payment processing",
+        "Inventory management"
+      ],
+      "technologies": ["Java", "Swing", "MySQL"],
+      "category": "E-Commerce"
+    },
+    {
+      "name": "3D Portfolio Website",
+      "type": "Interactive Portfolio",
+      "description": "Interactive portfolio with 3D elements and smooth animations",
+      "technologies": ["React.js", "Framer Motion", "EmailJS", "Three.js"],
+      "features": [
+        "3D interactive objects",
+        "Smooth animations",
+        "Contact form integration",
+        "Responsive design"
+      ],
+      "category": "Portfolio",
+      "demoLink": "https://rayu-portfolio.netlify.app",
+      "codeLink": "https://github.com/Choeng-Rayu/portfolio"
+    }
+  ]
+}

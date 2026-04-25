@@ -1,0 +1,53 @@
+{
+  "personalInfo": {
+    "fullName": "Choeng Rayu",
+    "title": "Software Engineering Student",
+    "location": "Kampong Speu Province, Cambodia",
+    "currentStudy": "Cambodia Academy of Digital Technology (CADT)"
+  },
+  "biography": {
+    "origin": "Born in Kampong Speu province in a poor family",
+    "motivation": "To avoid poverty, motivated myself to study hard and support family, believing only study can change life",
+    "educationBackground": "Educated at public school for general education, graduated high school in 2023 with overall grade B",
+    "personality": "Curious person who really loves science since young with talent related to digital technology field",
+    "interests": [
+      "Science research",
+      "Mechanics of cars",
+      "Technology",
+      "Robotics",
+      "Health",
+      "Watches",
+      "History of famous/rich people",
+      "General knowledge"
+    ],
+    "focusArea": "Mostly technology"
+  },
+  "scholarship": {
+    "name": "Techo Digital Talent Scholarship",
+    "degree": "Bachelor's degree",
+    "institution": "Cambodia Academy of Digital Technology"
+  },
+  "expertise": [
+    "Web Development",
+    "Mobile Development",
+    "UI/UX Design",
+    "Problem Solving",
+    "Team Collaboration",
+    "Version Control",
+    "Testing & Debugging",
+    "Performance Optimization",
+    "Database Management",
+    "API Integration"
+  ],
+  "technicalSkills": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Java",
+    "C++",
+    "C",
+    "Flutter"
+  ],
+  "philosophy": "Dedicated to crafting efficient, user-friendly applications that solve real-world problems through clean, maintainable code",
+  "cvDownload": "https://drive.google.com/uc?export=download&id=1dcOqSAMxC3dAIc8_orut0R4yQAHusl0w"
+}
