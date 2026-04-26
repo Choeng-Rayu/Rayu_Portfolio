@@ -23,6 +23,8 @@ import {
   Heart,
   BadgeCheck,
   ChevronRight,
+  Download,
+  FileText,
 } from 'lucide-react';
 
 // Certificate Types
@@ -271,28 +273,49 @@ const About: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* Profile Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-20"
-        >
-          <div className="relative p-8 sm:p-12 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/80 leading-relaxed font-light">
-              Hands-on software engineering student driven by{' '}
-              <span className="text-orange-400 font-normal">curiosity</span>,{' '}
-              <span className="text-orange-400 font-normal">discipline</span>, and{' '}
-              <span className="text-orange-400 font-normal">purpose</span>.
-              Coming from a financially challenged family, I see education and
-              technology as tools for change. I specialize in creating
-              innovative web applications and software solutions using modern
-              technologies.
-            </p>
-          </div>
-        </motion.div>
+      {/* Profile Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+        className="mb-20"
+      >
+        <div className="relative p-8 sm:p-12 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
+          <p className="text-lg sm:text-xl lg:text-2xl text-white/80 leading-relaxed font-light mb-8">
+            Hands-on software engineering student driven by{' '}
+            <span className="text-orange-400 font-normal">curiosity</span>,{' '}
+            <span className="text-orange-400 font-normal">discipline</span>, and{' '}
+            <span className="text-orange-400 font-normal">purpose</span>.
+            Coming from a financially challenged family, I see education and
+            technology as tools for change. I specialize in creating
+            innovative web applications and software solutions using modern
+            technologies.
+          </p>
+
+          {/* Download CV Button */}
+          <motion.a
+            href="/Rayu_Choeng_CV.pdf"
+            download="Rayu_Choeng_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="group inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-500/20 to-orange-600/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/30 hover:border-orange-500/50 hover:shadow-[0_0_30px_rgba(255,69,0,0.3)] transition-all duration-300"
+          >
+            <div className="p-2 rounded-lg bg-orange-500/20 group-hover:bg-orange-500/30 transition-colors">
+              <FileText className="w-5 h-5" />
+            </div>
+            <span className="font-medium">Download CV (PDF)</span>
+            <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+          </motion.a>
+        </div>
+      </motion.div>
 
         {/* Education Timeline */}
         <motion.div
