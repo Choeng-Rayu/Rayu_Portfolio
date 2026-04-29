@@ -15,7 +15,7 @@ const invokeUrl = "https://integrate.api.nvidia.com/v1/chat/completions";
 const stream = true;
 
 // Updated to faster model with reasonable limits
-const MODEL = "google/gemma-2-27b-it";
+const MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning";
 const MAX_TOKENS = 1024;
 const TIMEOUT_MS = 60000;
 const MAX_RETRIES = 3;
